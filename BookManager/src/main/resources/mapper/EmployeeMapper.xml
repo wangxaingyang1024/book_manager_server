@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zjkj.bookmanager.mapper.EmployeeMapper">
-  <resultMap id="BaseResultMap" type="com.zjkj.bookmanager.pojo.Employee">
+<mapper namespace="com.bookmanager.user.mapper.EmployeeMapper">
+  <resultMap id="BaseResultMap" type="com.bookmanager.setting.model.Employee">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="job_number" jdbcType="BIGINT" property="jobNumber" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="job_number" jdbcType="INTEGER" property="jobNumber" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
     <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="age" jdbcType="INTEGER" property="age" />
-    <result column="work_time" jdbcType="INTEGER" property="workTime" />
     <result column="role" jdbcType="INTEGER" property="role" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -69,9 +71,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, job_number, name, gender, age, work_time, role
+    id, job_number, username, password, nick_name, gender, phone, age, role
   </sql>
-  <select id="selectByExample" parameterType="com.zjkj.bookmanager.pojo.EmployeeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.bookmanager.setting.model.EmployeeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -95,21 +97,21 @@
     delete from employee
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.zjkj.bookmanager.pojo.EmployeeExample">
+  <delete id="deleteByExample" parameterType="com.bookmanager.setting.model.EmployeeExample">
     delete from employee
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.zjkj.bookmanager.pojo.Employee">
-    insert into employee (id, job_number, name, 
-      gender, age, work_time, 
-      role)
-    values (#{id,jdbcType=BIGINT}, #{jobNumber,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
-      #{gender,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{workTime,jdbcType=INTEGER}, 
-      #{role,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.bookmanager.setting.model.Employee">
+    insert into employee (id, job_number, username, 
+      password, nick_name, gender, 
+      phone, age, role)
+    values (#{id,jdbcType=BIGINT}, #{jobNumber,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, 
+      #{phone,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{role,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.zjkj.bookmanager.pojo.Employee">
+  <insert id="insertSelective" parameterType="com.bookmanager.setting.model.Employee">
     insert into employee
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -118,17 +120,23 @@
       <if test="jobNumber != null">
         job_number,
       </if>
-      <if test="name != null">
-        name,
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="nickName != null">
+        nick_name,
       </if>
       <if test="gender != null">
         gender,
       </if>
+      <if test="phone != null">
+        phone,
+      </if>
       <if test="age != null">
         age,
-      </if>
-      <if test="workTime != null">
-        work_time,
       </if>
       <if test="role != null">
         role,
@@ -139,26 +147,32 @@
         #{id,jdbcType=BIGINT},
       </if>
       <if test="jobNumber != null">
-        #{jobNumber,jdbcType=BIGINT},
+        #{jobNumber,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
       </if>
       <if test="gender != null">
         #{gender,jdbcType=INTEGER},
       </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
       <if test="age != null">
         #{age,jdbcType=INTEGER},
-      </if>
-      <if test="workTime != null">
-        #{workTime,jdbcType=INTEGER},
       </if>
       <if test="role != null">
         #{role,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.zjkj.bookmanager.pojo.EmployeeExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.bookmanager.setting.model.EmployeeExample" resultType="java.lang.Long">
     select count(*) from employee
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -171,19 +185,25 @@
         id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.jobNumber != null">
-        job_number = #{record.jobNumber,jdbcType=BIGINT},
+        job_number = #{record.jobNumber,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickName != null">
+        nick_name = #{record.nickName,jdbcType=VARCHAR},
       </if>
       <if test="record.gender != null">
         gender = #{record.gender,jdbcType=INTEGER},
       </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
       <if test="record.age != null">
         age = #{record.age,jdbcType=INTEGER},
-      </if>
-      <if test="record.workTime != null">
-        work_time = #{record.workTime,jdbcType=INTEGER},
       </if>
       <if test="record.role != null">
         role = #{record.role,jdbcType=INTEGER},
@@ -196,33 +216,41 @@
   <update id="updateByExample" parameterType="map">
     update employee
     set id = #{record.id,jdbcType=BIGINT},
-      job_number = #{record.jobNumber,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
+      job_number = #{record.jobNumber,jdbcType=INTEGER},
+      username = #{record.username,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      nick_name = #{record.nickName,jdbcType=VARCHAR},
       gender = #{record.gender,jdbcType=INTEGER},
+      phone = #{record.phone,jdbcType=VARCHAR},
       age = #{record.age,jdbcType=INTEGER},
-      work_time = #{record.workTime,jdbcType=INTEGER},
       role = #{record.role,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zjkj.bookmanager.pojo.Employee">
+  <update id="updateByPrimaryKeySelective" parameterType="com.bookmanager.setting.model.Employee">
     update employee
     <set>
       <if test="jobNumber != null">
-        job_number = #{jobNumber,jdbcType=BIGINT},
+        job_number = #{jobNumber,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
       </if>
       <if test="gender != null">
         gender = #{gender,jdbcType=INTEGER},
       </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
       <if test="age != null">
         age = #{age,jdbcType=INTEGER},
-      </if>
-      <if test="workTime != null">
-        work_time = #{workTime,jdbcType=INTEGER},
       </if>
       <if test="role != null">
         role = #{role,jdbcType=INTEGER},
@@ -230,13 +258,15 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zjkj.bookmanager.pojo.Employee">
+  <update id="updateByPrimaryKey" parameterType="com.bookmanager.setting.model.Employee">
     update employee
-    set job_number = #{jobNumber,jdbcType=BIGINT},
-      name = #{name,jdbcType=VARCHAR},
+    set job_number = #{jobNumber,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
-      work_time = #{workTime,jdbcType=INTEGER},
       role = #{role,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>

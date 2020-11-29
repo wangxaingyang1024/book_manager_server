@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zjkj.bookmanager.mapper.BookMapper">
-  <resultMap id="BaseResultMap" type="com.zjkj.bookmanager.pojo.Book">
+<mapper namespace="com.bookmanager.book.mapper.BookMapper">
+  <resultMap id="BaseResultMap" type="com.bookmanager.setting.model.Book">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="number" jdbcType="BIGINT" property="number" />
+    <result column="isbn" jdbcType="BIGINT" property="isbn" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="type" jdbcType="VARCHAR" property="type" />
-    <result column="price" jdbcType="DECIMAL" property="price" />
-    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="emp_number" jdbcType="BIGINT" property="empNumber" />
+    <result column="status" jdbcType="BIT" property="status" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.bookmanager.setting.model.Book">
+    <result column="synopsis" jdbcType="LONGVARCHAR" property="synopsis" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,9 +72,28 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, number, name, author, type, price, count
+    id, isbn, name, author, type, emp_number, status
   </sql>
-  <select id="selectByExample" parameterType="com.zjkj.bookmanager.pojo.BookExample" resultMap="BaseResultMap">
+  <sql id="Blob_Column_List">
+    synopsis
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.bookmanager.setting.model.BookExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from book
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.bookmanager.setting.model.BookExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -85,56 +107,40 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByAuthor" parameterType="com.zjkj.bookmanager.pojo.Book" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List"/>
-    from book
-    where author = #{author,jdbcType=VARCHAR}
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from book
     where id = #{id,jdbcType=BIGINT}
-  </select>
-  <select id="selectByBookName" parameterType="string" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List"/>
-    from book
-    where name = #{name,jdbcType=VARCHAR};
-  </select>
-  <select id="selectByBookNumber" parameterType="long" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List"/>
-    from book
-    where number = #{number,jdbcType=BIGINT};
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from book
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.zjkj.bookmanager.pojo.BookExample">
+  <delete id="deleteByExample" parameterType="com.bookmanager.setting.model.BookExample">
     delete from book
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.zjkj.bookmanager.pojo.Book">
-    insert into book (id, number, name, 
-      author, type, price, 
-      count)
-    values (#{id,jdbcType=BIGINT}, #{number,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
-      #{author,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
-      #{count,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.bookmanager.setting.model.Book">
+    insert into book (id, isbn, name, 
+      author, type, emp_number, 
+      status, synopsis)
+    values (#{id,jdbcType=BIGINT}, #{isbn,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{empNumber,jdbcType=BIGINT}, 
+      #{status,jdbcType=BIT}, #{synopsis,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.zjkj.bookmanager.pojo.Book">
+  <insert id="insertSelective" parameterType="com.bookmanager.setting.model.Book">
     insert into book
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="number != null">
-        number,
+      <if test="isbn != null">
+        isbn,
       </if>
       <if test="name != null">
         name,
@@ -145,19 +151,22 @@
       <if test="type != null">
         type,
       </if>
-      <if test="price != null">
-        price,
+      <if test="empNumber != null">
+        emp_number,
       </if>
-      <if test="count != null">
-        count,
+      <if test="status != null">
+        status,
+      </if>
+      <if test="synopsis != null">
+        synopsis,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="number != null">
-        #{number,jdbcType=BIGINT},
+      <if test="isbn != null">
+        #{isbn,jdbcType=BIGINT},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -168,15 +177,18 @@
       <if test="type != null">
         #{type,jdbcType=VARCHAR},
       </if>
-      <if test="price != null">
-        #{price,jdbcType=DECIMAL},
+      <if test="empNumber != null">
+        #{empNumber,jdbcType=BIGINT},
       </if>
-      <if test="count != null">
-        #{count,jdbcType=INTEGER},
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="synopsis != null">
+        #{synopsis,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.zjkj.bookmanager.pojo.BookExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.bookmanager.setting.model.BookExample" resultType="java.lang.Long">
     select count(*) from book
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -188,8 +200,8 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.number != null">
-        number = #{record.number,jdbcType=BIGINT},
+      <if test="record.isbn != null">
+        isbn = #{record.isbn,jdbcType=BIGINT},
       </if>
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
@@ -200,13 +212,30 @@
       <if test="record.type != null">
         type = #{record.type,jdbcType=VARCHAR},
       </if>
-      <if test="record.price != null">
-        price = #{record.price,jdbcType=DECIMAL},
+      <if test="record.empNumber != null">
+        emp_number = #{record.empNumber,jdbcType=BIGINT},
       </if>
-      <if test="record.count != null">
-        count = #{record.count,jdbcType=INTEGER},
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=BIT},
+      </if>
+      <if test="record.synopsis != null">
+        synopsis = #{record.synopsis,jdbcType=LONGVARCHAR},
       </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update book
+    set id = #{record.id,jdbcType=BIGINT},
+      isbn = #{record.isbn,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      author = #{record.author,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      emp_number = #{record.empNumber,jdbcType=BIGINT},
+      status = #{record.status,jdbcType=BIT},
+      synopsis = #{record.synopsis,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -214,21 +243,21 @@
   <update id="updateByExample" parameterType="map">
     update book
     set id = #{record.id,jdbcType=BIGINT},
-      number = #{record.number,jdbcType=BIGINT},
+      isbn = #{record.isbn,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       author = #{record.author,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=VARCHAR},
-      price = #{record.price,jdbcType=DECIMAL},
-      count = #{record.count,jdbcType=INTEGER}
+      emp_number = #{record.empNumber,jdbcType=BIGINT},
+      status = #{record.status,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zjkj.bookmanager.pojo.Book">
+  <update id="updateByPrimaryKeySelective" parameterType="com.bookmanager.setting.model.Book">
     update book
     <set>
-      <if test="number != null">
-        number = #{number,jdbcType=BIGINT},
+      <if test="isbn != null">
+        isbn = #{isbn,jdbcType=BIGINT},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -239,24 +268,37 @@
       <if test="type != null">
         type = #{type,jdbcType=VARCHAR},
       </if>
-      <if test="price != null">
-        price = #{price,jdbcType=DECIMAL},
+      <if test="empNumber != null">
+        emp_number = #{empNumber,jdbcType=BIGINT},
       </if>
-      <if test="count != null">
-        count = #{count,jdbcType=INTEGER},
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="synopsis != null">
+        synopsis = #{synopsis,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zjkj.bookmanager.pojo.Book">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bookmanager.setting.model.Book">
     update book
-    set number = #{number,jdbcType=BIGINT},
+    set isbn = #{isbn,jdbcType=BIGINT},
       name = #{name,jdbcType=VARCHAR},
       author = #{author,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
-      price = #{price,jdbcType=DECIMAL},
-      count = #{count,jdbcType=INTEGER}
+      emp_number = #{empNumber,jdbcType=BIGINT},
+      status = #{status,jdbcType=BIT},
+      synopsis = #{synopsis,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-
+  <update id="updateByPrimaryKey" parameterType="com.bookmanager.setting.model.Book">
+    update book
+    set isbn = #{isbn,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      emp_number = #{empNumber,jdbcType=BIGINT},
+      status = #{status,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
 </mapper>
