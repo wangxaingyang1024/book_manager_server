@@ -24,6 +24,9 @@ public interface BookMapper {
 
     Book selectByPrimaryKey(Long id);
 
+    List<Book> findAll();
+    int deleteBook(Long id);
+
     int updateByExampleSelective(@Param("record") Book record, @Param("example") BookExample example);
 
     int updateByExampleWithBLOBs(@Param("record") Book record, @Param("example") BookExample example);

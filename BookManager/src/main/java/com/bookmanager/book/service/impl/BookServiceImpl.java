@@ -19,4 +19,30 @@ public class BookServiceImpl implements BookService {
     public Book getBook(Long id) {
         return bookMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public List<Book> findAll() {
+        return bookMapper.findAll();
+    }
+
+    @Override
+    public int borrowBook(Long isbn) {
+        return 0;
+    }
+
+    @Override
+    public int  returnBook(Long isbn) {
+
+        return 0;
+    }
+
+    @Override
+    public int addBook(Book book) {
+        return bookMapper.insert(book);
+    }
+
+    @Override
+    public int deleteBook(long isbn) {
+        return bookMapper.deleteByPrimaryKey(isbn);
+    }
 }

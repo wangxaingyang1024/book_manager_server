@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, isbn, name, author, type, emp_number, status
+    id, isbn, name, author, type, emp_number, status,synopsis
   </sql>
   <sql id="Blob_Column_List">
     synopsis
@@ -108,13 +108,15 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from book
-    where id = #{id,jdbcType=BIGINT}
+    select * from book where id = #{id}
   </select>
+
+<select id="findAll" resultType="com.bookmanager.setting.model.Book">
+  select
+  <include refid="Base_Column_List"/>
+  from book
+</select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from book
     where id = #{id,jdbcType=BIGINT}
@@ -125,6 +127,11 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+
+  <delete id="deleteBook" parameterType="long">
+    DELETE FROM book WHERE id=#{id}
+  </delete>
+
   <insert id="insert" parameterType="com.bookmanager.setting.model.Book">
     insert into book (id, isbn, name, 
       author, type, emp_number, 
@@ -188,6 +195,11 @@
       </if>
     </trim>
   </insert>
+
+  <insert id="addBook" parameterType="com.bookmanager.setting.model.Book">
+    insert into book (isbn,name,author,type,emp_number,static,sysnopsis) values(#{isbn},#{name},#{author},#{type},#{empNumber},#{static},#{sysnopsis})
+  </insert>
+
   <select id="countByExample" parameterType="com.bookmanager.setting.model.BookExample" resultType="java.lang.Long">
     select count(*) from book
     <if test="_parameter != null">
@@ -300,5 +312,9 @@
       emp_number = #{empNumber,jdbcType=BIGINT},
       status = #{status,jdbcType=BIT}
     where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <update id="borrowBook" parameterType="com.bookmanager.setting.model.Book">
+
   </update>
 </mapper>
