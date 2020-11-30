@@ -1,85 +1,46 @@
 package com.bookmanager;
 
+import com.bookmanager.setting.model.Employee;
 import com.bookmanager.setting.util.MyMD5Util;
+import com.bookmanager.setting.vo.Result;
+import com.bookmanager.user.dto.EmployeeDTO;
+import com.bookmanager.user.service.IEmployeeService;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
 
 @SpringBootTest
+@Slf4j
 public class BookmanagerApplicationTests {
 
-    private static Map users = new HashMap();
+    @Autowired
+    private IEmployeeService employeeService ;
 
-    public static void main(String[] args){
-        String userName = "zyg";
-        String password = "1232";
-        registerUser(userName,password);
-
-        userName = "changong";
-        password = "456";
-        registerUser(userName,password);
-
-        String loginUserId = "zyg";
-        String pwd = "1232";
-        try {
-            if(loginValid(loginUserId,pwd)){
-                System.out.println("欢迎登陆！！！");
-            }else{
-                System.out.println("口令错误，请重新输入！！！");
-            }
-        } catch (NoSuchAlgorithmException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+    @Test
+    public void testLogin() throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        EmployeeDTO employee = new EmployeeDTO("wqy","123");
+        Result<Employee> result = employeeService.adminEmpLogin(employee);
+        log.info(result.toString());
     }
 
-    /**
-     * 注册用户
-     *
-     * @param userName
-     * @param password
-     */
-    public static void registerUser(String userName,String password){
-        String encryptedPwd = null;
-        try {
-            encryptedPwd = MyMD5Util.getEncryptedPwd(password);
-
-            users.put(userName, encryptedPwd);
-
-        } catch (NoSuchAlgorithmException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+    @Test
+    public void testUUID(){
+        StringBuilder str=new StringBuilder();//定义变长字符串bai
+        Random random=new Random();
+//随机生成数字，并添加到字符串
+        for(int i=0;i<8;i++){
+            str.append(random.nextInt(10));
         }
+//将字符串转换为数字并du输出
+        int num=Integer.parseInt(str.toString());
+        System.out.println(num);
     }
-
-    /**
-     * 验证登陆
-     *
-     * @param userName
-     * @param password
-     * @return
-     * @throws UnsupportedEncodingException
-     * @throws NoSuchAlgorithmException
-     */
-    public static boolean loginValid(String userName,String password)
-            throws NoSuchAlgorithmException, UnsupportedEncodingException{
-        String pwdInDb = (String)users.get(userName);
-        if(null!=pwdInDb){ // 该用户存在
-            return MyMD5Util.validPassword(password, pwdInDb);
-        }else{
-            System.out.println("不存在该用户！！！");
-            return false;
-        }
-    }
-
-
 }

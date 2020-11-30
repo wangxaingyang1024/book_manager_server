@@ -79,9 +79,29 @@ public class Result<T> implements Serializable {
         return new Result <T>(CodeEnum.SUCCESS,data);
     }
 
+    //管理员请求成功（返回数据）
+    public static <T> Result <T> adminSuccess(T data){
+        return new Result <T>(CodeEnum.ADMIN_SUCCESS,data);
+    }
     //参数格式不正确
     public static <T> Result <T> badRequest(){
         return new Result <T>(CodeEnum.BAD_REQUEST);
+    }
+    //管理员登录用户名验证
+    public static <T> Result <T> badUsernameRequest(){
+        return new Result <T>(CodeEnum.BAD_USERNAME_REQUEST);
+    }
+    //没有管理员权限
+    public static <T> Result <T> notPower(){
+        return new Result <T>(CodeEnum.NOT_POWER);
+    }
+    //管理员登录密码验证
+    public static <T> Result <T> badPasswordRequest(){
+        return new Result <T>(CodeEnum.BAD_PASSWORD_REQUEST);
+    }
+    //管理员登录密码验证
+    public static <T> Result <T> empExist(){
+        return new Result <T>(CodeEnum.Emp_EXIST);
     }
 
     //  .......可根据自己的需要往下延伸

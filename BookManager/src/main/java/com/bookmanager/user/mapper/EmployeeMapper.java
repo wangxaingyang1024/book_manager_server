@@ -4,6 +4,7 @@ import com.bookmanager.setting.model.Employee;
 import com.bookmanager.setting.model.EmployeeExample;
 import java.util.List;
 
+import com.bookmanager.user.dto.EmployeeDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 @Mapper
@@ -21,6 +22,10 @@ public interface EmployeeMapper {
     List<Employee> selectByExample(EmployeeExample example);
 
     Employee selectByPrimaryKey(Long id);
+
+    Employee selectEmpByUsername(String username );
+
+    String selectPasswordByUsername(String username);
 
     int updateByExampleSelective(@Param("record") Employee record, @Param("example") EmployeeExample example);
 

@@ -1,12 +1,12 @@
 package com.bookmanager.setting.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Employee {
     private Long id;
 
@@ -25,4 +25,9 @@ public class Employee {
     private Integer age;
 
     private Integer role;
+
+    public Employee(String username ,String password){
+        this.username = username ;
+        this.password = password ;
+    }
 }

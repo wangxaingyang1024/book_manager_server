@@ -73,6 +73,19 @@
   <sql id="Base_Column_List">
     id, job_number, username, password, nick_name, gender, phone, age, role
   </sql>
+  <select id="selectEmpByUsername" parameterType="string"
+          resultType="com.bookmanager.setting.model.Employee">
+    select
+    <include refid="Base_Column_List"/>
+    from employee
+    where username=#{username,jdbcType=VARCHAR} ;
+  </select>
+  <select id="selectPasswordByUsername" parameterType="string"
+          resultType="string">
+    select password
+    from employee
+    where username=#{username,jdbcType=VARCHAR} ;
+  </select>
   <select id="selectByExample" parameterType="com.bookmanager.setting.model.EmployeeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
