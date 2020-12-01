@@ -73,6 +73,17 @@
   <sql id="Base_Column_List">
     id, job_number, username, password, nick_name, gender, phone, age, role
   </sql>
+  <sql id="Base_All_List">
+    job_number, username, nick_name, gender, phone, age, role
+  </sql>
+  <select id="selectAllEmp"  resultType="com.bookmanager.user.dto.SelectAllEmpDTO">
+    select
+    <include refid="Base_All_List"/>
+    from employee ;
+  </select>
+  <select id="selectEmpByJobNumber" parameterType="integer" resultType="java.lang.Integer">
+    select job_number from employee where job_number = #{jobNumber};
+  </select>
   <select id="selectEmpByUsername" parameterType="string"
           resultType="com.bookmanager.setting.model.Employee">
     select
@@ -80,11 +91,23 @@
     from employee
     where username=#{username,jdbcType=VARCHAR} ;
   </select>
+  <select id="selectEmpByUsernameAndPassword" parameterType="string" resultType="com.bookmanager.setting.model.Employee">
+    select
+    <include refid="Base_Column_List"/>
+    from employee
+    where username=#{username,jdbcType=VARCHAR}
+  </select>
   <select id="selectPasswordByUsername" parameterType="string"
-          resultType="string">
+          resultType="java.lang.String">
     select password
     from employee
     where username=#{username,jdbcType=VARCHAR} ;
+  </select>
+  <select id="countByExample" parameterType="com.bookmanager.setting.model.EmployeeExample" resultType="java.lang.Long">
+    select count(*) from employee
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
   </select>
   <select id="selectByExample" parameterType="com.bookmanager.setting.model.EmployeeExample" resultMap="BaseResultMap">
     select
@@ -100,13 +123,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from employee
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="long">
     delete from employee
     where id = #{id,jdbcType=BIGINT}
   </delete>
@@ -115,6 +138,9 @@
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
+  </delete>
+  <delete id="deleteEmpByJobNumber" parameterType="integer" >
+    delete from employee where job_number = #{jobNumber};
   </delete>
   <insert id="insert" parameterType="com.bookmanager.setting.model.Employee">
     insert into employee (id, job_number, username, 
@@ -185,12 +211,6 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.bookmanager.setting.model.EmployeeExample" resultType="java.lang.Long">
-    select count(*) from employee
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
   <update id="updateByExampleSelective" parameterType="map">
     update employee
     <set>
@@ -282,5 +302,10 @@
       age = #{age,jdbcType=INTEGER},
       role = #{role,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updatePasswordByUsername" parameterType="string" >
+    update employee
+    set password=#{password,jdbcType=VARCHAR}
+    where username=#{username,jdbcType=VARCHAR}
   </update>
 </mapper>

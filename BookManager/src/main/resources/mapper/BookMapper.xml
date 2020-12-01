@@ -107,7 +107,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="com.bookmanager.setting.model.Book">
     select * from book where id = #{id}
   </select>
 
@@ -203,10 +203,13 @@
     </trim>
   </insert>
 
+<<<<<<< HEAD
   <insert id="addBook" parameterType="com.bookmanager.setting.model.Book">
     insert into book (id,isbn,name,author,type,emp_number,static,sysnopsis) values(#{id},#{isbn},#{name},#{author},#{type},#{empNumber},#{static},#{sysnopsis})
   </insert>
 
+=======
+>>>>>>> origin/master
   <select id="countByExample" parameterType="com.bookmanager.setting.model.BookExample" resultType="java.lang.Long">
     select count(*) from book
     <if test="_parameter != null">
@@ -325,9 +328,5 @@
       emp_number = #{empNumber,jdbcType=BIGINT},
       status = #{status,jdbcType=BIT}
     where id = #{id,jdbcType=BIGINT}
-  </update>
-  
-  <update id="borrowBook" parameterType="com.bookmanager.setting.model.Book">
-
   </update>
 </mapper>

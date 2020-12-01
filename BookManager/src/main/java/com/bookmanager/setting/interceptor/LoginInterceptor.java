@@ -12,7 +12,7 @@ import java.util.List;
  * email ：blovesheep@126.com
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
-//
+
 //    //这个方法是在访问接口之前执行的，我们只需要在这里写验证登陆状态的业务逻辑，就可以在用户调用指定接口之前验证登陆状态了
 //    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 //        //不拦截路径（登录路径等等）
