@@ -111,12 +111,19 @@
     select * from book where id = #{id}
   </select>
 
-<select id="findAll" resultType="com.bookmanager.setting.model.Book">
+<select id="findAllBook" resultType="com.bookmanager.setting.model.Book">
   select
   <include refid="Base_Column_List"/>
   from book
 </select>
-
+  <select id="getBookIsbn" resultType="com.bookmanager.setting.model.Book">
+    select
+    <include refid="Base_Column_List"/>
+    from book where isbn = #{isbn}
+  </select>
+<select id="findAllBookIsbn" resultType="com.bookmanager.setting.model.Book">
+  select isbn from book
+</select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from book
     where id = #{id,jdbcType=BIGINT}
@@ -128,15 +135,15 @@
     </if>
   </delete>
 
-  <delete id="deleteBook" parameterType="long">
-    DELETE FROM book WHERE id=#{id}
+  <delete id="deleteBookByIsbn" parameterType="long">
+    DELETE FROM book WHERE isbn=#{isbn}
   </delete>
 
-  <insert id="insert" parameterType="com.bookmanager.setting.model.Book">
-    insert into book (id, isbn, name, 
+  <insert id="insertBook" parameterType="com.bookmanager.setting.model.Book">
+    insert into book (isbn, name,
       author, type, emp_number, 
       status, synopsis)
-    values (#{id,jdbcType=BIGINT}, #{isbn,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+    values (#{isbn,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
       #{author,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{empNumber,jdbcType=BIGINT}, 
       #{status,jdbcType=BIT}, #{synopsis,jdbcType=LONGVARCHAR})
   </insert>
@@ -197,7 +204,7 @@
   </insert>
 
   <insert id="addBook" parameterType="com.bookmanager.setting.model.Book">
-    insert into book (isbn,name,author,type,emp_number,static,sysnopsis) values(#{isbn},#{name},#{author},#{type},#{empNumber},#{static},#{sysnopsis})
+    insert into book (id,isbn,name,author,type,emp_number,static,sysnopsis) values(#{id},#{isbn},#{name},#{author},#{type},#{empNumber},#{static},#{sysnopsis})
   </insert>
 
   <select id="countByExample" parameterType="com.bookmanager.setting.model.BookExample" resultType="java.lang.Long">
@@ -205,6 +212,12 @@
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
+  </select>
+  <select id="findBookByIsbn" resultType="com.bookmanager.setting.model.Book">
+    select
+    <include refid="Base_Column_List"/>
+    from book
+    where isbn = #{isbn}
   </select>
   <update id="updateByExampleSelective" parameterType="map">
     update book

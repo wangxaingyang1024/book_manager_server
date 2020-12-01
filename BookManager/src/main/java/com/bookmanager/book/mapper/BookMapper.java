@@ -12,9 +12,7 @@ public interface BookMapper {
 
     int deleteByExample(BookExample example);
 
-    int deleteByPrimaryKey(Long id);
-
-    int insert(Book record);
+    int deleteByPrimaryKey(Long isbn);
 
     int insertSelective(Book record);
 
@@ -24,8 +22,15 @@ public interface BookMapper {
 
     Book selectByPrimaryKey(Long id);
 
-    List<Book> findAll();
-    int deleteBook(Long id);
+    List<Book> findAllBook();
+
+    int insertBook(Book record);
+
+    Book findBookByIsbn(long isbn);
+
+    Book getBookIsbn(Long lon);
+
+    int deleteBookByIsbn(Long isbn);
 
     int updateByExampleSelective(@Param("record") Book record, @Param("example") BookExample example);
 
@@ -38,4 +43,6 @@ public interface BookMapper {
     int updateByPrimaryKeyWithBLOBs(Book record);
 
     int updateByPrimaryKey(Book record);
+
+
 }

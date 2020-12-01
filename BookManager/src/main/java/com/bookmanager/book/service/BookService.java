@@ -1,7 +1,9 @@
 package com.bookmanager.book.service;
 
 import com.bookmanager.setting.model.Book;
+import com.bookmanager.setting.vo.Result;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface BookService {
@@ -13,6 +15,19 @@ public interface BookService {
      * @return
      */
     List<Book> findAll();
+    /**
+     * 录入新书
+     * @param book
+     * @return
+     */
+    int addBook(Book book);
+
+    /**
+     * 删除图书
+     * @param isbn
+     * @return
+     */
+    int deleteBookByIsbn(long isbn);
 
     /**
      * 借书
@@ -28,17 +43,5 @@ public interface BookService {
      */
     int  returnBook(Long isbn);
 
-    /**
-     * 录入新书
-     * @param book
-     * @return
-     */
-    int addBook(Book book);
-
-    /**
-     * 删除图书
-     * @param id
-     * @return
-     */
-    int deleteBook(long id);
+    Result updateBook(Long isbn);
 }
