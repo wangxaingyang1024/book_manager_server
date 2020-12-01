@@ -1,6 +1,8 @@
 package com.bookmanager.setting.vo;
 
+import javax.xml.crypto.Data;
 import java.io.Serializable;
+import java.util.List;
 
 public class Result<T> implements Serializable {
 
@@ -71,12 +73,12 @@ public class Result<T> implements Serializable {
 
     //请求成功（不返回数据）
     public static <T> Result <T> success(){
-        return new Result <T>(CodeEnum.SUCCESS);
+        return new Result <T>(CodeEnum.LOGIN_SUCCESS);
     }
 
     //请求成功（返回数据）
     public static <T> Result <T> success(T data){
-        return new Result <T>(CodeEnum.SUCCESS,data);
+        return new Result <T>(CodeEnum.LOGIN_SUCCESS,data);
     }
 
     //管理员请求成功（返回数据）
@@ -102,6 +104,9 @@ public class Result<T> implements Serializable {
     //管理员登录密码验证
     public static <T> Result <T> empExist(){
         return new Result <T>(CodeEnum.Emp_EXIST);
+    }
+    public static <T> Result <T> selectSuccess(T data){
+        return new Result<>(CodeEnum.SELECT_SUCCESS, data);
     }
 
     //  .......可根据自己的需要往下延伸

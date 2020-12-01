@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Arrays;
 
-public class MyMD5Util {
+public class MD5Util {
 
     private static final String HEX_NUMS_STR="0123456789ABCDEF";
     private static final Integer SALT_LENGTH = 12;

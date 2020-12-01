@@ -103,7 +103,7 @@
                 <directory>src/main/resources</directory>
                 <!--扫描resources下的配置文件-->
                 <includes>
-                    <include>**/*.yml</include>
+                    <include>**/*.yaml</include>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
                 </includes>

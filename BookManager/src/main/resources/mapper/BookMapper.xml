@@ -107,7 +107,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="com.bookmanager.setting.model.Book">
     select * from book where id = #{id}
   </select>
 
@@ -194,10 +194,6 @@
         #{synopsis,jdbcType=LONGVARCHAR},
       </if>
     </trim>
-  </insert>
-
-  <insert id="addBook" parameterType="com.bookmanager.setting.model.Book">
-    insert into book (isbn,name,author,type,emp_number,static,sysnopsis) values(#{isbn},#{name},#{author},#{type},#{empNumber},#{static},#{sysnopsis})
   </insert>
 
   <select id="countByExample" parameterType="com.bookmanager.setting.model.BookExample" resultType="java.lang.Long">
@@ -312,9 +308,5 @@
       emp_number = #{empNumber,jdbcType=BIGINT},
       status = #{status,jdbcType=BIT}
     where id = #{id,jdbcType=BIGINT}
-  </update>
-  
-  <update id="borrowBook" parameterType="com.bookmanager.setting.model.Book">
-
   </update>
 </mapper>

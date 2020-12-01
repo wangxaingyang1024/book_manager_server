@@ -1,9 +1,8 @@
 package com.bookmanager;
 
 import com.bookmanager.setting.model.Employee;
-import com.bookmanager.setting.util.MyMD5Util;
 import com.bookmanager.setting.vo.Result;
-import com.bookmanager.user.dto.EmployeeDTO;
+import com.bookmanager.user.dto.EmpLoginDTO;
 import com.bookmanager.user.service.IEmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -12,10 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
-import java.util.UUID;
 
 @SpringBootTest
 @Slf4j
@@ -26,7 +22,7 @@ public class BookmanagerApplicationTests {
 
     @Test
     public void testLogin() throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        EmployeeDTO employee = new EmployeeDTO("wqy","123");
+        EmpLoginDTO employee = new EmpLoginDTO("wqy","123");
         Result<Employee> result = employeeService.adminEmpLogin(employee);
         log.info(result.toString());
     }

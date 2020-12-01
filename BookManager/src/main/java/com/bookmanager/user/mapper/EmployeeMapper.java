@@ -4,20 +4,20 @@ import com.bookmanager.setting.model.Employee;
 import com.bookmanager.setting.model.EmployeeExample;
 import java.util.List;
 
-import com.bookmanager.user.dto.EmployeeDTO;
+import com.bookmanager.user.dto.SelectAllEmpDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface EmployeeMapper {
-    long countByExample(EmployeeExample example);
+    Long countByExample(EmployeeExample example);
 
-    int deleteByExample(EmployeeExample example);
+    Integer deleteByExample(EmployeeExample example);
 
-    int deleteByPrimaryKey(Long id);
+    Integer deleteByPrimaryKey(Long id);
 
-    int insert(Employee record);
+    Integer insert(Employee record);
 
-    int insertSelective(Employee record);
+    Integer insertSelective(Employee record);
 
     List<Employee> selectByExample(EmployeeExample example);
 
@@ -25,13 +25,23 @@ public interface EmployeeMapper {
 
     Employee selectEmpByUsername(String username );
 
+    Employee selectEmpByUsernameAndPassword(@Param("username") String username );
+
     String selectPasswordByUsername(String username);
 
-    int updateByExampleSelective(@Param("record") Employee record, @Param("example") EmployeeExample example);
+    Integer updateByExampleSelective(@Param("record") Employee record, @Param("example") EmployeeExample example);
 
-    int updateByExample(@Param("record") Employee record, @Param("example") EmployeeExample example);
+    Integer updateByExample(@Param("record") Employee record, @Param("example") EmployeeExample example);
 
-    int updateByPrimaryKeySelective(Employee record);
+    Integer updateByPrimaryKeySelective(Employee record);
 
-    int updateByPrimaryKey(Employee record);
+    Integer updateByPrimaryKey(Employee record);
+
+    Integer selectEmpByJobNumber(Integer jobNumber);
+
+    Integer deleteEmpByJobNumber(Integer jobNumber);
+
+    void updatePasswordByUsername(@Param("username") String username,@Param("password") String newPsw);
+
+    List<SelectAllEmpDTO> selectAllEmp();
 }
