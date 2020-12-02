@@ -7,10 +7,7 @@ import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -34,16 +31,16 @@ public class BookController {
      * 借书
      */
     @RequestMapping("/borrow/{isbn}")
-    public Result borrowBook(long isbn){
-        int  book = bookService.deleteBookByIsbn(isbn);
+    public Result borrowBook(@PathVariable long isbn){
+        bookService.borrowBook(isbn);
         return new Result(CodeEnum.BOOK_BORROW_SUCCESS);
     }
     /**
      * 还书
      */
-    @RequestMapping("/return")
-    public Result returnBoook(Long isbn){
-
+    @RequestMapping("/return/{isbn}")
+    public Result returnBoook(@PathVariable Long isbn){
+        bookService.returnBook(isbn);
         return new Result(CodeEnum.BOOK_RETURN_SUCCESS);
     }
 }

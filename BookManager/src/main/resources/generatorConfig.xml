@@ -45,6 +45,8 @@
         </javaClientGenerator>
 
         <!--每个表的输生成策略-->
+        <table tableName="book" domainObjectName="Book" ></table>
+        <table tableName="employee" domainObjectName="Employee" ></table>
         <table tableName="log_book_emp" domainObjectName="LogBookEmp" ></table>
     </context>
 </generatorConfiguration>

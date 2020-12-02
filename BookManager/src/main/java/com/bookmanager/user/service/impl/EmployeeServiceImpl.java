@@ -29,6 +29,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Resource
     private EmployeeMapper mapper ;
 
+    //TODO:管理员添加图书
+    //TODO:管理员删除图书
+    //TODO:管理员更新图书
+    //TODO:管理员查询图书
+
     //查询所有用户信息
     @Override
     public Result<List<SelectAllEmpDTO>> selectAllEmp() {
@@ -81,7 +86,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
         return new Result(CodeEnum.UPDATE_SUCCESS);
     }
 
-    //TODO:用户注销账号：待做
+    //TODO:用户注销账号
 
     /**
      *    //管理员删除用户
@@ -109,11 +114,12 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public Result<Employee> adminEmpLogin(EmpLoginDTO empLoginDTO) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         Employee emp = mapper.selectEmpByUsername(empLoginDTO.getUsername());
-        if(emp == null){
-            return Result.badUsernameRequest();
-        }
+        log.info(emp.toString());
         if (emp.getRole() != ADMIN_ROLE){
             return Result.notPower();
+        }
+        if(emp == null){
+            return Result.badUsernameRequest();
         }
         String passwordInDb = mapper.selectPasswordByUsername(empLoginDTO.getUsername());
         if(MD5Util.validPassword(empLoginDTO.getPassword(),passwordInDb)){
@@ -171,6 +177,5 @@ public class EmployeeServiceImpl implements IEmployeeService {
         }
         //将字符串转换为数字并du输出
         return  Integer.parseInt(str.toString());
-
     }
 }

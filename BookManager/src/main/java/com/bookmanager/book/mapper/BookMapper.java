@@ -32,10 +32,6 @@ public interface BookMapper {
 
     int deleteBookByIsbn(Long isbn);
 
-    List<Book> findAll();
-
-    int deleteBook(Long id);
-
     int updateByExampleSelective(@Param("record") Book record, @Param("example") BookExample example);
 
     int updateByExampleWithBLOBs(@Param("record") Book record, @Param("example") BookExample example);
@@ -48,5 +44,9 @@ public interface BookMapper {
 
     int updateByPrimaryKey(Book record);
 
+    int updateBook(Book book);
 
+    int borrowBookByIsbn(Long isbn);
+
+    int returnBookByIsbn(Long isbn);
 }

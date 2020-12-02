@@ -344,66 +344,6 @@ public class LogBookEmpExample {
             addCriterion("book_isbn not between", value1, value2, "bookIsbn");
             return (Criteria) this;
         }
-
-        public Criteria andJobNumberIsNull() {
-            addCriterion("job_number is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andJobNumberIsNotNull() {
-            addCriterion("job_number is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andJobNumberEqualTo(Integer value) {
-            addCriterion("job_number =", value, "jobNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andJobNumberNotEqualTo(Integer value) {
-            addCriterion("job_number <>", value, "jobNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andJobNumberGreaterThan(Integer value) {
-            addCriterion("job_number >", value, "jobNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andJobNumberGreaterThanOrEqualTo(Integer value) {
-            addCriterion("job_number >=", value, "jobNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andJobNumberLessThan(Integer value) {
-            addCriterion("job_number <", value, "jobNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andJobNumberLessThanOrEqualTo(Integer value) {
-            addCriterion("job_number <=", value, "jobNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andJobNumberIn(List<Integer> values) {
-            addCriterion("job_number in", values, "jobNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andJobNumberNotIn(List<Integer> values) {
-            addCriterion("job_number not in", values, "jobNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andJobNumberBetween(Integer value1, Integer value2) {
-            addCriterion("job_number between", value1, value2, "jobNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andJobNumberNotBetween(Integer value1, Integer value2) {
-            addCriterion("job_number not between", value1, value2, "jobNumber");
-            return (Criteria) this;
-        }
     }
 
     public static class Criteria extends GeneratedCriteria {

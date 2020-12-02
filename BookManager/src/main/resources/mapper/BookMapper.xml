@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, isbn, name, author, type, emp_number, status,synopsis
+    id, isbn, name, author, type, status,synopsis
   </sql>
   <sql id="Blob_Column_List">
     synopsis
@@ -121,6 +121,9 @@
     <include refid="Base_Column_List"/>
     from book where isbn = #{isbn}
   </select>
+<select id="findAllBookIsbn" resultType="com.bookmanager.setting.model.Book">
+  select isbn from book
+</select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from book
     where id = #{id,jdbcType=BIGINT}
@@ -137,12 +140,8 @@
   </delete>
 
   <insert id="insertBook" parameterType="com.bookmanager.setting.model.Book">
-    insert into book (isbn, name,
-      author, type, emp_number, 
-      status, synopsis)
-    values (#{isbn,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
-      #{author,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{empNumber,jdbcType=BIGINT}, 
-      #{status,jdbcType=BIT}, #{synopsis,jdbcType=LONGVARCHAR})
+    insert into book (isbn,name,author, type,status, synopsis)
+    values (#{isbn},#{name},#{author}, #{type},#{status}, #{synopsis})
   </insert>
   <insert id="insertSelective" parameterType="com.bookmanager.setting.model.Book">
     insert into book
@@ -212,6 +211,22 @@
     from book
     where isbn = #{isbn}
   </select>
+  <update id="updateBook">
+    update book
+    set isbn = #{isbn},
+      name = #{name},
+      author = #{author},
+      type = #{type},
+      status = #{status},
+      synopsis = #{synopsis}
+    where isbn = #{isbn}
+  </update>
+  <update id="borrowBookByIsbn" parameterType="long">
+    UPDATE book SET STATUS=0 WHERE isbn=#{isbn}
+  </update>
+  <update id="returnBookByIsbn" parameterType="long">
+    UPDATE book SET STATUS=1 WHERE isbn=#{isbn}
+  </update>
   <update id="updateByExampleSelective" parameterType="map">
     update book
     <set>

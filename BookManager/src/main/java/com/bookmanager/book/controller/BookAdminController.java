@@ -6,20 +6,18 @@ import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/admin")
 public class BookAdminController {
     @Autowired
     private BookService bookService ;
-    @GetMapping("/book/{id}")
-    public Result getBook(@PathVariable Long id){
-        Book book = bookService.getBook(id);
+    @GetMapping("/book/{isbn}")
+    public Result getBook(@PathVariable Long isbn){
+        Book book = bookService.getBook(isbn);
         return Result.success();
     }
     /**
@@ -39,7 +37,7 @@ public class BookAdminController {
      */
     @RequestMapping("/add")
     public Result  addBook(Book book){
-        int boo = bookService.addBook(book);
+        bookService.addBook(book);
         return new Result(CodeEnum.BOOK_ADD_SUCCESS);
     }
 
@@ -50,7 +48,7 @@ public class BookAdminController {
      */
     @RequestMapping("/delete/{isbn}")
     public Result deleteBook(@PathVariable Long isbn){
-        int book = bookService.deleteBookByIsbn(isbn);
+        bookService.deleteBookByIsbn(isbn);
         return new Result(CodeEnum.BOOK_DELETE_SUCCESS);
     }
 
@@ -60,7 +58,7 @@ public class BookAdminController {
      */
     @RequestMapping("/update/{isbn}")
     public Result updateBook(@PathVariable Long isbn){
-        Result result = bookService.updateBook(isbn);
-        return result;
+        bookService.updateBook(isbn);
+        return new Result(CodeEnum.BOOK_UPDATE_SUCCESS);
     }
 }

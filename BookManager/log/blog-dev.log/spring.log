@@ -10818,39 +10818,3 @@ java.lang.NumberFormatException: For input string: "jobNumber"
 2020-12-02 18:22:53.954 DEBUG 15776 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
 2020-12-02 18:22:53.954 DEBUG 15776 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
 2020-12-02 18:22:53.955 DEBUG 15776 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
-2020-12-02 18:26:31.529  INFO 8452 --- [main] com.bookmanager.BookmanagerApplication   : Starting BookmanagerApplication on DESKTOP-80TVTMB with PID 8452 (F:\Java_Code2020\workspace1202\book_manager_server\BookManager\target\classes started by PC501 in F:\Java_Code2020\workspace1202\book_manager_server\BookManager)
-2020-12-02 18:26:31.530 DEBUG 8452 --- [main] com.bookmanager.BookmanagerApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
-2020-12-02 18:26:31.531  INFO 8452 --- [main] com.bookmanager.BookmanagerApplication   : No active profile set, falling back to default profiles: default
-2020-12-02 18:26:32.043  INFO 8452 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2020-12-02 18:26:32.063  INFO 8452 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 0 JPA repository interfaces.
-2020-12-02 18:26:32.409  INFO 8452 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2020-12-02 18:26:32.416  INFO 8452 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-12-02 18:26:32.416  INFO 8452 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
-2020-12-02 18:26:32.497  INFO 8452 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-12-02 18:26:32.498  INFO 8452 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 939 ms
-2020-12-02 18:26:32.533  INFO 8452 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
-2020-12-02 18:26:32.593  INFO 8452 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2020-12-02 18:26:32.654  INFO 8452 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-12-02 18:26:32.806  INFO 8452 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-12-02 18:26:32.878  INFO 8452 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.18.Final
-2020-12-02 18:26:32.972  INFO 8452 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-12-02 18:26:33.049  INFO 8452 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
-2020-12-02 18:26:33.060  WARN 8452 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-12-02 18:26:33.157  INFO 8452 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-12-02 18:26:33.163  INFO 8452 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-12-02 18:26:33.287  INFO 8452 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path ''
-2020-12-02 18:26:33.288  INFO 8452 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
-2020-12-02 18:26:33.288  INFO 8452 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-2020-12-02 18:26:33.294  INFO 8452 --- [main] com.bookmanager.BookmanagerApplication   : Started BookmanagerApplication in 2.113 seconds (JVM running for 2.608)
-2020-12-02 18:49:44.627  INFO 8452 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-12-02 18:49:44.627  INFO 8452 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-12-02 18:49:44.632  INFO 8452 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
-2020-12-02 18:49:44.701 DEBUG 8452 --- [http-nio-8899-exec-1] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
-2020-12-02 18:49:44.712 DEBUG 8452 --- [http-nio-8899-exec-1] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
-2020-12-02 18:49:44.722 DEBUG 8452 --- [http-nio-8899-exec-1] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
-2020-12-02 18:49:47.498 DEBUG 8452 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
-2020-12-02 18:49:47.499 DEBUG 8452 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
-2020-12-02 18:49:47.500 DEBUG 8452 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
-2020-12-02 18:49:51.130 DEBUG 8452 --- [http-nio-8899-exec-4] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
-2020-12-02 18:49:51.131 DEBUG 8452 --- [http-nio-8899-exec-4] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
-2020-12-02 18:49:51.133 DEBUG 8452 --- [http-nio-8899-exec-4] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6

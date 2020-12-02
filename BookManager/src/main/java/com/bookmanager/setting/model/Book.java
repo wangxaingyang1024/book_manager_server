@@ -18,6 +18,8 @@ public class Book {
 
     private String type;
 
+    private Long empNumber;
+
     private Boolean status;
 
     private String synopsis;
