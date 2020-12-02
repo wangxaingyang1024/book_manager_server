@@ -1,0 +1,47 @@
+package com.bookmanager.book.service;
+
+import com.bookmanager.setting.model.Book;
+import com.bookmanager.setting.vo.Result;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+public interface BookService {
+
+    Book getBook(Long id);
+
+    /**
+     * 查询所有图书
+     * @return
+     */
+    List<Book> findAll();
+    /**
+     * 录入新书
+     * @param book
+     * @return
+     */
+    Result addBook(Book book);
+
+    /**
+     * 删除图书
+     * @param isbn
+     * @return
+     */
+    Result deleteBookByIsbn(long isbn);
+
+    /**
+     * 借书
+     * @param isbn
+     * @return
+     */
+    Result borrowBook(Long isbn);
+
+    /**
+     *还书
+     * @param isbn
+     * @return
+     */
+    Result  returnBook(Long isbn);
+
+    Result updateBook(Long isbn);
+}
