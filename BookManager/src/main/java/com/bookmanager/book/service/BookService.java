@@ -20,28 +20,28 @@ public interface BookService {
      * @param book
      * @return
      */
-    int addBook(Book book);
+    Result addBook(Book book);
 
     /**
      * 删除图书
      * @param isbn
      * @return
      */
-    int deleteBookByIsbn(long isbn);
+    Result deleteBookByIsbn(long isbn);
 
     /**
      * 借书
      * @param isbn
      * @return
      */
-    int borrowBook(Long isbn);
+    Result borrowBook(Long isbn);
 
     /**
      *还书
      * @param isbn
      * @return
      */
-    int  returnBook(Long isbn);
+    Result  returnBook(Long isbn);
 
     Result updateBook(Long isbn);
 }

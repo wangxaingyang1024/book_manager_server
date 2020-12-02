@@ -22,7 +22,6 @@ public interface BookMapper {
 
     Book selectByPrimaryKey(Long id);
 
-<<<<<<< HEAD
     List<Book> findAllBook();
 
     int insertBook(Book record);
@@ -32,11 +31,6 @@ public interface BookMapper {
     Book getBookIsbn(Long lon);
 
     int deleteBookByIsbn(Long isbn);
-=======
-    List<Book> findAll();
-
-    int deleteBook(Long id);
->>>>>>> origin/master
 
     int updateByExampleSelective(@Param("record") Book record, @Param("example") BookExample example);
 
@@ -50,5 +44,9 @@ public interface BookMapper {
 
     int updateByPrimaryKey(Book record);
 
+    int updateBook(Book book);
 
+    int borrowBookByIsbn(Long isbn);
+
+    int returnBookByIsbn(Long isbn);
 }

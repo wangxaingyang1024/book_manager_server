@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, isbn, name, author, type, emp_number, status,synopsis
+    id, isbn, name, author, type, status,synopsis
   </sql>
   <sql id="Blob_Column_List">
     synopsis
@@ -140,12 +140,8 @@
   </delete>
 
   <insert id="insertBook" parameterType="com.bookmanager.setting.model.Book">
-    insert into book (isbn, name,
-      author, type, emp_number, 
-      status, synopsis)
-    values (#{isbn,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
-      #{author,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{empNumber,jdbcType=BIGINT}, 
-      #{status,jdbcType=BIT}, #{synopsis,jdbcType=LONGVARCHAR})
+    insert into book (isbn,name,author, type,status, synopsis)
+    values (#{isbn},#{name},#{author}, #{type},#{status}, #{synopsis})
   </insert>
   <insert id="insertSelective" parameterType="com.bookmanager.setting.model.Book">
     insert into book
@@ -203,13 +199,6 @@
     </trim>
   </insert>
 
-<<<<<<< HEAD
-  <insert id="addBook" parameterType="com.bookmanager.setting.model.Book">
-    insert into book (id,isbn,name,author,type,emp_number,static,sysnopsis) values(#{id},#{isbn},#{name},#{author},#{type},#{empNumber},#{static},#{sysnopsis})
-  </insert>
-
-=======
->>>>>>> origin/master
   <select id="countByExample" parameterType="com.bookmanager.setting.model.BookExample" resultType="java.lang.Long">
     select count(*) from book
     <if test="_parameter != null">
@@ -222,6 +211,22 @@
     from book
     where isbn = #{isbn}
   </select>
+  <update id="updateBook">
+    update book
+    set isbn = #{isbn},
+      name = #{name},
+      author = #{author},
+      type = #{type},
+      status = #{status},
+      synopsis = #{synopsis}
+    where isbn = #{isbn}
+  </update>
+  <update id="borrowBookByIsbn" parameterType="long">
+    UPDATE book SET STATUS=0 WHERE isbn=#{isbn}
+  </update>
+  <update id="returnBookByIsbn" parameterType="long">
+    UPDATE book SET STATUS=1 WHERE isbn=#{isbn}
+  </update>
   <update id="updateByExampleSelective" parameterType="map">
     update book
     <set>

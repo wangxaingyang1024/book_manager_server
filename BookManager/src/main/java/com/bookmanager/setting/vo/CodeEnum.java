@@ -7,25 +7,27 @@ public enum CodeEnum {
      *6000开始
      */
     BOOK_ADD_SUCCESS(6000,"添加图书成功！"),
-    BOOK_ADD_FAILED(6000,"添加图书失败！"),
+    BOOK_ADD_FAILED(6001,"添加图书失败！"),
     /**
      * 删除
      */
-    BOOK_DELETE_SUCCESS(6001,"删除图书成功！"),
+    BOOK_DELETE_SUCCESS(6002,"删除图书成功！"),
+    BOOK_DELETE_FAILED (6003,"删除图书失败！"),
     /**
      * 更新图书
      */
-    BOOK_UPDATE_SUCCESS(6002,"更新成功"),
-    BOOK_UPDATE_FAILED(6002,"更新失败"),
+    BOOK_UPDATE_SUCCESS(6004,"更新成功！"),
+    BOOK_UPDATE_FAILED(6005,"更新失败！"),
     /**
      * 借书
      */
-    BOOK_BORROW_SUCCESS(6003,"阅读愉快，请尽快还书哦！"),
+    BOOK_BORROW_SUCCESS(6006,"阅读愉快，请尽快还书哦！"),
+    BOOK_BORROW_FAILED(6007,"该书已借出，没有了"),
     /**
      * 还书
      */
-    BOOK_RETURN_SUCCESS(6004,"已归还，欢迎下次再来！"),
-
+    BOOK_RETURN_SUCCESS(6008,"已归还，欢迎下次再来！"),
+    BOOK_RETURN_FAILED(6009,"库中没有本书！"),
     /**
      * 获取数据
      */
@@ -67,14 +69,9 @@ public enum CodeEnum {
     /**
      * 插入 4000-4020
      */
-<<<<<<< HEAD
-    Emp_EXIST(3003,"用户名已存在,请重新输入！"),
-    SIGNUP_SUCCESS(3003,"用户名已存在,请重新输入！");
+  //  Emp_EXIST(3003,"用户名已存在,请重新输入！"),
+  //  SIGNUP_SUCCESS(3003,"用户名已存在,请重新输入！");
 
-
-
-=======
->>>>>>> origin/master
     private Integer code;
     private String message;
     CodeEnum(Integer code, String message) {
