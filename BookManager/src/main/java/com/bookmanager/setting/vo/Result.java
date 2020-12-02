@@ -89,6 +89,11 @@ public class Result<T> implements Serializable {
     public static <T> Result <T> badRequest(){
         return new Result <T>(CodeEnum.BAD_REQUEST);
     }
+     //参数格式不正确
+    public static <T> Result <T> noData(){
+        return new Result <T>(CodeEnum.NO_DATA);
+    }
+
     //管理员登录用户名验证
     public static <T> Result <T> badUsernameRequest(){
         return new Result <T>(CodeEnum.BAD_USERNAME_REQUEST);

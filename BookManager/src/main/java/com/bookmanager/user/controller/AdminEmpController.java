@@ -22,12 +22,6 @@ public class AdminEmpController {
     private IEmployeeService employeeService ;
 
 
-    //更新自己的信息
-    //管理员删除用户
-    //管理员添加图书
-    //管理员删除图书
-    //管理员更新图书
-    //管理员查询图书
 
     @PostMapping("login")
     public Result<Employee> login(@RequestBody EmpLoginDTO employee) {
@@ -42,8 +36,8 @@ public class AdminEmpController {
     }
     //删除用户
     @PostMapping("remove/{jobNumber}")
-    public Result<String> remove(@PathVariable Integer jobNumber){
-        return employeeService.deleteEmployee(jobNumber);
+    public Result<String> remove(@PathVariable String jobNumber){
+        return employeeService.deleteEmployee(Integer.parseInt(jobNumber));
     }
     //查询用户列表
     @GetMapping("emps")

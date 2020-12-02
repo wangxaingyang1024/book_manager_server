@@ -29,7 +29,7 @@ public enum CodeEnum {
     /**
      * 获取数据
      */
-    SELECT_SUCCESS(900,"ok"),
+    SELECT_SUCCESS(200,"ok"),
     /**
      * 登录   1000-1020
      */
@@ -44,6 +44,7 @@ public enum CodeEnum {
      * 参数不齐全或参数错误   2000-2020
      */
     BAD_REQUEST(2000,"参数不正确"),
+    NO_DATA(2001,"还没有日志信息偶∽（^∪^）∽..."),
     /**
      * 用户验证名  登录 3000-3020
      */
@@ -67,14 +68,7 @@ public enum CodeEnum {
     /**
      * 插入 4000-4020
      */
-<<<<<<< HEAD
-    Emp_EXIST(3003,"用户名已存在,请重新输入！"),
-    SIGNUP_SUCCESS(3003,"用户名已存在,请重新输入！");
 
-
-
-=======
->>>>>>> origin/master
     private Integer code;
     private String message;
     CodeEnum(Integer code, String message) {

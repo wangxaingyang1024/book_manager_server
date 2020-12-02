@@ -121,9 +121,6 @@
     <include refid="Base_Column_List"/>
     from book where isbn = #{isbn}
   </select>
-<select id="findAllBookIsbn" resultType="com.bookmanager.setting.model.Book">
-  select isbn from book
-</select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from book
     where id = #{id,jdbcType=BIGINT}
@@ -203,13 +200,6 @@
     </trim>
   </insert>
 
-<<<<<<< HEAD
-  <insert id="addBook" parameterType="com.bookmanager.setting.model.Book">
-    insert into book (id,isbn,name,author,type,emp_number,static,sysnopsis) values(#{id},#{isbn},#{name},#{author},#{type},#{empNumber},#{static},#{sysnopsis})
-  </insert>
-
-=======
->>>>>>> origin/master
   <select id="countByExample" parameterType="com.bookmanager.setting.model.BookExample" resultType="java.lang.Long">
     select count(*) from book
     <if test="_parameter != null">

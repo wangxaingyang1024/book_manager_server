@@ -17,7 +17,7 @@ public interface IEmployeeService {
      //用户登录
     Result publicEmpLogin(EmpLoginDTO empLoginDTO) throws UnsupportedEncodingException, NoSuchAlgorithmException;
     //注册
-    Result addEmployee(Employee employee) throws UnsupportedEncodingException, NoSuchAlgorithmException;
+    Result  addEmployee(Employee employee) throws UnsupportedEncodingException, NoSuchAlgorithmException;
     //用户信息
     //删除用户信息
     Result deleteEmployee(Integer jobNumber);

@@ -19,7 +19,11 @@ public class EmpCotroller {
     @Autowired
     private IEmployeeService employeeService ;
 
-
+    /**
+     * 登录
+     * @param employee
+     * @return
+     */
     @PostMapping("login")
     public Result<Employee> login(@RequestBody EmpLoginDTO employee) {
         try {
@@ -31,6 +35,12 @@ public class EmpCotroller {
         }
         return new Result(CodeEnum.LOGIN_FAILURE) ;
     }
+
+    /**
+     * 注册
+     * @param employee
+     * @return
+     */
     @PostMapping("signUp")
     public Result signUp(@RequestBody Employee employee) {
         try {
@@ -43,7 +53,11 @@ public class EmpCotroller {
         return new Result(CodeEnum.SIGNUP_FAILURE) ;
     }
 
-    //修改密码
+    /**
+     * 修改密码
+     * @param cDTO
+     * @return
+     */
     @PostMapping("changePsw")
     public  Result changePassword(@RequestBody ChangePasswordDTO cDTO){
         try {
@@ -56,4 +70,5 @@ public class EmpCotroller {
         return new Result(CodeEnum.CHANGE_PASSWORD_FAILURE) ;
     }
 
+    //TODO:用户修改个人信息：service已写，待调用！
 }
