@@ -29,6 +29,11 @@ public enum CodeEnum {
     BOOK_RETURN_SUCCESS(6008,"已归还，欢迎下次再来！"),
     BOOK_RETURN_FAILED(6009,"库中没有本书！"),
     /**
+     * 查询
+     */
+    BOOK_find_FAILED(6010,"该用户没有借书！"),
+    FIND_BOOKS(6011,"查询成功"),
+    /**
      * 获取数据
      */
     SELECT_SUCCESS(200,"ok"),

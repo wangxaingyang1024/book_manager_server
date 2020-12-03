@@ -1,6 +1,7 @@
 package com.bookmanager.book.service.impl;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
+import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.book.mapper.BookMapper;
 import com.bookmanager.book.service.BookService;
 import com.bookmanager.setting.model.Book;
@@ -31,13 +32,13 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     * 查询所有图书
+     * 用户查询图书
      *
      * @return
      */
     @Override
-    public List<Book> findAll() {
-        return bookMapper.findAllBook();
+    public Result findAllBook() {
+         return new Result(CodeEnum.FIND_BOOKS,bookMapper.findAllBook());
     }
 
     /**
@@ -53,8 +54,7 @@ public class BookServiceImpl implements BookService {
             addBook(book);
         }
         book.setIsbn(randomIsbn());
-        bookMapper.insertBook(book);
-        return new Result(CodeEnum.BOOK_ADD_SUCCESS);
+        return Result.success(bookMapper.insertBook(book));
     }
 
     /**
@@ -90,32 +90,47 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     * 借书
-     * @param isbn
+     * 查询某用户的借书信息
      * @return
      */
     @Override
-    public Result borrowBook(Long isbn) {
-        Book book = bookMapper.findBookByIsbn(isbn);
+    public Result findByEmpNumber(int jobNumber) {
+        List<Book> books = bookMapper.FindByEmpNumber(jobNumber);
+        if(books ==null){
+            return new Result(CodeEnum.BOOK_find_FAILED);
+        }
+        return Result.success(books);
+    }
+
+    /**
+     * 借书
+     * @param rbed
+     * @return
+     */
+    @Override
+    public Result borrowBook(RelationBookEmpDTO rbed) {
+        Book book = bookMapper.findBookByIsbn(rbed.getIsbn());
         if(book == null && book.getStatus() == false){
             return new Result(CodeEnum.BOOK_BORROW_FAILED);
         }
-        bookMapper.borrowBookByIsbn(isbn);
+        bookMapper.borrowBookByIsbn(rbed.getIsbn());
+        bookMapper.insertLog(rbed);
         return new Result(CodeEnum.BOOK_BORROW_SUCCESS);
     }
 
     /**
      * 还书
-     * @param
+     * @param rbed
      * @return
      */
     @Override
-    public Result returnBook(Long isbn) {
-        Book book = bookMapper.findBookByIsbn(isbn);
+    public Result returnBook(RelationBookEmpDTO rbed) {
+        Book book = bookMapper.findBookByIsbn(rbed.getIsbn());
         if(book == null && book.getStatus() == true){
             return new Result(CodeEnum.BOOK_RETURN_FAILED);
         }
-        bookMapper.returnBookByIsbn(isbn);
+        bookMapper.returnBookByIsbn(rbed.getIsbn());
+        bookMapper.deleteLogByJobNumberAndIsbn(rbed);
         return new Result(CodeEnum.BOOK_RETURN_SUCCESS);
     }
 

@@ -1,5 +1,6 @@
 package com.bookmanager.book.mapper;
 
+import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.setting.model.Book;
 import com.bookmanager.setting.model.BookExample;
 import java.util.List;
@@ -49,4 +50,10 @@ public interface BookMapper {
     int borrowBookByIsbn(Long isbn);
 
     int returnBookByIsbn(Long isbn);
+
+    List<Book> FindByEmpNumber(Integer jobNumber);
+
+    int insertLog(@Param("rbed") RelationBookEmpDTO rbed);
+
+    int deleteLogByJobNumberAndIsbn(@Param("rbed") RelationBookEmpDTO rbed);
 }

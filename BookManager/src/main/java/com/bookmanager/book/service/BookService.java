@@ -1,5 +1,6 @@
 package com.bookmanager.book.service;
 
+import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.setting.model.Book;
 import com.bookmanager.setting.vo.Result;
 
@@ -11,10 +12,10 @@ public interface BookService {
     Book getBook(Long id);
 
     /**
-     * 查询所有图书
+     * 用户查询所有图书
      * @return
      */
-    List<Book> findAll();
+    Result findAllBook();
     /**
      * 录入新书
      * @param book
@@ -30,18 +31,29 @@ public interface BookService {
     Result deleteBookByIsbn(long isbn);
 
     /**
-     * 借书
-     * @param isbn
+     *
+     * @param rbed
      * @return
      */
-    Result borrowBook(Long isbn);
+    Result borrowBook(RelationBookEmpDTO rbed);
 
     /**
-     *还书
+     *
+     * @param rbed
+     * @return
+     */
+    Result  returnBook(RelationBookEmpDTO rbed);
+
+    /**
+     * 管理员修改图书
      * @param isbn
      * @return
      */
-    Result  returnBook(Long isbn);
-
     Result updateBook(Long isbn);
+
+    /**
+     * 管理员查询某用户的借书情况
+     * @return
+     */
+   Result findByEmpNumber(int jobNumber);
 }

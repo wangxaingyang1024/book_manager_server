@@ -1,5 +1,6 @@
 package com.bookmanager.book.controller;
 
+import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.book.service.BookService;
 import com.bookmanager.book.service.impl.BookServiceImpl;
 import com.bookmanager.setting.model.Book;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/user")
 public class BookController {
+
     @Autowired
     private BookService bookService;
     /**
@@ -22,25 +24,34 @@ public class BookController {
      * @return list
      */
     @GetMapping("/find")
-    public Result findAll(){
-        List<Book> list = bookService.findAll();
-        return Result.success(list);
+    public Result userFindAll(){
+        Result result = bookService.findAllBook();
+        return Result.success(result);
     }
 
     /**
+     * 用户查询自己的借书信息
+     * @param jobNumber
+     * @return
+     */
+    @PostMapping("/findOne/{jobNumber}")
+    public  Result userFindByEmpNumber(@PathVariable int jobNumber){
+        return Result.success(bookService.findByEmpNumber(jobNumber));
+    }
+    /**
      * 借书
      */
-    @RequestMapping("/borrow/{isbn}")
-    public Result borrowBook(@PathVariable long isbn){
-        bookService.borrowBook(isbn);
+    @PostMapping("/borrow")
+    public Result borrowBook(@RequestBody RelationBookEmpDTO rbed){
+        bookService.borrowBook(rbed);
         return new Result(CodeEnum.BOOK_BORROW_SUCCESS);
     }
     /**
      * 还书
      */
-    @RequestMapping("/return/{isbn}")
-    public Result returnBoook(@PathVariable Long isbn){
-        bookService.returnBook(isbn);
+    @PostMapping("/return")
+    public Result returnBoook(@RequestBody RelationBookEmpDTO rbed){
+        bookService.returnBook(rbed);
         return new Result(CodeEnum.BOOK_RETURN_SUCCESS);
     }
 }

@@ -7,7 +7,6 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="type" jdbcType="VARCHAR" property="type" />
-    <result column="emp_number" jdbcType="BIGINT" property="empNumber" />
     <result column="status" jdbcType="BIT" property="status" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.bookmanager.setting.model.Book">
@@ -110,11 +109,24 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="com.bookmanager.setting.model.Book">
     select * from book where id = #{id}
   </select>
-
+  <select id="FindByEmpNumber" parameterType="int" resultType="com.bookmanager.setting.model.Book">
+    SELECT
+    <include refid="Base_Column_List"></include>
+    FROM book WHERE isbn IN(
+    SELECT book_isbn
+    FROM relation_book_emp r
+    WHERE r.job_number = #{jobNumber})
+  </select>
 <select id="findAllBook" resultType="com.bookmanager.setting.model.Book">
-  select
-  <include refid="Base_Column_List"/>
-  from book
+  SELECT
+      b.isbn,b.name,b.author,b.type,b.status,b.synopsis
+    FROM
+        employee e,
+        book b,
+        log_book_emp l
+    WHERE
+        e.job_number = l.job_num
+        AND b.isbn = l.book_isbn
 </select>
   <select id="getBookIsbn" resultType="com.bookmanager.setting.model.Book">
     select
@@ -139,9 +151,21 @@
     DELETE FROM book WHERE isbn=#{isbn}
   </delete>
 
+
+  <delete id="deleteLogByJobNumberAndIsbn" parameterType="com.bookmanager.book.dto.RelationBookEmpDTO" >
+    DELETE
+    FROM relation_book_emp
+    WHERE job_number=#{rbed.jobNumber,jdbcType=INTEGER}
+    AND book_isbn=#{rbed.isbn,jdbcType=BIGINT}
+  </delete>
+
+
   <insert id="insertBook" parameterType="com.bookmanager.setting.model.Book">
     insert into book (isbn,name,author, type,status, synopsis)
     values (#{isbn},#{name},#{author}, #{type},#{status}, #{synopsis})
+  </insert>
+  <insert id="insertLog" parameterType="com.bookmanager.book.dto.RelationBookEmpDTO">
+    insert into relation_book_emp (job_number,book_isbn) values (#{rbed.jobNumber,jdbcType=INTEGER},#{rbed.isbn,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.bookmanager.setting.model.Book">
     insert into book
