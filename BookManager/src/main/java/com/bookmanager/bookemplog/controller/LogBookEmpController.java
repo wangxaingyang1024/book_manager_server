@@ -46,7 +46,7 @@ public class LogBookEmpController {
     }
     //TODO:个人详情页的日志记录
     @PostMapping("logT")
-    public Result<List<LogListDTO>> queryOneByTime(@RequestBody  QueryLogByTimeDTO qlt){
+    public Result<List<LogListDTO>> queryOneByTime(@RequestBody QueryLogByTimeDTO qlt){
         return logBookEmpService.selectEmpLogByTime(qlt);
     }
 
@@ -57,7 +57,7 @@ public class LogBookEmpController {
      */
     @PostMapping("admin/logT")
     public Result<List<LogListDTO>> queryAllByTime(@RequestBody  QueryLogByTimeDTO qlt){
-        return logBookEmpService.selectEmpLogByTime(qlt);
+        return logBookEmpService.selectLogByTime(qlt);
     }
 
 }

@@ -14,4 +14,6 @@ public class LogBookEmp {
 
     private Long bookIsbn;
 
+    private Integer jobNumber ;
+
 }
