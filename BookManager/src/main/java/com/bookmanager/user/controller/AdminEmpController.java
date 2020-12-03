@@ -22,13 +22,6 @@ public class AdminEmpController {
     private IEmployeeService employeeService ;
 
 
-    //更新自己的信息
-    //管理员删除用户
-    //管理员添加图书
-    //管理员删除图书
-    //管理员更新图书
-    //管理员查询图书
-
     @PostMapping("login")
     public Result<Employee> login(@RequestBody EmpLoginDTO employee) {
         try {

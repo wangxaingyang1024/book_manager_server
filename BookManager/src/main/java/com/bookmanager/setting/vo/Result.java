@@ -80,6 +80,9 @@ public class Result<T> implements Serializable {
     public static <T> Result <T> success(T data){
         return new Result <T>(CodeEnum.LOGIN_SUCCESS,data);
     }
+    public static <T> Result <T> noData(){
+        return new Result <T>(CodeEnum.NO_DATA);
+    }
 
     //管理员请求成功（返回数据）
     public static <T> Result <T> adminSuccess(T data){

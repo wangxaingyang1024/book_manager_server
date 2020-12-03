@@ -1,7 +1,10 @@
 package com.bookmanager.setting.model;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class LogBookEmp {
     private Integer id;
 

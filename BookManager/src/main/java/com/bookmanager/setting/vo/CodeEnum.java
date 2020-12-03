@@ -31,7 +31,8 @@ public enum CodeEnum {
     /**
      * 获取数据
      */
-    SELECT_SUCCESS(900,"ok"),
+    SELECT_SUCCESS(200,"ok"),
+    NO_DATA(400,"还没有数据偶"),
     /**
      * 登录   1000-1020
      */
@@ -69,8 +70,6 @@ public enum CodeEnum {
     /**
      * 插入 4000-4020
      */
-  //  Emp_EXIST(3003,"用户名已存在,请重新输入！"),
-  //  SIGNUP_SUCCESS(3003,"用户名已存在,请重新输入！");
 
     private Integer code;
     private String message;
