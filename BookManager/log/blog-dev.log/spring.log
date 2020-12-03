@@ -10818,3 +10818,225 @@ java.lang.NumberFormatException: For input string: "jobNumber"
 2020-12-02 18:22:53.954 DEBUG 15776 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
 2020-12-02 18:22:53.954 DEBUG 15776 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
 2020-12-02 18:22:53.955 DEBUG 15776 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 09:48:11.022  INFO 13536 --- [main] com.bookmanager.BookmanagerApplication   : Starting BookmanagerApplication on DESKTOP-80TVTMB with PID 13536 (F:\Java_Code2020\workspace1203\book_manager_server\BookManager\target\classes started by PC501 in F:\Java_Code2020\workspace1203\book_manager_server\BookManager)
+2020-12-03 09:48:11.024 DEBUG 13536 --- [main] com.bookmanager.BookmanagerApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-12-03 09:48:11.024  INFO 13536 --- [main] com.bookmanager.BookmanagerApplication   : No active profile set, falling back to default profiles: default
+2020-12-03 09:48:11.933  INFO 13536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-12-03 09:48:11.967  INFO 13536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16ms. Found 0 JPA repository interfaces.
+2020-12-03 09:48:12.384  INFO 13536 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2020-12-03 09:48:12.392  INFO 13536 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-03 09:48:12.392  INFO 13536 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-12-03 09:48:12.481  INFO 13536 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-03 09:48:12.481  INFO 13536 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1430 ms
+2020-12-03 09:48:12.519  INFO 13536 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-12-03 09:48:12.679  INFO 13536 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-12-03 09:48:12.794  INFO 13536 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-03 09:48:13.022  INFO 13536 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-03 09:48:13.148  INFO 13536 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-12-03 09:48:13.313  INFO 13536 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-03 09:48:13.410  WARN 13536 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-03 09:48:13.466  INFO 13536 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-12-03 09:48:13.640  INFO 13536 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-03 09:48:13.655  INFO 13536 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-03 09:48:13.786  INFO 13536 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path ''
+2020-12-03 09:48:13.788  INFO 13536 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-12-03 09:48:13.788  INFO 13536 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-12-03 09:48:13.797  INFO 13536 --- [main] com.bookmanager.BookmanagerApplication   : Started BookmanagerApplication in 3.428 seconds (JVM running for 4.468)
+2020-12-03 09:57:07.018  INFO 13536 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-03 09:57:07.018  INFO 13536 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-03 09:57:07.023  INFO 13536 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-12-03 09:57:07.163 DEBUG 13536 --- [http-nio-8899-exec-1] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 09:57:07.174 DEBUG 13536 --- [http-nio-8899-exec-1] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 09:57:07.186 DEBUG 13536 --- [http-nio-8899-exec-1] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 11:16:36.817  WARN 13536 --- [http-nio-8899-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:16:40.008  WARN 13536 --- [http-nio-8899-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:16:40.809  WARN 13536 --- [http-nio-8899-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:18:35.731  WARN 13536 --- [http-nio-8899-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:21:39.963  WARN 13536 --- [http-nio-8899-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:25:26.020  WARN 13536 --- [http-nio-8899-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:26:26.008  WARN 13536 --- [http-nio-8899-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:27:18.450  WARN 13536 --- [http-nio-8899-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:27:53.989  WARN 13536 --- [http-nio-8899-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:32:58.184  INFO 12044 --- [main] com.bookmanager.BookmanagerApplication   : Starting BookmanagerApplication on DESKTOP-80TVTMB with PID 12044 (F:\Java_Code2020\workspace1203\book_manager_server\BookManager\target\classes started by PC501 in F:\Java_Code2020\workspace1203\book_manager_server\BookManager)
+2020-12-03 11:32:58.188 DEBUG 12044 --- [main] com.bookmanager.BookmanagerApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-12-03 11:32:58.189  INFO 12044 --- [main] com.bookmanager.BookmanagerApplication   : No active profile set, falling back to default profiles: default
+2020-12-03 11:32:58.655  INFO 12044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-12-03 11:32:58.676  INFO 12044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 0 JPA repository interfaces.
+2020-12-03 11:32:59.028  INFO 12044 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2020-12-03 11:32:59.034  INFO 12044 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-03 11:32:59.035  INFO 12044 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-12-03 11:32:59.109  INFO 12044 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-03 11:32:59.109  INFO 12044 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 877 ms
+2020-12-03 11:32:59.147  INFO 12044 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-12-03 11:32:59.212  INFO 12044 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-12-03 11:32:59.275  INFO 12044 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-03 11:32:59.430  INFO 12044 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-03 11:32:59.502  INFO 12044 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-12-03 11:32:59.594  INFO 12044 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-03 11:32:59.672  INFO 12044 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-12-03 11:32:59.687  WARN 12044 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-03 11:32:59.782  INFO 12044 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-03 11:32:59.788  INFO 12044 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-03 11:32:59.916  INFO 12044 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path ''
+2020-12-03 11:32:59.917  INFO 12044 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-12-03 11:32:59.917  INFO 12044 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-12-03 11:32:59.923  INFO 12044 --- [main] com.bookmanager.BookmanagerApplication   : Started BookmanagerApplication in 2.322 seconds (JVM running for 2.901)
+2020-12-03 11:33:31.543  INFO 12044 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-03 11:33:31.543  INFO 12044 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-03 11:33:31.547  INFO 12044 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2020-12-03 11:33:31.559  WARN 12044 --- [http-nio-8899-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:37:27.498 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.E.selectEmpByUsername            : ==>  Preparing: select id, job_number, username, password, nick_name, gender, phone, age, role from employee where username=? ;
+2020-12-03 11:37:27.509 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.E.selectEmpByUsername            : ==> Parameters: haha(String)
+2020-12-03 11:37:27.520 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.E.selectEmpByUsername            : <==      Total: 1
+2020-12-03 11:37:27.521  INFO 12044 --- [http-nio-8899-exec-2] c.b.u.service.impl.EmployeeServiceImpl   : Employee(id=4, jobNumber=95154218, username=haha, password=74B1362894E7F050FA5C8F3A40BA89653D8E0967CED81207B8EA07E5, nickName=Berton, gender=1, phone=17652348956, age=15, role=1)
+2020-12-03 11:37:27.521 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.E.selectPasswordByUsername       : ==>  Preparing: select password from employee where username=? ;
+2020-12-03 11:37:27.521 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.E.selectPasswordByUsername       : ==> Parameters: haha(String)
+2020-12-03 11:37:27.524 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.E.selectPasswordByUsername       : <==      Total: 1
+2020-12-03 11:37:27.938  WARN 12044 --- [http-nio-8899-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:37:36.222 DEBUG 12044 --- [http-nio-8899-exec-4] c.b.u.m.E.selectEmpByUsername            : ==>  Preparing: select id, job_number, username, password, nick_name, gender, phone, age, role from employee where username=? ;
+2020-12-03 11:37:36.223 DEBUG 12044 --- [http-nio-8899-exec-4] c.b.u.m.E.selectEmpByUsername            : ==> Parameters: wxy(String)
+2020-12-03 11:37:36.224 DEBUG 12044 --- [http-nio-8899-exec-4] c.b.u.m.E.selectEmpByUsername            : <==      Total: 1
+2020-12-03 11:37:36.224  INFO 12044 --- [http-nio-8899-exec-4] c.b.u.service.impl.EmployeeServiceImpl   : Employee(id=1, jobNumber=95550001, username=wxy, password=8C7ED1F52C4C5B129BBD5805C04B418CE4CB03C23836E98EF079E114, nickName=王向阳, gender=1, phone=13227730803, age=25, role=2)
+2020-12-03 11:37:36.225 DEBUG 12044 --- [http-nio-8899-exec-4] c.b.u.m.E.selectPasswordByUsername       : ==>  Preparing: select password from employee where username=? ;
+2020-12-03 11:37:36.225 DEBUG 12044 --- [http-nio-8899-exec-4] c.b.u.m.E.selectPasswordByUsername       : ==> Parameters: wxy(String)
+2020-12-03 11:37:36.225 DEBUG 12044 --- [http-nio-8899-exec-4] c.b.u.m.E.selectPasswordByUsername       : <==      Total: 1
+2020-12-03 11:38:11.251  WARN 12044 --- [http-nio-8899-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:39:42.576  WARN 12044 --- [http-nio-8899-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:41:28.793  WARN 12044 --- [http-nio-8899-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:43:57.632 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.E.selectEmpByUsername            : ==>  Preparing: select id, job_number, username, password, nick_name, gender, phone, age, role from employee where username=? ;
+2020-12-03 11:43:57.633 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.E.selectEmpByUsername            : ==> Parameters: wxy(String)
+2020-12-03 11:43:57.634 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.E.selectEmpByUsername            : <==      Total: 1
+2020-12-03 11:43:57.635  INFO 12044 --- [http-nio-8899-exec-8] c.b.u.service.impl.EmployeeServiceImpl   : Employee(id=1, jobNumber=95550001, username=wxy, password=8C7ED1F52C4C5B129BBD5805C04B418CE4CB03C23836E98EF079E114, nickName=王向阳, gender=1, phone=13227730803, age=25, role=2)
+2020-12-03 11:43:57.635 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.E.selectPasswordByUsername       : ==>  Preparing: select password from employee where username=? ;
+2020-12-03 11:43:57.635 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.E.selectPasswordByUsername       : ==> Parameters: wxy(String)
+2020-12-03 11:43:57.636 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.E.selectPasswordByUsername       : <==      Total: 1
+2020-12-03 11:44:59.540 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.E.selectEmpByUsername            : ==>  Preparing: select id, job_number, username, password, nick_name, gender, phone, age, role from employee where username=? ;
+2020-12-03 11:44:59.540 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.E.selectEmpByUsername            : ==> Parameters: wxy(String)
+2020-12-03 11:44:59.542 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.E.selectEmpByUsername            : <==      Total: 1
+2020-12-03 11:44:59.542  INFO 12044 --- [http-nio-8899-exec-9] c.b.u.service.impl.EmployeeServiceImpl   : Employee(id=1, jobNumber=95550001, username=wxy, password=8C7ED1F52C4C5B129BBD5805C04B418CE4CB03C23836E98EF079E114, nickName=王向阳, gender=1, phone=13227730803, age=25, role=2)
+2020-12-03 11:44:59.542 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.E.selectPasswordByUsername       : ==>  Preparing: select password from employee where username=? ;
+2020-12-03 11:44:59.542 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.E.selectPasswordByUsername       : ==> Parameters: wxy(String)
+2020-12-03 11:44:59.543 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.E.selectPasswordByUsername       : <==      Total: 1
+2020-12-03 11:45:05.873 DEBUG 12044 --- [http-nio-8899-exec-10] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 11:45:05.873 DEBUG 12044 --- [http-nio-8899-exec-10] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 11:45:05.875 DEBUG 12044 --- [http-nio-8899-exec-10] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 11:45:08.631 DEBUG 12044 --- [http-nio-8899-exec-1] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 11:45:08.631 DEBUG 12044 --- [http-nio-8899-exec-1] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 11:45:08.633 DEBUG 12044 --- [http-nio-8899-exec-1] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 11:46:21.510  WARN 12044 --- [http-nio-8899-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:46:57.523  WARN 12044 --- [http-nio-8899-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:47:03.089  WARN 12044 --- [http-nio-8899-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:47:29.130  WARN 12044 --- [http-nio-8899-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:47:37.541  WARN 12044 --- [http-nio-8899-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:48:00.578  WARN 12044 --- [http-nio-8899-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:48:51.295  WARN 12044 --- [http-nio-8899-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:49:08.464  WARN 12044 --- [http-nio-8899-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:49:32.423  WARN 12044 --- [http-nio-8899-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:49:32.982  WARN 12044 --- [http-nio-8899-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:51:41.787  WARN 12044 --- [http-nio-8899-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:51:49.081  WARN 12044 --- [http-nio-8899-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:52:32.999  WARN 12044 --- [http-nio-8899-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 11:52:49.852 DEBUG 12044 --- [http-nio-8899-exec-5] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 11:52:49.853 DEBUG 12044 --- [http-nio-8899-exec-5] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 11:52:49.854 DEBUG 12044 --- [http-nio-8899-exec-5] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 11:53:56.577 DEBUG 12044 --- [http-nio-8899-exec-6] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 11:53:56.578 DEBUG 12044 --- [http-nio-8899-exec-6] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 11:53:56.579 DEBUG 12044 --- [http-nio-8899-exec-6] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:00:24.864  WARN 12044 --- [http-nio-8899-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:00:31.613 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.E.selectEmpByUsername            : ==>  Preparing: select id, job_number, username, password, nick_name, gender, phone, age, role from employee where username=? ;
+2020-12-03 12:00:31.613 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.E.selectEmpByUsername            : ==> Parameters: wxy(String)
+2020-12-03 12:00:31.615 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.E.selectEmpByUsername            : <==      Total: 1
+2020-12-03 12:00:31.615  INFO 12044 --- [http-nio-8899-exec-8] c.b.u.service.impl.EmployeeServiceImpl   : Employee(id=1, jobNumber=95550001, username=wxy, password=8C7ED1F52C4C5B129BBD5805C04B418CE4CB03C23836E98EF079E114, nickName=王向阳, gender=1, phone=13227730803, age=25, role=2)
+2020-12-03 12:00:31.615 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.E.selectPasswordByUsername       : ==>  Preparing: select password from employee where username=? ;
+2020-12-03 12:00:31.615 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.E.selectPasswordByUsername       : ==> Parameters: wxy(String)
+2020-12-03 12:00:31.616 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.E.selectPasswordByUsername       : <==      Total: 1
+2020-12-03 12:00:32.480 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:00:32.480 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:00:32.481 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:00:36.865  WARN 12044 --- [http-nio-8899-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:00:39.891  WARN 12044 --- [http-nio-8899-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:00:45.622 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:00:45.622 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:00:45.624 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:01:18.922 DEBUG 12044 --- [http-nio-8899-exec-3] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:01:18.922 DEBUG 12044 --- [http-nio-8899-exec-3] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:01:18.924 DEBUG 12044 --- [http-nio-8899-exec-3] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:01:38.616  WARN 12044 --- [http-nio-8899-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:02:16.406  WARN 12044 --- [http-nio-8899-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:02:23.058  WARN 12044 --- [http-nio-8899-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:02:25.828 DEBUG 12044 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:02:25.829 DEBUG 12044 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:02:25.830 DEBUG 12044 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:02:27.932 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:02:27.932 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:02:27.934 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:02:29.290  WARN 12044 --- [http-nio-8899-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:03:02.649  WARN 12044 --- [http-nio-8899-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:03:03.984  WARN 12044 --- [http-nio-8899-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:03:36.881 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:03:36.882 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:03:36.883 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:04:05.921 DEBUG 12044 --- [http-nio-8899-exec-3] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:04:05.921 DEBUG 12044 --- [http-nio-8899-exec-3] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:04:05.922 DEBUG 12044 --- [http-nio-8899-exec-3] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:04:08.145 DEBUG 12044 --- [http-nio-8899-exec-4] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:04:08.146 DEBUG 12044 --- [http-nio-8899-exec-4] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:04:08.147 DEBUG 12044 --- [http-nio-8899-exec-4] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:04:33.986 DEBUG 12044 --- [http-nio-8899-exec-5] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:04:33.986 DEBUG 12044 --- [http-nio-8899-exec-5] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:04:33.993 DEBUG 12044 --- [http-nio-8899-exec-5] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:04:46.709  WARN 12044 --- [http-nio-8899-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:04:50.519 DEBUG 12044 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:04:50.520 DEBUG 12044 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:04:50.522 DEBUG 12044 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:04:51.980  WARN 12044 --- [http-nio-8899-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:04:52.755 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:04:52.755 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:04:52.757 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:04:55.094 DEBUG 12044 --- [http-nio-8899-exec-10] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:04:55.094 DEBUG 12044 --- [http-nio-8899-exec-10] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:04:55.095 DEBUG 12044 --- [http-nio-8899-exec-10] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:04:57.032  WARN 12044 --- [http-nio-8899-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:05:02.790  WARN 12044 --- [http-nio-8899-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:05:03.678 DEBUG 12044 --- [http-nio-8899-exec-3] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:05:03.678 DEBUG 12044 --- [http-nio-8899-exec-3] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:05:03.679 DEBUG 12044 --- [http-nio-8899-exec-3] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:05:05.071  WARN 12044 --- [http-nio-8899-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:05:08.625  WARN 12044 --- [http-nio-8899-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:05:37.455 DEBUG 12044 --- [http-nio-8899-exec-6] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:05:37.455 DEBUG 12044 --- [http-nio-8899-exec-6] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:05:37.457 DEBUG 12044 --- [http-nio-8899-exec-6] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:05:40.186 DEBUG 12044 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:05:40.187 DEBUG 12044 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:05:40.188 DEBUG 12044 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:05:45.966 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:05:45.966 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:05:45.967 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:05:50.187 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:05:50.187 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:05:50.188 DEBUG 12044 --- [http-nio-8899-exec-9] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:07:32.515  WARN 12044 --- [http-nio-8899-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:50:06.058  WARN 12044 --- [http-nio-8899-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:53:57.538  WARN 12044 --- [http-nio-8899-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:54:21.438  WARN 12044 --- [http-nio-8899-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:54:59.458  WARN 12044 --- [http-nio-8899-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:56:35.634  WARN 12044 --- [http-nio-8899-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:58:38.609  WARN 12044 --- [http-nio-8899-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-12-03 12:58:54.202 DEBUG 12044 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:58:54.202 DEBUG 12044 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:58:54.206 DEBUG 12044 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 12:59:47.172 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 12:59:47.173 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 12:59:47.176 DEBUG 12044 --- [http-nio-8899-exec-8] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 13:17:17.369 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 13:17:17.369 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 13:17:17.370 DEBUG 12044 --- [http-nio-8899-exec-2] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 13:17:29.527 DEBUG 12044 --- [http-nio-8899-exec-3] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 13:17:29.528 DEBUG 12044 --- [http-nio-8899-exec-3] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 13:17:29.529 DEBUG 12044 --- [http-nio-8899-exec-3] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 13:18:52.654 DEBUG 12044 --- [http-nio-8899-exec-4] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 13:18:52.654 DEBUG 12044 --- [http-nio-8899-exec-4] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 13:18:52.656 DEBUG 12044 --- [http-nio-8899-exec-4] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6
+2020-12-03 13:19:00.554 DEBUG 12044 --- [http-nio-8899-exec-5] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee ;
+2020-12-03 13:19:00.555 DEBUG 12044 --- [http-nio-8899-exec-5] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 
+2020-12-03 13:19:00.556 DEBUG 12044 --- [http-nio-8899-exec-5] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 6

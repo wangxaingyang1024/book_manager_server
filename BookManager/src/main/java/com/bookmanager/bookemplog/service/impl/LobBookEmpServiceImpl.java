@@ -63,7 +63,7 @@ public class LobBookEmpServiceImpl implements ILogBookEmpService {
     }
 
     @Override
-    public Result<List<LogListDTO>> selectAllLogByTime(QueryLogByTimeDTO qlt) {
+    public Result<List<LogListDTO>> selectLogByTime(QueryLogByTimeDTO qlt) {
         List<LogListDTO> allLog = logBookEmpMapper.selectAllLogByTime(qlt.getStartTime(),qlt.getEndTime());
         if(allLog.size()== 0 ){
             return Result.noData();

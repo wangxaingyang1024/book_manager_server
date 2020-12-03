@@ -6,7 +6,7 @@
     <result column="lend_time" jdbcType="TIMESTAMP" property="lendTime" />
     <result column="return_time" jdbcType="TIMESTAMP" property="returnTime" />
     <result column="book_isbn" jdbcType="BIGINT" property="bookIsbn" />
-    <result column="job_number" jdbcType="INTEGER" property="jobNumber" />
+    <result column="job_num" jdbcType="INTEGER" property="jobNumber" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>

@@ -20,6 +20,6 @@ public interface ILogBookEmpService {
     //todo:根据时间端查询指定时间之内的个人日志信息
     Result<List<LogListDTO>> selectEmpLogByTime(QueryLogByTimeDTO qlt);
     //管理员查询所有日志信息
-    Result<List<LogListDTO>> selectAllLogByTime(QueryLogByTimeDTO qlt);
+    Result<List<LogListDTO>> selectLogByTime(QueryLogByTimeDTO qlt);
 
 }
