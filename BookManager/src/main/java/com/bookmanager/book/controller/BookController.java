@@ -25,8 +25,8 @@ public class BookController {
      */
     @GetMapping("/find")
     public Result userFindAll(){
-        Result result = bookService.userFindAllBook();
-        return result;
+        Result result = bookService.findAllBook();
+        return Result.success(result);
     }
 
     /**
@@ -36,7 +36,7 @@ public class BookController {
      */
     @PostMapping("/findOne/{jobNumber}")
     public  Result userFindByEmpNumber(@PathVariable int jobNumber){
-        return bookService.findByEmpNumber(jobNumber);
+        return Result.success(bookService.findByEmpNumber(jobNumber));
     }
     /**
      * 借书

@@ -29,11 +29,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Resource
     private EmployeeMapper mapper ;
 
-    //TODO:管理员添加图书
-    //TODO:管理员删除图书
-    //TODO:管理员更新图书
-    //TODO:管理员查询图书
-
     //查询所有用户信息
     @Override
     public Result<List<SelectAllEmpDTO>> selectAllEmp() {

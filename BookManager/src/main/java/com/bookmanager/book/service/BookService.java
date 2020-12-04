@@ -15,13 +15,7 @@ public interface BookService {
      * 用户查询所有图书
      * @return
      */
-    Result userFindAllBook();
-
-    /**
-     * 管理员查询所有图书
-     * @return
-     */
-    Result adminFindAllBook();
+    Result findAllBook();
     /**
      * 录入新书
      * @param book

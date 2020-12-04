@@ -23,9 +23,7 @@ public interface BookMapper {
 
     Book selectByPrimaryKey(Long id);
 
-    List<Book> userFindAllBook();
-
-    List<Book> adminFindAllBook();
+    List<Book> findAllBook();
 
     int insertBook(Book record);
 
@@ -58,5 +56,4 @@ public interface BookMapper {
     int insertLog(@Param("rbed") RelationBookEmpDTO rbed);
 
     int deleteLogByJobNumberAndIsbn(@Param("rbed") RelationBookEmpDTO rbed);
-
 }

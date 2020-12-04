@@ -23,7 +23,7 @@ public class BookAdminController {
      */
     @GetMapping("/find")
     public Result adminFindAll(){
-        Result allBook = bookService.adminFindAllBook();
+        Result allBook = bookService.findAllBook();
         return allBook;
     }
     /**
