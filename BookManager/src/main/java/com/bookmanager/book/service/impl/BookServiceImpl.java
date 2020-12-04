@@ -37,8 +37,17 @@ public class BookServiceImpl implements BookService {
      * @return
      */
     @Override
-    public Result findAllBook() {
-         return new Result(CodeEnum.FIND_BOOKS,bookMapper.findAllBook());
+    public Result userFindAllBook() {
+         return new Result(CodeEnum.FIND_BOOKS,bookMapper.userFindAllBook());
+    }
+
+    /**
+     * 管理员查询图书
+     * @return
+     */
+    @Override
+    public Result adminFindAllBook() {
+        return new Result(CodeEnum.FIND_BOOKS,bookMapper.adminFindAllBook());
     }
 
     /**
@@ -54,7 +63,7 @@ public class BookServiceImpl implements BookService {
             addBook(book);
         }
         book.setIsbn(randomIsbn());
-        return Result.success(bookMapper.insertBook(book));
+        return new Result(CodeEnum.BOOK_ADD_SUCCESS);
     }
 
     /**
@@ -99,7 +108,7 @@ public class BookServiceImpl implements BookService {
         if(books ==null){
             return new Result(CodeEnum.BOOK_find_FAILED);
         }
-        return Result.success(books);
+        return new Result(CodeEnum.FIND_BOOKS);
     }
 
     /**

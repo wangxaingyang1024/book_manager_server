@@ -117,17 +117,16 @@
     FROM relation_book_emp r
     WHERE r.job_number = #{jobNumber})
   </select>
-<select id="findAllBook" resultType="com.bookmanager.setting.model.Book">
-  SELECT
-      b.isbn,b.name,b.author,b.type,b.status,b.synopsis
-    FROM
-        employee e,
-        book b,
-        log_book_emp l
-    WHERE
-        e.job_number = l.job_num
-        AND b.isbn = l.book_isbn
+<select id="userFindAllBook" resultType="com.bookmanager.setting.model.Book">
+  select
+  <include refid="Base_Column_List"></include>
+  from book where status = 1
 </select>
+  <select id="adminFindAllBook" resultType="com.bookmanager.setting.model.Book">
+    select
+    <include refid="Base_Column_List"></include>
+    from book
+  </select>
   <select id="getBookIsbn" resultType="com.bookmanager.setting.model.Book">
     select
     <include refid="Base_Column_List"/>
