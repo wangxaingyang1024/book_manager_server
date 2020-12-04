@@ -25,6 +25,8 @@ import static com.bookmanager.setting.vo.Result.selectSuccess;
 public class EmployeeServiceImpl implements IEmployeeService {
      //管理员角色
     private static final Integer ADMIN_ROLE = 2;
+    private static final Integer ROLE = 1;
+    private static final Integer DELETE_ROLE = 0;
 
     @Resource
     private EmployeeMapper mapper ;
@@ -32,7 +34,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     //查询所有用户信息
     @Override
     public Result<List<SelectAllEmpDTO>> selectAllEmp() {
-        List<SelectAllEmpDTO> employees = mapper.selectAllEmp();
+        List<SelectAllEmpDTO> employees = mapper.selectAllEmp(ROLE);
         if (employees.size() == 0 ){
             return new Result(CodeEnum.NOT_EMP_REGISTER,-1);
         }
@@ -95,7 +97,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
         if(jn == null){
             return  new Result(CodeEnum.EMP_NOTEXIST,-1);
         }
-        mapper.deleteEmpByJobNumber(jobNumber);
+        mapper.deleteEmpByJobNumber(jobNumber,DELETE_ROLE," ");
         return new Result(CodeEnum.DELETE_SUCCESS,jn);
     }
 

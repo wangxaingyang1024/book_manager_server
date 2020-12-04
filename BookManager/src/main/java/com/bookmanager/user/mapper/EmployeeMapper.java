@@ -39,9 +39,9 @@ public interface EmployeeMapper {
 
     Integer selectEmpByJobNumber(Integer jobNumber);
 
-    Integer deleteEmpByJobNumber(Integer jobNumber);
+    Integer deleteEmpByJobNumber(@Param("jobNumber") Integer jobNumber,@Param("role") Integer role,@Param("phone") String phone);
 
     void updatePasswordByUsername(@Param("username") String username,@Param("password") String newPsw);
 
-    List<SelectAllEmpDTO> selectAllEmp();
+    List<SelectAllEmpDTO> selectAllEmp(Integer ROLE);
 }

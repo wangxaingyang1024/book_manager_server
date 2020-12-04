@@ -17637,3 +17637,183 @@ java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Integ
 2020-12-04 16:04:53.867 DEBUG 12020 --- [http-nio-8899-exec-10] c.b.u.m.E.selectPasswordByUsername       : ==>  Preparing: select password from employee where username=? ;
 2020-12-04 16:04:53.867 DEBUG 12020 --- [http-nio-8899-exec-10] c.b.u.m.E.selectPasswordByUsername       : ==> Parameters: qqq(String)
 2020-12-04 16:04:53.868 DEBUG 12020 --- [http-nio-8899-exec-10] c.b.u.m.E.selectPasswordByUsername       : <==      Total: 1
+2020-12-04 16:19:40.502 DEBUG 12020 --- [http-nio-8899-exec-3] c.b.u.m.E.selectEmpByUsername            : ==>  Preparing: select id, job_number, username, password, nick_name, gender, phone, age, role from employee where username=? ;
+2020-12-04 16:19:40.502 DEBUG 12020 --- [http-nio-8899-exec-3] c.b.u.m.E.selectEmpByUsername            : ==> Parameters: haha(String)
+2020-12-04 16:19:40.503 DEBUG 12020 --- [http-nio-8899-exec-3] c.b.u.m.E.selectEmpByUsername            : <==      Total: 0
+2020-12-04 16:19:40.510 ERROR 12020 --- [http-nio-8899-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+
+java.lang.NullPointerException: null
+	at com.bookmanager.user.service.impl.EmployeeServiceImpl.publicEmpLogin(EmployeeServiceImpl.java:135)
+	at com.bookmanager.user.controller.EmpCotroller.login(EmpCotroller.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+
+2020-12-04 16:19:52.889 DEBUG 12020 --- [http-nio-8899-exec-4] c.b.u.m.E.selectEmpByUsername            : ==>  Preparing: select id, job_number, username, password, nick_name, gender, phone, age, role from employee where username=? ;
+2020-12-04 16:19:52.890 DEBUG 12020 --- [http-nio-8899-exec-4] c.b.u.m.E.selectEmpByUsername            : ==> Parameters: haha(String)
+2020-12-04 16:19:52.894 DEBUG 12020 --- [http-nio-8899-exec-4] c.b.u.m.E.selectEmpByUsername            : <==      Total: 0
+2020-12-04 16:19:52.895 ERROR 12020 --- [http-nio-8899-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+
+java.lang.NullPointerException: null
+	at com.bookmanager.user.service.impl.EmployeeServiceImpl.publicEmpLogin(EmployeeServiceImpl.java:135)
+	at com.bookmanager.user.controller.EmpCotroller.login(EmpCotroller.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+
+2020-12-04 16:20:51.586  INFO 10500 --- [main] com.bookmanager.BookmanagerApplication   : Starting BookmanagerApplication on DESKTOP-80TVTMB with PID 10500 (F:\Java_Code2020\workspace1203\book_manager_server\BookManager\target\classes started by PC501 in F:\Java_Code2020\workspace1203\book_manager_server\BookManager)
+2020-12-04 16:20:51.588 DEBUG 10500 --- [main] com.bookmanager.BookmanagerApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-12-04 16:20:51.588  INFO 10500 --- [main] com.bookmanager.BookmanagerApplication   : No active profile set, falling back to default profiles: default
+2020-12-04 16:20:52.068  INFO 10500 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-12-04 16:20:52.087  INFO 10500 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 0 JPA repository interfaces.
+2020-12-04 16:20:52.432  INFO 10500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2020-12-04 16:20:52.439  INFO 10500 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-04 16:20:52.439  INFO 10500 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-12-04 16:20:52.518  INFO 10500 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-04 16:20:52.518  INFO 10500 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 901 ms
+2020-12-04 16:20:52.554  INFO 10500 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-12-04 16:20:52.616  INFO 10500 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-12-04 16:20:52.677  INFO 10500 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-04 16:20:52.831  INFO 10500 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-04 16:20:52.915  INFO 10500 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-12-04 16:20:53.012  INFO 10500 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-04 16:20:53.089  INFO 10500 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-12-04 16:20:53.104  WARN 10500 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-04 16:20:53.198  INFO 10500 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-04 16:20:53.204  INFO 10500 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-04 16:20:53.334  INFO 10500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path ''
+2020-12-04 16:20:53.336  INFO 10500 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-12-04 16:20:53.336  INFO 10500 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-12-04 16:20:53.342  INFO 10500 --- [main] com.bookmanager.BookmanagerApplication   : Started BookmanagerApplication in 2.105 seconds (JVM running for 2.617)
+2020-12-04 16:21:08.591  INFO 10500 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-04 16:21:08.591  INFO 10500 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-04 16:21:08.595  INFO 10500 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2020-12-04 16:21:35.149 DEBUG 10500 --- [http-nio-8899-exec-2] c.b.u.m.E.selectEmpByUsername            : ==>  Preparing: select id, job_number, username, password, nick_name, gender, phone, age, role from employee where username=? ;
+2020-12-04 16:21:35.160 DEBUG 10500 --- [http-nio-8899-exec-2] c.b.u.m.E.selectEmpByUsername            : ==> Parameters: aaa(String)
+2020-12-04 16:21:35.171 DEBUG 10500 --- [http-nio-8899-exec-2] c.b.u.m.E.selectEmpByUsername            : <==      Total: 1
+2020-12-04 16:21:35.172  INFO 10500 --- [http-nio-8899-exec-2] c.b.u.service.impl.EmployeeServiceImpl   : Employee(id=11, jobNumber=64728217, username=aaa, password=A115DEAD6B784B595F0961E44AEB9C458DD17A559617FDC5F476C385, nickName=aaa, gender=1, phone=17777777777, age=11, role=2)
+2020-12-04 16:21:35.172 DEBUG 10500 --- [http-nio-8899-exec-2] c.b.u.m.E.selectPasswordByUsername       : ==>  Preparing: select password from employee where username=? ;
+2020-12-04 16:21:35.173 DEBUG 10500 --- [http-nio-8899-exec-2] c.b.u.m.E.selectPasswordByUsername       : ==> Parameters: aaa(String)
+2020-12-04 16:21:35.175 DEBUG 10500 --- [http-nio-8899-exec-2] c.b.u.m.E.selectPasswordByUsername       : <==      Total: 1
+2020-12-04 16:21:45.742 DEBUG 10500 --- [http-nio-8899-exec-4] c.b.b.m.I.selectNewLogInfo               : ==>  Preparing: SELECT nick_name, job_number, lend_time, `name` bookName , isbn, return_time FROM employee e, book b, log_book_emp l WHERE e.job_number = l.job_num AND b.isbn = l.book_isbn ORDER BY l.id DESC LIMIT 10;
+2020-12-04 16:21:45.742 DEBUG 10500 --- [http-nio-8899-exec-4] c.b.b.m.I.selectNewLogInfo               : ==> Parameters: 
+2020-12-04 16:21:45.745 DEBUG 10500 --- [http-nio-8899-exec-4] c.b.b.m.I.selectNewLogInfo               : <==      Total: 3
+2020-12-04 16:21:48.971 DEBUG 10500 --- [http-nio-8899-exec-5] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee where role = ?;
+2020-12-04 16:21:48.972 DEBUG 10500 --- [http-nio-8899-exec-5] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 1(Integer)
+2020-12-04 16:21:48.974 DEBUG 10500 --- [http-nio-8899-exec-5] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 2
+2020-12-04 16:22:36.759 DEBUG 10500 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee where role = ?;
+2020-12-04 16:22:36.760 DEBUG 10500 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 1(Integer)
+2020-12-04 16:22:36.761 DEBUG 10500 --- [http-nio-8899-exec-7] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 2
+2020-12-04 16:22:39.723 DEBUG 10500 --- [http-nio-8899-exec-8] c.b.u.m.E.selectEmpByJobNumber           : ==>  Preparing: select job_number from employee where job_number = ?;
+2020-12-04 16:22:39.724 DEBUG 10500 --- [http-nio-8899-exec-8] c.b.u.m.E.selectEmpByJobNumber           : ==> Parameters: 97868804(Integer)
+2020-12-04 16:22:39.726 DEBUG 10500 --- [http-nio-8899-exec-8] c.b.u.m.E.selectEmpByJobNumber           : <==      Total: 1
+2020-12-04 16:22:39.727 DEBUG 10500 --- [http-nio-8899-exec-8] c.b.u.m.E.deleteEmpByJobNumber           : ==>  Preparing: update employee set role = ?,phone = ? where job_number = ?
+2020-12-04 16:22:39.727 DEBUG 10500 --- [http-nio-8899-exec-8] c.b.u.m.E.deleteEmpByJobNumber           : ==> Parameters: 0(Integer),  (String), 97868804(Integer)
+2020-12-04 16:22:39.731 DEBUG 10500 --- [http-nio-8899-exec-8] c.b.u.m.E.deleteEmpByJobNumber           : <==    Updates: 1
+2020-12-04 16:22:39.982 DEBUG 10500 --- [http-nio-8899-exec-9] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee where role = ?;
+2020-12-04 16:22:39.982 DEBUG 10500 --- [http-nio-8899-exec-9] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 1(Integer)
+2020-12-04 16:22:39.983 DEBUG 10500 --- [http-nio-8899-exec-9] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 1
+2020-12-04 16:22:43.377 DEBUG 10500 --- [http-nio-8899-exec-10] c.b.u.m.EmployeeMapper.selectAllEmp      : ==>  Preparing: select job_number, username, nick_name, gender, phone, age, role from employee where role = ?;
+2020-12-04 16:22:43.377 DEBUG 10500 --- [http-nio-8899-exec-10] c.b.u.m.EmployeeMapper.selectAllEmp      : ==> Parameters: 1(Integer)
+2020-12-04 16:22:43.380 DEBUG 10500 --- [http-nio-8899-exec-10] c.b.u.m.EmployeeMapper.selectAllEmp      : <==      Total: 1
+2020-12-04 16:23:57.046 DEBUG 10500 --- [http-nio-8899-exec-3] c.b.u.m.E.selectEmpByUsername            : ==>  Preparing: select id, job_number, username, password, nick_name, gender, phone, age, role from employee where username=? ;
+2020-12-04 16:23:57.047 DEBUG 10500 --- [http-nio-8899-exec-3] c.b.u.m.E.selectEmpByUsername            : ==> Parameters: aaa(String)
+2020-12-04 16:23:57.048 DEBUG 10500 --- [http-nio-8899-exec-3] c.b.u.m.E.selectEmpByUsername            : <==      Total: 1
+2020-12-04 16:23:57.048  INFO 10500 --- [http-nio-8899-exec-3] c.b.u.service.impl.EmployeeServiceImpl   : Employee(id=11, jobNumber=64728217, username=aaa, password=A115DEAD6B784B595F0961E44AEB9C458DD17A559617FDC5F476C385, nickName=aaa, gender=1, phone=17777777777, age=11, role=2)
+2020-12-04 16:23:57.048 DEBUG 10500 --- [http-nio-8899-exec-3] c.b.u.m.E.selectPasswordByUsername       : ==>  Preparing: select password from employee where username=? ;
+2020-12-04 16:23:57.048 DEBUG 10500 --- [http-nio-8899-exec-3] c.b.u.m.E.selectPasswordByUsername       : ==> Parameters: aaa(String)
+2020-12-04 16:23:57.049 DEBUG 10500 --- [http-nio-8899-exec-3] c.b.u.m.E.selectPasswordByUsername       : <==      Total: 1

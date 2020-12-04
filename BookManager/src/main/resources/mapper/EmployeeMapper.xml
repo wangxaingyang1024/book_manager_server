@@ -79,7 +79,8 @@
   <select id="selectAllEmp"  resultType="com.bookmanager.user.dto.SelectAllEmpDTO">
     select
     <include refid="Base_All_List"/>
-    from employee ;
+    from employee
+    where role = #{ROLE};
   </select>
   <select id="selectEmpByJobNumber" parameterType="integer" resultType="java.lang.Integer">
     select job_number from employee where job_number = #{jobNumber};
@@ -138,9 +139,6 @@
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-  </delete>
-  <delete id="deleteEmpByJobNumber" parameterType="integer" >
-    delete from employee where job_number = #{jobNumber};
   </delete>
   <insert id="insert" parameterType="com.bookmanager.setting.model.Employee">
     insert into employee (id, job_number, username, 
@@ -260,6 +258,11 @@
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="deleteEmpByJobNumber" >
+    update employee
+    set role = #{role},phone = #{phone}
+    where job_number = #{jobNumber}
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.bookmanager.setting.model.Employee">
     update employee
