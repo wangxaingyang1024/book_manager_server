@@ -6,7 +6,7 @@
     <result column="isbn" jdbcType="BIGINT" property="isbn" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="author" jdbcType="VARCHAR" property="author" />
-    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="type" jdbcType="INTEGER" property="type" />
     <result column="status" jdbcType="BIT" property="status" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.bookmanager.setting.model.Book">
@@ -111,7 +111,7 @@
   </select>
   <select id="FindByEmpNumber" parameterType="int" resultType="com.bookmanager.setting.model.Book">
     SELECT
-    <include refid="Base_Column_List"></include>
+    <include refid="Base_Column_List"/>
     FROM book WHERE isbn IN(
     SELECT book_isbn
     FROM relation_book_emp r
@@ -120,22 +120,13 @@
 <select id="findAllBook" resultType="com.bookmanager.setting.model.Book">
   SELECT
       b.isbn,b.name,b.author,b.type,b.status,b.synopsis
-    FROM
-        employee e,
-        book b,
-        log_book_emp l
-    WHERE
-        e.job_number = l.job_num
-        AND b.isbn = l.book_isbn
+    FROM book b ;
 </select>
   <select id="getBookIsbn" resultType="com.bookmanager.setting.model.Book">
     select
     <include refid="Base_Column_List"/>
     from book where isbn = #{isbn}
   </select>
-<select id="findAllBookIsbn" resultType="com.bookmanager.setting.model.Book">
-  select isbn from book
-</select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from book
     where id = #{id,jdbcType=BIGINT}
@@ -209,7 +200,7 @@
         #{author,jdbcType=VARCHAR},
       </if>
       <if test="type != null">
-        #{type,jdbcType=VARCHAR},
+        #{type,jdbcType=INTEGER},
       </if>
       <if test="empNumber != null">
         #{empNumber,jdbcType=BIGINT},
@@ -223,6 +214,21 @@
     </trim>
   </insert>
 
+  <select id="selectListByType" resultType="com.bookmanager.book.dto.BookTypeDTO">
+    SELECT book_type.id,book_type.name
+    FROM book_type
+    where book_type.id in (
+    SELECT DISTINCT(type)
+    from book
+    )
+  </select>
+  <select id="selectLikeName" parameterType="string" resultType="com.bookmanager.setting.model.Book">
+   select
+   <include refid="Base_Column_List"/>
+   from book
+   where `name` like #{name};
+  </select>
+
   <select id="countByExample" parameterType="com.bookmanager.setting.model.BookExample" resultType="java.lang.Long">
     select count(*) from book
     <if test="_parameter != null">
@@ -235,15 +241,15 @@
     from book
     where isbn = #{isbn}
   </select>
-  <update id="updateBook">
+  <update id="updateBook" parameterType="com.bookmanager.setting.model.Book">
     update book
-    set isbn = #{isbn},
-      name = #{name},
-      author = #{author},
-      type = #{type},
-      status = #{status},
-      synopsis = #{synopsis}
-    where isbn = #{isbn}
+    set isbn = #{book.isbn},
+      `name` = #{book.name},
+      author = #{book.author},
+      `type`= #{book.type},
+      status = #{book.status},
+      synopsis = #{book.synopsis}
+    where isbn = #{book.isbn}
   </update>
   <update id="borrowBookByIsbn" parameterType="long">
     UPDATE book SET STATUS=0 WHERE isbn=#{isbn}
@@ -267,7 +273,7 @@
         author = #{record.author,jdbcType=VARCHAR},
       </if>
       <if test="record.type != null">
-        type = #{record.type,jdbcType=VARCHAR},
+        type = #{record.type,jdbcType=INTEGER},
       </if>
       <if test="record.empNumber != null">
         emp_number = #{record.empNumber,jdbcType=BIGINT},
@@ -289,7 +295,7 @@
       isbn = #{record.isbn,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       author = #{record.author,jdbcType=VARCHAR},
-      type = #{record.type,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
       emp_number = #{record.empNumber,jdbcType=BIGINT},
       status = #{record.status,jdbcType=BIT},
       synopsis = #{record.synopsis,jdbcType=LONGVARCHAR}
@@ -303,7 +309,7 @@
       isbn = #{record.isbn,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       author = #{record.author,jdbcType=VARCHAR},
-      type = #{record.type,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
       emp_number = #{record.empNumber,jdbcType=BIGINT},
       status = #{record.status,jdbcType=BIT}
     <if test="_parameter != null">
@@ -323,7 +329,7 @@
         author = #{author,jdbcType=VARCHAR},
       </if>
       <if test="type != null">
-        type = #{type,jdbcType=VARCHAR},
+        type = #{type,jdbcType=INTEGER},
       </if>
       <if test="empNumber != null">
         emp_number = #{empNumber,jdbcType=BIGINT},
@@ -342,7 +348,7 @@
     set isbn = #{isbn,jdbcType=BIGINT},
       name = #{name,jdbcType=VARCHAR},
       author = #{author,jdbcType=VARCHAR},
-      type = #{type,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
       emp_number = #{empNumber,jdbcType=BIGINT},
       status = #{status,jdbcType=BIT},
       synopsis = #{synopsis,jdbcType=LONGVARCHAR}
@@ -353,7 +359,7 @@
     set isbn = #{isbn,jdbcType=BIGINT},
       name = #{name,jdbcType=VARCHAR},
       author = #{author,jdbcType=VARCHAR},
-      type = #{type,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
       emp_number = #{empNumber,jdbcType=BIGINT},
       status = #{status,jdbcType=BIT}
     where id = #{id,jdbcType=BIGINT}

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/api/admin")
 public class BookAdminController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class BookAdminController {
      * @param jobNumber
      * @return
      */
-    @PostMapping("/findOne/{jobNumber}")
+    @GetMapping("/findOne/{jobNumber}")
     public  Result userFindByEmpNumber(@PathVariable int jobNumber){
         return bookService.findByEmpNumber(jobNumber);
     }
@@ -60,8 +60,12 @@ public class BookAdminController {
      * @return
      */
     @PostMapping("/update/{isbn}")
-    public Result updateBook(@PathVariable Long isbn){
-        Result result = bookService.updateBook(isbn);
+    public Result updateBook(@PathVariable Book book){
+        Result result = bookService.updateBook(book);
         return result;
+    }
+    @GetMapping("/type")
+    public Result<List<String>> getBookTypeList(){
+        return bookService.getListType();
     }
 }

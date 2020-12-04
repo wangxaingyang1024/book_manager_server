@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/book")
 public class BookController {
 
     @Autowired
@@ -34,9 +34,9 @@ public class BookController {
      * @param jobNumber
      * @return
      */
-    @PostMapping("/findOne/{jobNumber}")
-    public  Result userFindByEmpNumber(@PathVariable int jobNumber){
-        return Result.success(bookService.findByEmpNumber(jobNumber));
+    @GetMapping("/findOne/{jobNumber}")
+    public  Result<List<Book>> userFindByEmpNumber(@PathVariable int jobNumber){
+        return bookService.findByEmpNumber(jobNumber);
     }
     /**
      * 借书
@@ -53,5 +53,10 @@ public class BookController {
     public Result returnBoook(@RequestBody RelationBookEmpDTO rbed){
         bookService.returnBook(rbed);
         return new Result(CodeEnum.BOOK_RETURN_SUCCESS);
+    }
+
+    @PostMapping("/likeName")
+    public Result likeQuery(@RequestBody String name ){
+        return bookService.selectLike(name);
     }
 }

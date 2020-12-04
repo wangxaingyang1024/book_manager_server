@@ -28,7 +28,7 @@ public interface BookService {
      * @param isbn
      * @return
      */
-    Result deleteBookByIsbn(long isbn);
+    Result deleteBookByIsbn(Long isbn);
 
     /**
      *
@@ -46,14 +46,18 @@ public interface BookService {
 
     /**
      * 管理员修改图书
-     * @param isbn
+     * @param book
      * @return
      */
-    Result updateBook(Long isbn);
+    Result updateBook(Book book);
 
     /**
      * 管理员查询某用户的借书情况
      * @return
      */
    Result findByEmpNumber(int jobNumber);
+
+   Result getListType();
+
+   Result selectLike(String name);
 }

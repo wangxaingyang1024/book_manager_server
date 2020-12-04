@@ -1,12 +1,16 @@
 package com.bookmanager.book.mapper;
 
+import com.bookmanager.book.dto.BookTypeDTO;
 import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.setting.model.Book;
 import com.bookmanager.setting.model.BookExample;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
 @Mapper
 public interface BookMapper {
     long countByExample(BookExample example);
@@ -30,6 +34,10 @@ public interface BookMapper {
     Book findBookByIsbn(long isbn);
 
     Book getBookIsbn(Long lon);
+
+    List<BookTypeDTO> selectListByType() ;
+
+    List<Book> selectLikeName(String name );
 
     int deleteBookByIsbn(Long isbn);
 

@@ -1,6 +1,7 @@
 package com.bookmanager.book.service.impl;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
+import com.bookmanager.book.dto.BookTypeDTO;
 import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.book.mapper.BookMapper;
 import com.bookmanager.book.service.BookService;
@@ -17,6 +18,7 @@ import javax.annotation.Resource;
 import javax.persistence.Convert;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 @Service
@@ -64,7 +66,7 @@ public class BookServiceImpl implements BookService {
      * @return
      */
     @Override
-    public Result deleteBookByIsbn(long isbn) {
+    public Result deleteBookByIsbn(Long isbn) {
       Book book = bookMapper.findBookByIsbn(isbn);
       if(book != null){
           bookMapper.deleteBookByIsbn(isbn);
@@ -74,18 +76,21 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     * 更新图书
-     * @param isbn
+     *
+     * @param book
      * @return
      */
     @Override
-    public Result updateBook(Long isbn) {
-        Book book = bookMapper.findBookByIsbn(isbn);
-        if(book == null){
+    public Result updateBook(Book book) {
+        Book b = bookMapper.findBookByIsbn(book.getIsbn());
+        if(b == null){
             return new Result(CodeEnum.BOOK_UPDATE_FAILED);
         }
-        //todo:更新
-        bookMapper.updateBook(book);
+        //更新
+        int i = bookMapper.updateBook(book);
+        if (i == 0 ){
+            return new Result(CodeEnum.BOOK_UPDATE_FAILED);
+        }
         return new Result(CodeEnum.BOOK_UPDATE_SUCCESS);
     }
 
@@ -99,7 +104,7 @@ public class BookServiceImpl implements BookService {
         if(books ==null){
             return new Result(CodeEnum.BOOK_find_FAILED);
         }
-        return Result.success(books);
+        return new Result(CodeEnum.SELECT_SUCCESS,books);
     }
 
     /**
@@ -135,6 +140,27 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
+     * 查詢圖書類型
+     * @return
+     */
+    @Override
+    public Result getListType() {
+        List<BookTypeDTO> types = bookMapper.selectListByType();
+        return new Result(CodeEnum.SELECT_SUCCESS,types);
+    }
+
+    /**
+     * 模糊查询
+     * @param name
+     * @return
+     */
+    @Override
+    public Result selectLike(String name) {
+        String n = "%"+name+"%";
+        return new Result(CodeEnum.SELECT_SUCCESS,bookMapper.selectLikeName(n));
+    }
+
+    /**
      *随机生成图书编号isbn
      */
     public static long randomIsbn(){
@@ -149,4 +175,6 @@ public class BookServiceImpl implements BookService {
         }
         return Long.valueOf(isbnStr);
     }
+
+
 }

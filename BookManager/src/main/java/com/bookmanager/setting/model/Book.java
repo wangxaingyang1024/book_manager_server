@@ -16,7 +16,7 @@ public class Book {
 
     private String author;
 
-    private String type;
+    private Integer type;
 
     private Boolean status;
 
