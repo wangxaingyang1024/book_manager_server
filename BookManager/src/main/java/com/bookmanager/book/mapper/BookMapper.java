@@ -27,13 +27,15 @@ public interface BookMapper {
 
     Book selectByPrimaryKey(Long id);
 
+    List<BookTypeDTO> selectBookByLevel(Integer level) ;
+
+    List<BookTypeDTO> selectBookTypeByPid(Integer pid);
+
     int insertBook(Book record);
 
     Book findBookByIsbn(long isbn);
 
     Book getBookIsbn(Long lon);
-
-    List<BookTypeDTO> selectListByType() ;
 
     List<Book> selectLikeName(String name );
 

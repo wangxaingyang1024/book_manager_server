@@ -217,17 +217,22 @@
     </trim>
   </insert>
 
-  <select id="selectListByType" resultType="com.bookmanager.book.dto.BookTypeDTO">
-    SELECT book_type.my_id mid,book_type.parent_id pid, book_type.name,book_type.level
-    FROM book_type
-  </select>
   <select id="selectLikeName" parameterType="string" resultType="com.bookmanager.setting.model.Book">
    select
    <include refid="Base_Column_List"/>
    from book
    where `name` like #{name};
   </select>
-
+  <select id="selectBookByLevel" parameterType="integer" resultType="com.bookmanager.book.dto.BookTypeDTO">
+    SELECT book_type.my_id mid,book_type.parent_id pid, book_type.name,book_type.level
+    FROM book_type
+    where `level` = #{level} ;
+  </select>
+  <select id="selectBookTypeByPid" parameterType="integer" resultType="com.bookmanager.book.dto.BookTypeDTO">
+    SELECT book_type.my_id mid,book_type.parent_id pid, book_type.name,book_type.level
+    FROM book_type
+    where parent_id = #{pid} ;
+  </select>
   <select id="countByExample" parameterType="com.bookmanager.setting.model.BookExample" resultType="java.lang.Long">
     select count(*) from book
     <if test="_parameter != null">

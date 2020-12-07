@@ -18,16 +18,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.annotation.Resource;
 import javax.persistence.Convert;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 @Service
 @Slf4j
 public class BookServiceImpl implements BookService {
 
     private static final Integer STATUS = 1 ;
+    private static final Integer ROOT_LEVEL = 1 ;
+    private static final Integer SECOND_LEVEL =2 ;
     @Resource
     private BookMapper bookMapper;
 
@@ -160,14 +159,42 @@ public class BookServiceImpl implements BookService {
         return new Result(CodeEnum.BOOK_RETURN_FAILED);
     }
 
+
     /**
      * 查詢圖書類型
      * @return
      */
+
     @Override
     public Result getListType() {
-        List<BookTypeDTO> types = bookMapper.selectListByType();
-        return new Result(CodeEnum.SELECT_SUCCESS,types);
+        List<BookTypeDTO> twoNode = bookMapper.selectBookByLevel(ROOT_LEVEL);
+        List<BookTypeDTO> oneNode = bookMapper.selectBookByLevel(SECOND_LEVEL);
+        List<BookTypeDTO> tType = getOneType(twoNode);
+        for(int x = 0 ; x <oneNode.size() ; x ++){
+            ArrayList<BookTypeDTO> bookTypeDTOS = new ArrayList<>();
+            Integer mid = oneNode.get(x).getMid();
+            for (int y = 0 ; y < tType.size() ; y ++){
+                if(mid == tType.get(y).getPid()){
+                    bookTypeDTOS.add(tType.get(y));
+                }
+            }
+            oneNode.get(x).setChildren(bookTypeDTOS);
+        }
+        return new Result(CodeEnum.SELECT_SUCCESS,oneNode);
+    }
+
+    /**
+     * 获取二级类型
+     * @param nodeT
+     * @return
+     */
+    private List<BookTypeDTO> getOneType(List<BookTypeDTO> nodeT){
+        for(int x = 0 ; x<nodeT.size(); x ++) {
+            Integer mid = nodeT.get(x).getMid();
+            List<BookTypeDTO> children = bookMapper.selectBookTypeByPid(mid); //根据一个pid获取当前pid下的所有子节点
+            nodeT.get(x).setChildren(children);
+        }
+        return nodeT;
     }
 
     /**
@@ -180,6 +207,8 @@ public class BookServiceImpl implements BookService {
         String n = "%"+name+"%";
         return new Result(CodeEnum.SELECT_SUCCESS,bookMapper.selectLikeName(n));
     }
+
+
 
     /**
      *随机生成图书编号isbn
