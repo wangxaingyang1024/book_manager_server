@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.Random;
 
 @SpringBootTest
@@ -38,5 +39,10 @@ public class BookmanagerApplicationTests {
 //将字符串转换为数字并du输出
         int num=Integer.parseInt(str.toString());
         System.out.println(num);
+    }
+
+    @Test
+    public void test03(){
+        System.out.println(new Date());
     }
 }

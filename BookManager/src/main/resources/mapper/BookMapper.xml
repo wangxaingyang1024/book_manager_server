@@ -117,11 +117,11 @@
     FROM relation_book_emp r
     WHERE r.job_number = #{jobNumber})
   </select>
-<select id="findAllBook" resultType="com.bookmanager.setting.model.Book">
-  SELECT
-      b.isbn,b.name,b.author,b.type,b.status,b.synopsis
-    FROM book b ;
-</select>
+  <select id="findAdminAllBook" resultType="com.bookmanager.setting.model.Book">
+    SELECT
+    b.isbn,b.name,b.author,b.type,b.status,b.synopsis
+    FROM book b;
+  </select>
   <select id="getBookIsbn" resultType="com.bookmanager.setting.model.Book">
     select
     <include refid="Base_Column_List"/>
@@ -155,8 +155,11 @@
     insert into book (isbn,name,author, type,status, synopsis)
     values (#{isbn},#{name},#{author}, #{type},#{status}, #{synopsis})
   </insert>
-  <insert id="insertLog" parameterType="com.bookmanager.book.dto.RelationBookEmpDTO">
+  <insert id="insertRelation" parameterType="com.bookmanager.book.dto.RelationBookEmpDTO">
     insert into relation_book_emp (job_number,book_isbn) values (#{rbed.jobNumber,jdbcType=INTEGER},#{rbed.isbn,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertLog" parameterType="com.bookmanager.book.dto.RelationBookEmpDTO">
+    insert into log_book_emp (lend_time,job_num,book_isbn) values (#{rbed.currentTime},#{rbed.jobNumber},#{rbed.isbn})
   </insert>
   <insert id="insertSelective" parameterType="com.bookmanager.setting.model.Book">
     insert into book
@@ -215,12 +218,8 @@
   </insert>
 
   <select id="selectListByType" resultType="com.bookmanager.book.dto.BookTypeDTO">
-    SELECT book_type.id,book_type.name
+    SELECT book_type.my_id mid,book_type.parent_id pid, book_type.name,book_type.level
     FROM book_type
-    where book_type.id in (
-    SELECT DISTINCT(type)
-    from book
-    )
   </select>
   <select id="selectLikeName" parameterType="string" resultType="com.bookmanager.setting.model.Book">
    select
@@ -250,6 +249,9 @@
       status = #{book.status},
       synopsis = #{book.synopsis}
     where isbn = #{book.isbn}
+  </update>
+  <update id="updateReturnTime" parameterType="com.bookmanager.book.dto.RelationBookEmpDTO">
+    update log_book_emp set log_book_emp.return_time = #{rbed.currentTime} where log_book_emp.book_isbn = #{rbed.isbn}
   </update>
   <update id="borrowBookByIsbn" parameterType="long">
     UPDATE book SET STATUS=0 WHERE isbn=#{isbn}

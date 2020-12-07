@@ -9,6 +9,7 @@ import com.bookmanager.setting.model.Book;
 import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Mapper;
 import org.aspectj.apache.bcel.classfile.Code;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.annotation.Resource;
 import javax.persistence.Convert;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -25,6 +27,7 @@ import java.util.Random;
 @Slf4j
 public class BookServiceImpl implements BookService {
 
+    private static final Integer STATUS = 1 ;
     @Resource
     private BookMapper bookMapper;
 
@@ -34,13 +37,13 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     * 用户查询图书
+     * 管理员查询图书
      *
      * @return
      */
     @Override
-    public Result findAllBook() {
-         return new Result(CodeEnum.FIND_BOOKS,bookMapper.findAllBook());
+    public Result findAdminAllBook() {
+        return new Result(CodeEnum.FIND_BOOKS,bookMapper.findAdminAllBook());
     }
 
     /**
@@ -51,14 +54,17 @@ public class BookServiceImpl implements BookService {
      */
     @Override
     public Result addBook(Book book) {
-        Book book1 = bookMapper.getBookIsbn(randomIsbn());
+        Book book1 = bookMapper.getBookIsbn(book.getIsbn());
         if (book1 != null) {
+            return new Result(CodeEnum.BOOK_ADD_FAILED);
+        }
+        Book b = bookMapper.getBookIsbn(randomIsbn());
+        if (b != null) {
             addBook(book);
         }
         book.setIsbn(randomIsbn());
-        return Result.success(bookMapper.insertBook(book));
+        return new Result(CodeEnum.BOOK_ADD_SUCCESS,bookMapper.insertBook(book));
     }
-
     /**
      * 删除图书
      *
@@ -118,9 +124,16 @@ public class BookServiceImpl implements BookService {
         if(book == null && book.getStatus() == false){
             return new Result(CodeEnum.BOOK_BORROW_FAILED);
         }
-        bookMapper.borrowBookByIsbn(rbed.getIsbn());
-        bookMapper.insertLog(rbed);
-        return new Result(CodeEnum.BOOK_BORROW_SUCCESS);
+        try {
+            bookMapper.borrowBookByIsbn(rbed.getIsbn());
+            rbed.setCurrentTime(new Date());
+            bookMapper.insertLog(rbed);
+            bookMapper.insertRelation(rbed);
+            return new Result(CodeEnum.BOOK_BORROW_SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new Result(CodeEnum.BOOK_BORROW_FAILED);
     }
 
     /**
@@ -134,9 +147,17 @@ public class BookServiceImpl implements BookService {
         if(book == null && book.getStatus() == true){
             return new Result(CodeEnum.BOOK_RETURN_FAILED);
         }
-        bookMapper.returnBookByIsbn(rbed.getIsbn());
-        bookMapper.deleteLogByJobNumberAndIsbn(rbed);
-        return new Result(CodeEnum.BOOK_RETURN_SUCCESS);
+        try {
+            bookMapper.returnBookByIsbn(rbed.getIsbn());
+            rbed.setCurrentTime(new Date());
+//        bookMapper.selectIsbnByLog(rbed.getIsbn());
+            bookMapper.updateReturnTime(rbed);
+            bookMapper.deleteLogByJobNumberAndIsbn(rbed);
+            return new Result(CodeEnum.BOOK_RETURN_SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new Result(CodeEnum.BOOK_RETURN_FAILED);
     }
 
     /**

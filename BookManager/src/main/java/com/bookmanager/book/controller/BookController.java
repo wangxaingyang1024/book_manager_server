@@ -1,5 +1,6 @@
 package com.bookmanager.book.controller;
 
+import com.bookmanager.book.dto.BookTypeDTO;
 import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.book.service.BookService;
 import com.bookmanager.book.service.impl.BookServiceImpl;
@@ -19,16 +20,6 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
-    /**
-     * 查询所有图书
-     * @return list
-     */
-    @GetMapping("/find")
-    public Result userFindAll(){
-        Result result = bookService.findAllBook();
-        return Result.success(result);
-    }
-
     /**
      * 用户查询自己的借书信息
      * @param jobNumber
@@ -56,7 +47,7 @@ public class BookController {
     }
 
     @PostMapping("/likeName")
-    public Result likeQuery(@RequestBody String name ){
-        return bookService.selectLike(name);
+    public Result likeQuery(@RequestBody BookTypeDTO btd){
+        return bookService.selectLike(btd.getName());
     }
 }

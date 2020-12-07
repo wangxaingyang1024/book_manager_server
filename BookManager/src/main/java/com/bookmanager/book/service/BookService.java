@@ -10,12 +10,11 @@ import java.util.List;
 public interface BookService {
 
     Book getBook(Long id);
-
     /**
-     * 用户查询所有图书
+     * 管理员获取图书列表
      * @return
      */
-    Result findAllBook();
+    Result findAdminAllBook();
     /**
      * 录入新书
      * @param book
