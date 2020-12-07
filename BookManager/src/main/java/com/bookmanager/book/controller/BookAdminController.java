@@ -64,6 +64,11 @@ public class BookAdminController {
         Result result = bookService.updateBook(book);
         return result;
     }
+
+    /**
+     * 获取所有分类
+     * @return
+     */
     @GetMapping("/type")
     public Result<List<String>> getBookTypeList(){
         return bookService.getListType();
