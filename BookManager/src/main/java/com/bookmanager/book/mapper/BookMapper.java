@@ -28,10 +28,6 @@ public interface BookMapper {
 
     Book selectByPrimaryKey(Long id);
 
-    List<BookTypeDTO> selectBookByLevel(Integer level) ;
-
-    List<BookTypeDTO> selectBookTypeByPid(Integer pid);
-
     int insertBook(@Param("record") Book record);
 
     Book findBookByIsbn(long isbn);
@@ -71,7 +67,5 @@ public interface BookMapper {
     int updateReturnTime(@Param("rbed") RelationBookEmpDTO rbed);
 
     List<BookListDTO> findAdminAllBook();
-
-    Integer selectPidByMid(Integer level);
 
 }

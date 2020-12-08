@@ -122,9 +122,6 @@
     FROM book b LEFT OUTER JOIN book_type bt
     ON b.type = bt.my_id
   </select>
-  <select id="selectPidByMid" parameterType="integer" resultType="integer">
-        select parent_id from book_type where my_id = #{level};
-  </select>
   <select id="getBookIsbn" resultType="com.bookmanager.setting.model.Book">
     select
     <include refid="Base_Column_List"/>
@@ -225,16 +222,6 @@
    <include refid="Base_Column_List"/>
    from book
    where `name` like #{name};
-  </select>
-  <select id="selectBookByLevel" parameterType="integer" resultType="com.bookmanager.book.dto.BookTypeDTO">
-    SELECT book_type.my_id mid,book_type.parent_id pid, book_type.name,book_type.level
-    FROM book_type
-    where `level` = #{level} ;
-  </select>
-  <select id="selectBookTypeByPid" parameterType="integer" resultType="com.bookmanager.book.dto.BookTypeDTO">
-    SELECT book_type.my_id mid,book_type.parent_id pid, book_type.name,book_type.level
-    FROM book_type
-    where parent_id = #{pid} ;
   </select>
   <select id="countByExample" parameterType="com.bookmanager.setting.model.BookExample" resultType="java.lang.Long">
     select count(*) from book

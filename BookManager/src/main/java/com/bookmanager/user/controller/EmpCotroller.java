@@ -31,6 +31,12 @@ public class EmpCotroller {
         }
         return new Result(CodeEnum.LOGIN_FAILURE) ;
     }
+
+    /**
+     * 用户注册
+     * @param employee
+     * @return
+     */
     @PostMapping("signUp")
     public Result signUp(@RequestBody Employee employee) {
         try {

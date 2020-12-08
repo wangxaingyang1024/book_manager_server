@@ -6,11 +6,12 @@ import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.book.mapper.BookMapper;
 import com.bookmanager.book.service.BookService;
 import com.bookmanager.setting.model.Book;
+import com.bookmanager.setting.util.RandomNumber;
 import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
+import com.bookmanager.type_level.mapper.BookTypeLevelMapper;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,11 +22,13 @@ import java.util.*;
 @Slf4j
 public class BookServiceImpl implements BookService {
 
-    private static final Integer STATUS = 1 ;
     private static final Integer ROOT_LEVEL = 1 ;
     private static final Integer SECOND_LEVEL =2 ;
     @Resource
     private BookMapper bookMapper;
+
+    @Resource
+    private BookTypeLevelMapper typeLevelMapper ;
 
     @Override
     public Book getBook(Long id) {
@@ -57,9 +60,9 @@ public class BookServiceImpl implements BookService {
     private Integer[] findAllTid(Integer type){
         Integer[] level = new Integer[3];
         level[2] = type ;
-        Integer level2 = bookMapper.selectPidByMid(type);
+        Integer level2 = typeLevelMapper.selectPidByMid(type);
         level[1] = level2 ;
-        level[0] =bookMapper.selectPidByMid(level2);
+        level[0] =typeLevelMapper.selectPidByMid(level2);
         return level ;
     }
 
@@ -75,11 +78,11 @@ public class BookServiceImpl implements BookService {
         if (book1 != null) {
             return new Result(CodeEnum.BOOK_ADD_FAILED);
         }
-        Book b = bookMapper.getBookIsbn(randomIsbn());
+        Book b = bookMapper.getBookIsbn(Long.parseLong(RandomNumber.NumberUUID(9)));
         if (b != null) {
             addBook(book);
         }
-        book.setIsbn(randomIsbn());
+        book.setIsbn(Long.parseLong(RandomNumber.NumberUUID(9)));
         return new Result(CodeEnum.BOOK_ADD_SUCCESS,bookMapper.insertBook(book));
     }
     /**
@@ -185,8 +188,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Result getListType(Integer level) {
-    List<BookTypeDTO> twoNode = bookMapper.selectBookByLevel(SECOND_LEVEL);
-    List<BookTypeDTO> oneNode = bookMapper.selectBookByLevel(ROOT_LEVEL);
+    List<BookTypeDTO> twoNode = typeLevelMapper.selectBookByLevel(SECOND_LEVEL);
+    List<BookTypeDTO> oneNode = typeLevelMapper.selectBookByLevel(ROOT_LEVEL);
         if(level == 1){
             return new Result(CodeEnum.SELECT_SUCCESS,oneNode);
         }
@@ -219,7 +222,7 @@ public class BookServiceImpl implements BookService {
     private List<BookTypeDTO> getOneType(List<BookTypeDTO> nodeT){
         for(int x = 0 ; x<nodeT.size(); x ++) {
             Integer mid = nodeT.get(x).getMid();
-            List<BookTypeDTO> children = bookMapper.selectBookTypeByPid(mid); //根据一个pid获取当前pid下的所有子节点
+            List<BookTypeDTO> children = typeLevelMapper.selectBookTypeByPid(mid); //根据一个pid获取当前pid下的所有子节点
             nodeT.get(x).setChildren(children);
         }
         return nodeT;
@@ -235,24 +238,4 @@ public class BookServiceImpl implements BookService {
         String n = "%"+name+"%";
         return new Result(CodeEnum.SELECT_SUCCESS,bookMapper.selectLikeName(n));
     }
-
-
-
-    /**
-     *随机生成图书编号isbn
-     */
-    public static long randomIsbn(){
-        String isbnStr = "";
-        for (int i=0;i<9;i++){
-            int random = (int) (Math.random() * 9);
-            if (isbnStr.indexOf(random + "") != -1) {
-                i = i - 1;
-            } else {
-                isbnStr += random;
-            }
-        }
-        return Long.valueOf(isbnStr);
-    }
-
-
 }

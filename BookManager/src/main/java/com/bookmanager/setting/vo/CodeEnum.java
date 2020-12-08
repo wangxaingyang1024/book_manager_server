@@ -37,8 +37,9 @@ public enum CodeEnum {
      * 获取数据
      */
     SELECT_SUCCESS(200,"ok"),
-    SELECT_FAILED(402,"ok"),
+    SELECT_FAILED(402,"NAN"),
     NO_DATA(400,"还没有数据偶"),
+    ADD_FAILED(401,"添加失败！"),
     /**
      * 登录   1000-1020
      */
@@ -53,6 +54,8 @@ public enum CodeEnum {
      * 参数不齐全或参数错误   2000-2020
      */
     BAD_REQUEST(2000,"参数不正确"),
+    TYPE_EXIST(2001,"此类型已经存在！"),
+
     /**
      * 用户验证名  登录 3000-3020
      */
@@ -73,9 +76,7 @@ public enum CodeEnum {
     EMP_NOTEXIST(3031,"用户不存在！"),
     UPDATE_SUCCESS(3032,"更新成功！"),
     DELETE_SUCCESS(3033,"删除成功！");
-    /**
-     * 插入 4000-4020
-     */
+
 
     private Integer code;
     private String message;

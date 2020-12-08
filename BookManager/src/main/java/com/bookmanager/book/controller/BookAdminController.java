@@ -64,7 +64,6 @@ public class BookAdminController {
         Result result = bookService.updateBook(book);
         return result;
     }
-
     /**
      * 类型列表获取
      * @return
@@ -73,4 +72,5 @@ public class BookAdminController {
     public Result<List<String>> getBookTypeList(@PathVariable Integer level){
         return bookService.getListType(level);
     }
+
 }

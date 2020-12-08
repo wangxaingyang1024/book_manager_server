@@ -2,6 +2,7 @@ package com.bookmanager.user.service.impl;
 
 import com.bookmanager.setting.model.Employee;
 import com.bookmanager.setting.util.MD5Util;
+import com.bookmanager.setting.util.RandomNumber;
 import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
 import com.bookmanager.user.dto.ChangePasswordDTO;
@@ -16,7 +17,6 @@ import javax.annotation.Resource;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import java.util.Random;
 
 import static com.bookmanager.setting.vo.Result.selectSuccess;
 
@@ -150,7 +150,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
         if(emp != null){
             return Result.empExist();
         }
-        Integer jobNumber = JobNumberUUID();
+        Integer jobNumber = Integer.parseInt(RandomNumber.NumberUUID(8));
         Integer jn = mapper.selectEmpByJobNumber(jobNumber);
         if(jn != null){
             jobNumber = null ;
@@ -162,17 +162,5 @@ public class EmployeeServiceImpl implements IEmployeeService {
         Integer result = mapper.insertSelective(employee);
         return new Result(CodeEnum.SIGNUP_SUCCESS,result);
     }
-    /**
-     * 随机生成job_number；
-     */
-    public static Integer JobNumberUUID(){
-        StringBuilder str=new StringBuilder();//定义变长字符串bai
-        Random random=new Random();
-        //随机生成数字，并添加到字符串
-        for(int i=0;i<8;i++){
-            str.append(random.nextInt(10));
-        }
-        //将字符串转换为数字并du输出
-        return  Integer.parseInt(str.toString());
-    }
+
 }

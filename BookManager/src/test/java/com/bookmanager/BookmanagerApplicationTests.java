@@ -45,8 +45,9 @@ public class BookmanagerApplicationTests {
     public void test03(){
        Integer i = 1002 ;
        Integer j = 1002;
-       if(i.equals(j)){
-           System.out.println("---------");
-       }
+//       if(i.equals(j)){
+//           System.out.println("---------");
+//       }
+        System.out.println(i.getClass());
     }
 }
