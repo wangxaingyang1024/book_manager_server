@@ -117,10 +117,13 @@
     FROM relation_book_emp r
     WHERE r.job_number = #{jobNumber})
   </select>
-  <select id="findAdminAllBook" resultType="com.bookmanager.setting.model.Book">
-    SELECT
-    b.isbn,b.name,b.author,b.type,b.status,b.synopsis
-    FROM book b;
+  <select id="findAdminAllBook" resultType="com.bookmanager.book.dto.BookListDTO">
+    SELECT b.isbn,b.name,b.author,bt.name type,b.status,b.synopsis
+    FROM book b LEFT OUTER JOIN book_type bt
+    ON b.type = bt.my_id
+  </select>
+  <select id="selectPidByMid" parameterType="integer" resultType="integer">
+        select parent_id from book_type where my_id = #{level};
   </select>
   <select id="getBookIsbn" resultType="com.bookmanager.setting.model.Book">
     select
@@ -152,8 +155,8 @@
 
 
   <insert id="insertBook" parameterType="com.bookmanager.setting.model.Book">
-    insert into book (isbn,name,author, type,status, synopsis)
-    values (#{isbn},#{name},#{author}, #{type},#{status}, #{synopsis})
+    insert into book (isbn,`name`,author,`type`,status,synopsis)
+    values (#{record.isbn},#{record.name},#{record.author}, #{record.type},#{record.status}, #{record.synopsis})
   </insert>
   <insert id="insertRelation" parameterType="com.bookmanager.book.dto.RelationBookEmpDTO">
     insert into relation_book_emp (job_number,book_isbn) values (#{rbed.jobNumber,jdbcType=INTEGER},#{rbed.isbn,jdbcType=BIGINT})

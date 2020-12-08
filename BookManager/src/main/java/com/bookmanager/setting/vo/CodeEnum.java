@@ -37,6 +37,7 @@ public enum CodeEnum {
      * 获取数据
      */
     SELECT_SUCCESS(200,"ok"),
+    SELECT_FAILED(402,"ok"),
     NO_DATA(400,"还没有数据偶"),
     /**
      * 登录   1000-1020

@@ -43,6 +43,10 @@ public class BookmanagerApplicationTests {
 
     @Test
     public void test03(){
-        System.out.println(new Date());
+       Integer i = 1002 ;
+       Integer j = 1002;
+       if(i.equals(j)){
+           System.out.println("---------");
+       }
     }
 }

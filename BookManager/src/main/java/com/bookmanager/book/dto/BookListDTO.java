@@ -1,11 +1,9 @@
-package com.bookmanager.setting.model;
+package com.bookmanager.book.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-public class Book {
+public class BookListDTO {
     private Long id;
 
     private Long isbn;
@@ -14,10 +12,11 @@ public class Book {
 
     private String author;
 
-    private Integer type;
+    private String type;
 
     private Boolean status;
 
     private String synopsis;
 
+    private Integer[] level = new Integer[3];
 }

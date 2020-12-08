@@ -56,7 +56,7 @@ public interface BookService {
      */
    Result findByEmpNumber(int jobNumber);
 
-   Result getListType();
+   Result getListType(Integer level);
 
    Result selectLike(String name);
 }

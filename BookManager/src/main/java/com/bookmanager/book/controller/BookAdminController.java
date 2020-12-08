@@ -41,7 +41,7 @@ public class BookAdminController {
      * @return
      */
     @PostMapping("/add")
-    public Result  addBook(Book book){
+    public Result  addBook(@RequestBody Book book){
         return bookService.addBook(book);
     }
 
@@ -59,8 +59,8 @@ public class BookAdminController {
      * 更新图书
      * @return
      */
-    @PostMapping("/update/{isbn}")
-    public Result updateBook(@PathVariable Book book){
+    @PostMapping("/update")
+    public Result updateBook(@RequestBody Book book){
         Result result = bookService.updateBook(book);
         return result;
     }
@@ -69,8 +69,8 @@ public class BookAdminController {
      * 类型列表获取
      * @return
      */
-    @GetMapping("/type")
-    public Result<List<String>> getBookTypeList(){
-        return bookService.getListType();
+    @GetMapping("/type/{level}")
+    public Result<List<String>> getBookTypeList(@PathVariable Integer level){
+        return bookService.getListType(level);
     }
 }

@@ -1,5 +1,6 @@
 package com.bookmanager.book.mapper;
 
+import com.bookmanager.book.dto.BookListDTO;
 import com.bookmanager.book.dto.BookTypeDTO;
 import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.setting.model.Book;
@@ -31,7 +32,7 @@ public interface BookMapper {
 
     List<BookTypeDTO> selectBookTypeByPid(Integer pid);
 
-    int insertBook(Book record);
+    int insertBook(@Param("record") Book record);
 
     Book findBookByIsbn(long isbn);
 
@@ -53,7 +54,7 @@ public interface BookMapper {
 
     int updateByPrimaryKey(Book record);
 
-    int updateBook(Book book);
+    int updateBook(@Param("book") Book book);
 
     int borrowBookByIsbn(Long isbn);
 
@@ -69,5 +70,8 @@ public interface BookMapper {
 
     int updateReturnTime(@Param("rbed") RelationBookEmpDTO rbed);
 
-    List<Book> findAdminAllBook();
+    List<BookListDTO> findAdminAllBook();
+
+    Integer selectPidByMid(Integer level);
+
 }

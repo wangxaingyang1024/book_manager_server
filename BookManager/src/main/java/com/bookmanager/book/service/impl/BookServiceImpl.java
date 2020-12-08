@@ -1,6 +1,6 @@
 package com.bookmanager.book.service.impl;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
+import com.bookmanager.book.dto.BookListDTO;
 import com.bookmanager.book.dto.BookTypeDTO;
 import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.book.mapper.BookMapper;
@@ -9,15 +9,12 @@ import com.bookmanager.setting.model.Book;
 import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Mapper;
-import org.aspectj.apache.bcel.classfile.Code;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
-import javax.persistence.Convert;
-import javax.servlet.http.HttpServletRequest;
+
 import java.util.*;
 
 @Service
@@ -42,7 +39,28 @@ public class BookServiceImpl implements BookService {
      */
     @Override
     public Result findAdminAllBook() {
-        return new Result(CodeEnum.FIND_BOOKS,bookMapper.findAdminAllBook());
+        List<BookListDTO> listDTOS = bookMapper.findAdminAllBook();
+        for (int x = 0 ; x < listDTOS.size() ; x ++){
+            Long isbn = listDTOS.get(x).getIsbn();
+            Integer type = bookMapper.findBookByIsbn(isbn).getType();
+            Integer[] allTid = findAllTid(type);
+            listDTOS.get(x).setLevel(allTid);
+        }
+        return new Result(CodeEnum.FIND_BOOKS,listDTOS);
+    }
+
+    /**
+     * 获取三级id组成数组
+     * @param type
+     * @return
+     */
+    private Integer[] findAllTid(Integer type){
+        Integer[] level = new Integer[3];
+        level[2] = type ;
+        Integer level2 = bookMapper.selectPidByMid(type);
+        level[1] = level2 ;
+        level[0] =bookMapper.selectPidByMid(level2);
+        return level ;
     }
 
     /**
@@ -166,21 +184,31 @@ public class BookServiceImpl implements BookService {
      */
 
     @Override
-    public Result getListType() {
-        List<BookTypeDTO> twoNode = bookMapper.selectBookByLevel(ROOT_LEVEL);
-        List<BookTypeDTO> oneNode = bookMapper.selectBookByLevel(SECOND_LEVEL);
-        List<BookTypeDTO> tType = getOneType(twoNode);
-        for(int x = 0 ; x <oneNode.size() ; x ++){
-            ArrayList<BookTypeDTO> bookTypeDTOS = new ArrayList<>();
-            Integer mid = oneNode.get(x).getMid();
-            for (int y = 0 ; y < tType.size() ; y ++){
-                if(mid == tType.get(y).getPid()){
-                    bookTypeDTOS.add(tType.get(y));
-                }
-            }
-            oneNode.get(x).setChildren(bookTypeDTOS);
+    public Result getListType(Integer level) {
+    List<BookTypeDTO> twoNode = bookMapper.selectBookByLevel(SECOND_LEVEL);
+    List<BookTypeDTO> oneNode = bookMapper.selectBookByLevel(ROOT_LEVEL);
+        if(level == 1){
+            return new Result(CodeEnum.SELECT_SUCCESS,oneNode);
         }
-        return new Result(CodeEnum.SELECT_SUCCESS,oneNode);
+        if(level == 2){
+            return new Result(CodeEnum.SELECT_SUCCESS,getOneType(oneNode));
+        }
+        if(level == 3){
+            List<BookTypeDTO> tType = getOneType(twoNode);
+            for(int x = 0 ; x <oneNode.size() ; x ++){
+                List<BookTypeDTO> bookTypeDTOS = new ArrayList<>();
+                Integer mid = oneNode.get(x).getMid();
+                for (int y = 0 ; y < tType.size() ; y ++){
+                    Integer pid = tType.get(y).getPid();
+                    if(pid.equals(mid)){
+                        bookTypeDTOS.add(tType.get(y));
+                    }
+                }
+                oneNode.get(x).setChildren(bookTypeDTOS);
+            }
+            return new Result(CodeEnum.SELECT_SUCCESS,oneNode);
+        }
+        return new Result(CodeEnum.SELECT_FAILED);
     }
 
     /**
