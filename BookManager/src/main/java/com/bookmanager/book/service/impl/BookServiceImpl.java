@@ -99,7 +99,7 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     *
+     *更新书
      * @param book
      * @return
      */

@@ -46,6 +46,11 @@ public class BookController {
         return new Result(CodeEnum.BOOK_RETURN_SUCCESS);
     }
 
+    /**
+     * 用户根据书名查找图书
+     * @param btd
+     * @return
+     */
     @PostMapping("/likeName")
     public Result likeQuery(@RequestBody BookTypeDTO btd){
         return bookService.selectLike(btd.getName());
