@@ -133,6 +133,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
         if(emp == null){
             return Result.badUsernameRequest();
         }
+        if(emp.getRole() == 0 ){
+            return new Result(CodeEnum.EMP_NOTEXIST);
+        }
         String passwordInDb = mapper.selectPasswordByUsername(empLoginDTO.getUsername());
         if(MD5Util.validPassword(empLoginDTO.getPassword(),passwordInDb)){
             return Result.success(emp);
