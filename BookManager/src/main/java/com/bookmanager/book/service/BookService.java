@@ -1,5 +1,6 @@
 package com.bookmanager.book.service;
 
+import com.bookmanager.book.dto.PageHelperDTO;
 import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.setting.model.Book;
 import com.bookmanager.setting.vo.Result;
@@ -14,7 +15,7 @@ public interface BookService {
      * 管理员获取图书列表
      * @return
      */
-    Result findAdminAllBook();
+    Result findAdminAllBook(String name ,Integer pageNum , Integer pageSize);
     /**
      * 录入新书
      * @param book
@@ -58,5 +59,5 @@ public interface BookService {
 
    Result getListType(Integer level);
 
-   Result selectLike(String name);
+//   Result selectLike(String name);
 }

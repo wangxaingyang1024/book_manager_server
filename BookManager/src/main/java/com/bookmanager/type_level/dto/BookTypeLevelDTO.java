@@ -2,6 +2,8 @@ package com.bookmanager.type_level.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class BookTypeLevelDTO {
 
@@ -12,4 +14,6 @@ public class BookTypeLevelDTO {
     private Integer pid ;
 
     private Integer mid ;
+
+    private String cid ; //当前节点下的所有直接子节点
 }

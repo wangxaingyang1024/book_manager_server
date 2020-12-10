@@ -1,6 +1,7 @@
 package com.bookmanager;
 
 import com.bookmanager.setting.model.Employee;
+import com.bookmanager.setting.util.DisposeNumber;
 import com.bookmanager.setting.vo.Result;
 import com.bookmanager.user.dto.EmpLoginDTO;
 import com.bookmanager.user.service.IEmployeeService;
@@ -12,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 @SpringBootTest
@@ -21,12 +23,12 @@ public class BookmanagerApplicationTests {
     @Autowired
     private IEmployeeService employeeService ;
 
-    @Test
-    public void testLogin() throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        EmpLoginDTO employee = new EmpLoginDTO("wqy","123");
-        Result<Employee> result = employeeService.adminEmpLogin(employee);
-        log.info(result.toString());
-    }
+//    @Test
+//    public void testLogin() throws UnsupportedEncodingException, NoSuchAlgorithmException {
+//        EmpLoginDTO employee = new EmpLoginDTO("wqy","123");
+//        Result<Employee> result = employeeService.adminEmpLogin(employee);
+//        log.info(result.toString());
+//    }
 
     @Test
     public void testUUID(){
@@ -43,11 +45,15 @@ public class BookmanagerApplicationTests {
 
     @Test
     public void test03(){
-       Integer i = 1002 ;
-       Integer j = 1002;
-//       if(i.equals(j)){
-//           System.out.println("---------");
-//       }
-        System.out.println(i.getClass());
+//       Integer i = 1002 ;
+//       Integer j = 1002;
+////       if(i.equals(j)){
+////           System.out.println("---------");
+////       }
+//        System.out.println(i.getClass());
+
+//        String str = null;
+//        List<Integer> integers = DisposeNumber.StringTransformInteger(str);
+//        System.out.println(integers);
     }
 }

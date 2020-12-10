@@ -29,5 +29,5 @@ public interface IEmployeeService {
     Result updatePassword(ChangePasswordDTO cDto) throws UnsupportedEncodingException, NoSuchAlgorithmException;
 
     //查询所有用户列表
-    public Result<List<SelectAllEmpDTO>> selectAllEmp();
+    public Result<List<SelectAllEmpDTO>> selectAllEmp(Integer pageNum, Integer pageSize);
 }

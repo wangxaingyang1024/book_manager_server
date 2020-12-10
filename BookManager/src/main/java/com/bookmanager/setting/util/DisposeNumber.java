@@ -2,12 +2,18 @@ package com.bookmanager.setting.util;
 
 import org.omg.CORBA.INTERNAL;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
-public class RandomNumber {
+public class DisposeNumber {
 
     /**
-     * 随机生成job_number；
+     *
+     * @param num  生成随机数的位数
+     * @return
      */
     public static String NumberUUID(Integer num){
         StringBuilder str=new StringBuilder();//定义变长字符串bai
@@ -18,5 +24,13 @@ public class RandomNumber {
         }
 //        将字符串转换为数字并du输出
         return  str.toString();
+    }
+
+    public static List<Integer> StringTransformInteger(String str){
+        if(str == "" ){
+            return new ArrayList<>();
+        }
+        List<Integer> idList = Arrays.stream(str.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        return idList ;
     }
 }

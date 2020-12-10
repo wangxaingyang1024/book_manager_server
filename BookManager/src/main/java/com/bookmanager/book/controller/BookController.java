@@ -1,6 +1,7 @@
 package com.bookmanager.book.controller;
 
 import com.bookmanager.book.dto.BookTypeDTO;
+import com.bookmanager.book.dto.PageHelperDTO;
 import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.book.service.BookService;
 import com.bookmanager.book.service.impl.BookServiceImpl;
@@ -46,13 +47,13 @@ public class BookController {
         return new Result(CodeEnum.BOOK_RETURN_SUCCESS);
     }
 
-    /**
-     * 用户根据书名查找图书
-     * @param btd
-     * @return
-     */
-    @PostMapping("/likeName")
-    public Result likeQuery(@RequestBody BookTypeDTO btd){
-        return bookService.selectLike(btd.getName());
-    }
+//    /**
+//     * 用户根据书名查找图书
+//     * @param btd
+//     * @return
+//     */
+//    @PostMapping("/likeName")
+//    public Result likeQuery(@RequestBody PageHelperDTO phd){
+//        return bookService.selectLike(phd);
+//    }
 }

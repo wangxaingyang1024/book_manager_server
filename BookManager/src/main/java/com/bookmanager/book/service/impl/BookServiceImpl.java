@@ -6,10 +6,12 @@ import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.book.mapper.BookMapper;
 import com.bookmanager.book.service.BookService;
 import com.bookmanager.setting.model.Book;
-import com.bookmanager.setting.util.RandomNumber;
+import com.bookmanager.setting.util.DisposeNumber;
 import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
 import com.bookmanager.type_level.mapper.BookTypeLevelMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.stereotype.Service;
@@ -41,15 +43,24 @@ public class BookServiceImpl implements BookService {
      * @return
      */
     @Override
-    public Result findAdminAllBook() {
-        List<BookListDTO> listDTOS = bookMapper.findAdminAllBook();
-        for (int x = 0 ; x < listDTOS.size() ; x ++){
-            Long isbn = listDTOS.get(x).getIsbn();
-            Integer type = bookMapper.findBookByIsbn(isbn).getType();
-            Integer[] allTid = findAllTid(type);
-            listDTOS.get(x).setLevel(allTid);
+    public Result findAdminAllBook(String name ,Integer pageNum , Integer pageSize) {
+        if("".equals(name)) {
+            PageHelper.startPage(pageNum,pageSize);
+            List<BookListDTO> listDTOS = bookMapper.findAdminAllBook();
+            for (int x = 0; x < listDTOS.size(); x++) {
+                Long isbn = listDTOS.get(x).getIsbn();
+                Integer type = bookMapper.findBookByIsbn(isbn).getType();
+                Integer[] allTid = findAllTid(type);
+                listDTOS.get(x).setLevel(allTid);
+            }
+            PageInfo<BookListDTO> pageInfo = new PageInfo<>(listDTOS);
+            return new Result(CodeEnum.FIND_BOOKS, pageInfo);
         }
-        return new Result(CodeEnum.FIND_BOOKS,listDTOS);
+        String n = "%"+name+"%";
+        PageHelper.startPage(pageNum, pageSize);
+        List<BookListDTO> books = bookMapper.selectLikeName(n);
+        PageInfo<BookListDTO> pageInfo = new PageInfo<>(books);
+        return new Result(CodeEnum.FIND_BOOKS,pageInfo);
     }
 
     /**
@@ -78,11 +89,11 @@ public class BookServiceImpl implements BookService {
         if (book1 != null) {
             return new Result(CodeEnum.BOOK_ADD_FAILED);
         }
-        Book b = bookMapper.getBookIsbn(Long.parseLong(RandomNumber.NumberUUID(9)));
+        Book b = bookMapper.getBookIsbn(Long.parseLong(DisposeNumber.NumberUUID(9)));
         if (b != null) {
             addBook(book);
         }
-        book.setIsbn(Long.parseLong(RandomNumber.NumberUUID(9)));
+        book.setIsbn(Long.parseLong(DisposeNumber.NumberUUID(9)));
         return new Result(CodeEnum.BOOK_ADD_SUCCESS,bookMapper.insertBook(book));
     }
     /**
@@ -227,15 +238,17 @@ public class BookServiceImpl implements BookService {
         }
         return nodeT;
     }
-
-    /**
-     * 模糊查询
-     * @param name
-     * @return
-     */
-    @Override
-    public Result selectLike(String name) {
-        String n = "%"+name+"%";
-        return new Result(CodeEnum.SELECT_SUCCESS,bookMapper.selectLikeName(n));
-    }
+//
+//    /**
+//     * 模糊查询
+//     * @param name
+//     * @return
+//     */
+//    @Override
+//    public Result selectLike(String name) {
+//        String n = "%"+name+"%";
+//        PageHelper.startPage()
+//        List<Book> books = bookMapper.selectLikeName(n);
+//        return new Result(CodeEnum.SELECT_SUCCESS,);
+//    }
 }

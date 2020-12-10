@@ -1,8 +1,9 @@
 package com.bookmanager.user.service.impl;
 
+import com.bookmanager.book.dto.BookListDTO;
 import com.bookmanager.setting.model.Employee;
 import com.bookmanager.setting.util.MD5Util;
-import com.bookmanager.setting.util.RandomNumber;
+import com.bookmanager.setting.util.DisposeNumber;
 import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
 import com.bookmanager.user.dto.ChangePasswordDTO;
@@ -10,6 +11,8 @@ import com.bookmanager.user.dto.EmpLoginDTO;
 import com.bookmanager.user.dto.SelectAllEmpDTO;
 import com.bookmanager.user.mapper.EmployeeMapper;
 import com.bookmanager.user.service.IEmployeeService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -33,12 +36,14 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     //查询所有用户信息
     @Override
-    public Result<List<SelectAllEmpDTO>> selectAllEmp() {
+    public Result selectAllEmp(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
         List<SelectAllEmpDTO> employees = mapper.selectAllEmp(ROLE);
         if (employees.size() == 0 ){
             return new Result(CodeEnum.NOT_EMP_REGISTER,-1);
         }
-        return selectSuccess(employees);
+        PageInfo<SelectAllEmpDTO> pageInfo = new PageInfo<>(employees);
+        return selectSuccess(pageInfo);
     }
 
     //查询制定用户信息
@@ -153,7 +158,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
         if(emp != null){
             return Result.empExist();
         }
-        Integer jobNumber = Integer.parseInt(RandomNumber.NumberUUID(8));
+        Integer jobNumber = Integer.parseInt(DisposeNumber.NumberUUID(8));
         Integer jn = mapper.selectEmpByJobNumber(jobNumber);
         if(jn != null){
             jobNumber = null ;

@@ -1,11 +1,10 @@
 package com.bookmanager.book.controller;
 
+import com.bookmanager.book.dto.PageHelperDTO;
 import com.bookmanager.book.service.BookService;
 import com.bookmanager.setting.model.Book;
-import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,10 +21,18 @@ public class BookAdminController {
      * @return list
      */
     @GetMapping("/find")
-    public Result adminFindAll(){
-        Result allBook = bookService.findAdminAllBook();
+    public Result adminFindAll(@RequestParam(name = "name")String name,
+                               @RequestParam(name = "pageNum")Integer pageNum,
+                               @RequestParam(name = "pageSize")Integer pageSize){
+        Result allBook = bookService.findAdminAllBook(name,pageNum,pageSize);
         return allBook;
     }
+
+//    @GetMapping("/find/{pageNum}/{pageSize}")
+//    public Result adminFindAll(@PathVariable Integer pageNum,@PathVariable Integer pageSize){
+//        Result allBook = bookService.findAdminAllBook(pageNum,pageSize);
+//        return allBook;
+//    }
     /**
      * 管理员查询某个用户借书信息
      * @param jobNumber

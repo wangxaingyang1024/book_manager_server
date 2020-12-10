@@ -39,9 +39,9 @@ public class AdminEmpController {
         return employeeService.deleteEmployee(jobNumber);
     }
     //查询用户列表
-    @GetMapping("emps")
-    public Result<List<SelectAllEmpDTO >> emps(){
-        return employeeService.selectAllEmp();
+    @GetMapping("emps/{pageNum}/{pageSize}")
+    public Result emps(@PathVariable Integer pageNum,@PathVariable Integer pageSize){
+        return employeeService.selectAllEmp(pageNum,pageSize);
     }
 
 }

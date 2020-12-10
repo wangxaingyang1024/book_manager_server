@@ -217,11 +217,11 @@
     </trim>
   </insert>
 
-  <select id="selectLikeName" parameterType="string" resultType="com.bookmanager.setting.model.Book">
+  <select id="selectLikeName" parameterType="string" resultType="com.bookmanager.book.dto.BookListDTO">
    select
    <include refid="Base_Column_List"/>
    from book
-   where `name` like #{name};
+   where `name` like #{name}
   </select>
   <select id="countByExample" parameterType="com.bookmanager.setting.model.BookExample" resultType="java.lang.Long">
     select count(*) from book
@@ -234,6 +234,12 @@
     <include refid="Base_Column_List"/>
     from book
     where isbn = #{isbn}
+  </select>
+  <select id="selectByType" parameterType="integer" resultType="com.bookmanager.setting.model.Book">
+    select
+    <include refid="Base_Column_List"/>
+    from book
+    where `type` = #{type}
   </select>
   <update id="updateBook" parameterType="com.bookmanager.setting.model.Book">
     update book

@@ -79,8 +79,17 @@
     FROM book_type
     where parent_id = #{pid} ;
   </select>
+  <select id="selectBookTypeDTOByMid" parameterType="integer" resultType="com.bookmanager.type_level.dto.BookTypeLevelDTO">
+    SELECT book_type.my_id mid,book_type.parent_id pid, book_type.name,book_type.level
+    FROM book_type
+    where parent_id = #{pid} ;
+  </select>
+
   <select id="selectPidByMid" parameterType="integer" resultType="integer">
         select parent_id from book_type where my_id = #{level};
+  </select>
+  <select id="selectMidBypid" parameterType="integer" resultType="integer">
+        select my_id from book_type where parent_id = #{pid};
   </select>
   <select id="selectMidByMid" parameterType="integer" resultType="integer">
         select my_id from book_type where my_id = #{mid};
@@ -108,6 +117,19 @@
     from book_type
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="countByExample" parameterType="com.bookmanager.setting.model.BookTypeLevelExample" resultType="java.lang.Long">
+    select count(*) from book_type
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <select id="selectBookTypeByMid" parameterType="integer" resultType="com.bookmanager.setting.model.BookTypeLevel">
+    select
+    <include refid="Base_Column_List"/>
+    from book_type
+    where my_id = #{mid};
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from book_type
     where id = #{id,jdbcType=INTEGER}
@@ -118,6 +140,10 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+  <delete id="deleteByMid" parameterType="integer" >
+    delete from book_type where my_id = #{mid};
+  </delete>
+
   <insert id="insert" parameterType="com.bookmanager.setting.model.BookTypeLevel">
     insert into book_type (`name`, `level`,
       parent_id, my_id)
@@ -161,12 +187,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.bookmanager.setting.model.BookTypeLevelExample" resultType="java.lang.Long">
-    select count(*) from book_type
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
+
   <update id="updateByExampleSelective" parameterType="map">
     update book_type
     <set>

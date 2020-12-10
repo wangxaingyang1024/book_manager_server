@@ -21,13 +21,19 @@ public interface BookTypeLevelMapper {
 
     int insertSelective(BookTypeLevel record);
 
+    List<Integer> selectMidBypid(Integer pid);
 
+    BookTypeLevelDTO selectBookTypeDTOByMid(Integer mid);
 
     List<BookTypeLevel> selectByExample(BookTypeLevelExample example);
 
     List<BookTypeDTO> selectBookByLevel(Integer level) ;
 
     List<BookTypeDTO> selectBookTypeByPid(Integer pid);
+
+    BookTypeLevel selectBookTypeByMid(Integer mid);
+
+    int deleteByMid(Integer mid) ;
 
     Integer selectPidByMid(Integer level);
 

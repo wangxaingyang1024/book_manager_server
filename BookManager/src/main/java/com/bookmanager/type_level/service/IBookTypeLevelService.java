@@ -7,4 +7,6 @@ import com.bookmanager.type_level.dto.BookTypeLevelDTO;
 public interface IBookTypeLevelService {
 
     Result addBookType(BookTypeLevel bookTypeLevel);
+
+    Result deleteBookType(BookTypeLevelDTO levelDTO);
 }

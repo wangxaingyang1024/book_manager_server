@@ -80,10 +80,10 @@
     select
     <include refid="Base_All_List"/>
     from employee
-    where role = #{ROLE};
+    where role = #{ROLE}
   </select>
   <select id="selectEmpByJobNumber" parameterType="integer" resultType="java.lang.Integer">
-    select job_number from employee where job_number = #{jobNumber};
+    select job_number from employee where job_number = #{jobNumber}
   </select>
   <select id="selectEmpByUsername" parameterType="string"
           resultType="com.bookmanager.setting.model.Employee">
@@ -102,7 +102,7 @@
           resultType="java.lang.String">
     select password
     from employee
-    where username=#{username,jdbcType=VARCHAR} ;
+    where username=#{username,jdbcType=VARCHAR}
   </select>
   <select id="countByExample" parameterType="com.bookmanager.setting.model.EmployeeExample" resultType="java.lang.Long">
     select count(*) from employee
