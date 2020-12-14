@@ -2,6 +2,7 @@ package com.bookmanager.user.service.impl;
 
 import com.bookmanager.book.dto.BookListDTO;
 import com.bookmanager.setting.model.Employee;
+import com.bookmanager.setting.redis.RedisService;
 import com.bookmanager.setting.util.MD5Util;
 import com.bookmanager.setting.util.DisposeNumber;
 import com.bookmanager.setting.vo.CodeEnum;
@@ -20,6 +21,7 @@ import javax.annotation.Resource;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.UUID;
 
 import static com.bookmanager.setting.vo.Result.selectSuccess;
 
@@ -34,6 +36,20 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Resource
     private EmployeeMapper mapper ;
 
+    @Resource
+    private RedisService redisService ;
+
+    /**
+     * 查询个人信息
+     * @param jobNumber
+     * @return
+     */
+    @Override
+    public Result<SelectAllEmpDTO> getProfile(Integer jobNumber) {
+        SelectAllEmpDTO  employee = mapper.selectByJobNumber(jobNumber);
+        return new Result(CodeEnum.SELECT_SUCCESS ,employee);
+    }
+
     //查询所有用户信息
     @Override
     public Result selectAllEmp(Integer pageNum, Integer pageSize) {
@@ -45,10 +61,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
         PageInfo<SelectAllEmpDTO> pageInfo = new PageInfo<>(employees);
         return selectSuccess(pageInfo);
     }
-
-    //查询制定用户信息
-
-
     //TODO:手机验证：待做
     /**
      * 用户修改密码
@@ -74,13 +86,12 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     /**
      * 用户自己更新自己的信息
-     * @param jobNumber
      * @param employee
      * @return
      */
     @Override
-    public Result updateSelfInformation(Integer jobNumber,Employee employee) {
-        Integer jobNumber1 = mapper.selectEmpByJobNumber(jobNumber);
+    public Result updateSelfInformation(Employee employee) {
+        Integer jobNumber1 = mapper.selectEmpByJobNumber(employee.getJobNumber());
         if(jobNumber1 == null){
             return  new Result(CodeEnum.EMP_NOTEXIST);
         }
@@ -143,10 +154,27 @@ public class EmployeeServiceImpl implements IEmployeeService {
         }
         String passwordInDb = mapper.selectPasswordByUsername(empLoginDTO.getUsername());
         if(MD5Util.validPassword(empLoginDTO.getPassword(),passwordInDb)){
+            //token验证
+            String token = UUID.randomUUID().toString();
+            redisService.set(token, empLoginDTO.getUsername());
             return Result.success(emp);
         }
         return Result.badPasswordRequest();
     }
+//
+//    /**
+//     * 注销
+//     * @param request
+//     * @return
+//     */
+//    public String logout(HttpServletRequest request) {
+//        String token = request.getHeader("token");
+//        Boolean delete = redisService.delete(token);
+//        if (!delete) {
+//            return "注销失败，请检查是否登录！";
+//        }
+//        return "注销成功！";
+//    }
     /**
      * 用户注册
      * @param employee

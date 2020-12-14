@@ -9,7 +9,7 @@
     <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
     <result column="gender" jdbcType="INTEGER" property="gender" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="birth" jdbcType="DATE" property="birth" />
     <result column="role" jdbcType="INTEGER" property="role" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -71,10 +71,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, job_number, username, password, nick_name, gender, phone, age, role
+    id, job_number, username, password, nick_name, gender, phone, birth, role
   </sql>
   <sql id="Base_All_List">
-    job_number, username, nick_name, gender, phone, age, role
+    job_number, username, nick_name, gender, phone, birth, role
   </sql>
   <select id="selectAllEmp"  resultType="com.bookmanager.user.dto.SelectAllEmpDTO">
     select
@@ -84,6 +84,11 @@
   </select>
   <select id="selectEmpByJobNumber" parameterType="integer" resultType="java.lang.Integer">
     select job_number from employee where job_number = #{jobNumber}
+  </select>
+  <select id="selectByJobNumber" parameterType="integer" resultType="com.bookmanager.user.dto.SelectAllEmpDTO">
+    select
+     <include refid="Base_All_List"></include>
+     from employee where job_number = #{jobNumber}
   </select>
   <select id="selectEmpByUsername" parameterType="string"
           resultType="com.bookmanager.setting.model.Employee">
@@ -143,10 +148,10 @@
   <insert id="insert" parameterType="com.bookmanager.setting.model.Employee">
     insert into employee (id, job_number, username, 
       password, nick_name, gender, 
-      phone, age, role)
+      phone, birth, role)
     values (#{id,jdbcType=BIGINT}, #{jobNumber,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, 
-      #{phone,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{role,jdbcType=INTEGER})
+      #{phone,jdbcType=VARCHAR}, #{birth,jdbcType=DATE}, #{role,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.bookmanager.setting.model.Employee">
     insert into employee
@@ -172,8 +177,8 @@
       <if test="phone != null">
         phone,
       </if>
-      <if test="age != null">
-        age,
+      <if test="birth != null">
+        birth,
       </if>
       <if test="role != null">
         role,
@@ -201,8 +206,8 @@
       <if test="phone != null">
         #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="age != null">
-        #{age,jdbcType=INTEGER},
+      <if test="birth != null">
+        #{birth,jdbcType=DATE},
       </if>
       <if test="role != null">
         #{role,jdbcType=INTEGER},
@@ -233,8 +238,8 @@
       <if test="record.phone != null">
         phone = #{record.phone,jdbcType=VARCHAR},
       </if>
-      <if test="record.age != null">
-        age = #{record.age,jdbcType=INTEGER},
+      <if test="record.birth != null">
+        birth = #{record.birth,jdbcType=DATE},
       </if>
       <if test="record.role != null">
         role = #{record.role,jdbcType=INTEGER},
@@ -253,13 +258,13 @@
       nick_name = #{record.nickName,jdbcType=VARCHAR},
       gender = #{record.gender,jdbcType=INTEGER},
       phone = #{record.phone,jdbcType=VARCHAR},
-      age = #{record.age,jdbcType=INTEGER},
+      birth = #{record.birth,jdbcType=DATE},
       role = #{record.role,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="deleteEmpByJobNumber" >
+  <update id="deleteEmpByJobNumber" parameterType="com.bookmanager.setting.model.Employee">
     update employee
     set role = #{role},phone = #{phone}
     where job_number = #{jobNumber}
@@ -285,8 +290,8 @@
       <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="age != null">
-        age = #{age,jdbcType=INTEGER},
+      <if test="birth != null">
+        birth = #{birth,jdbcType=DATE},
       </if>
       <if test="role != null">
         role = #{role,jdbcType=INTEGER},
@@ -296,15 +301,11 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.bookmanager.setting.model.Employee">
     update employee
-    set job_number = #{jobNumber,jdbcType=INTEGER},
-      username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      nick_name = #{nickName,jdbcType=VARCHAR},
-      gender = #{gender,jdbcType=INTEGER},
-      phone = #{phone,jdbcType=VARCHAR},
-      age = #{age,jdbcType=INTEGER},
-      role = #{role,jdbcType=INTEGER}
-    where id = #{id,jdbcType=BIGINT}
+    set nick_name = #{record.nickName,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=INTEGER},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      birth = #{record.birth,jdbcType=DATE}
+    where job_number = #{record.jobNumber,jdbcType=INTEGER}
   </update>
   <update id="updatePasswordByUsername" parameterType="string" >
     update employee

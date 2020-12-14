@@ -19,7 +19,11 @@ public class EmpCotroller {
     @Autowired
     private IEmployeeService employeeService ;
 
-
+    /**
+     * 普通登录
+     * @param employee
+     * @return
+     */
     @PostMapping("login")
     public Result<Employee> login(@RequestBody EmpLoginDTO employee) {
         try {
@@ -49,7 +53,11 @@ public class EmpCotroller {
         return new Result(CodeEnum.SIGNUP_FAILURE) ;
     }
 
-    //修改密码
+    /**
+     * 密码修改
+     * @param cDTO
+     * @return
+     */
     @PostMapping("changePsw")
     public  Result changePassword(@RequestBody ChangePasswordDTO cDTO){
         try {
@@ -60,6 +68,26 @@ public class EmpCotroller {
             e.printStackTrace();
         }
         return new Result(CodeEnum.CHANGE_PASSWORD_FAILURE) ;
+    }
+
+    /**
+     * 个人信息查询
+     * @param jobNumber
+     * @return
+     */
+    @GetMapping("profile/{jobNumber}")
+    public Result profile(@PathVariable Integer jobNumber){
+        return employeeService.getProfile(jobNumber);
+    }
+
+    /**
+     * 个人信息修改
+     * @param emp
+     * @return
+     */
+    @PutMapping("upProfile")
+    public Result upProfile(@RequestBody Employee emp){
+        return employeeService.updateSelfInformation(emp);
     }
 
 }

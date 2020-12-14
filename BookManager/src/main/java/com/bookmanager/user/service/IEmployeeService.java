@@ -21,13 +21,16 @@ public interface IEmployeeService {
     //用户信息
     //删除用户信息
     Result deleteEmployee(Integer jobNumber);
-
     //用户自己更新信息
-    Result updateSelfInformation(Integer jobNumber,Employee employee);
+    Result updateSelfInformation(Employee employee);
+
+    //查询个人信息
+    Result<SelectAllEmpDTO > getProfile(Integer jobNumber);
 
     //用户修改密码
     Result updatePassword(ChangePasswordDTO cDto) throws UnsupportedEncodingException, NoSuchAlgorithmException;
 
     //查询所有用户列表
     public Result<List<SelectAllEmpDTO>> selectAllEmp(Integer pageNum, Integer pageSize);
+
 }

@@ -35,7 +35,7 @@ public interface EmployeeMapper {
 
     Integer updateByPrimaryKeySelective(Employee record);
 
-    Integer updateByPrimaryKey(Employee record);
+    Integer updateByPrimaryKey(@Param("record") Employee record);
 
     Integer selectEmpByJobNumber(Integer jobNumber);
 
@@ -44,4 +44,6 @@ public interface EmployeeMapper {
     void updatePasswordByUsername(@Param("username") String username,@Param("password") String newPsw);
 
     List<SelectAllEmpDTO> selectAllEmp(Integer ROLE);
+
+    SelectAllEmpDTO  selectByJobNumber(Integer jobNumber);
 }

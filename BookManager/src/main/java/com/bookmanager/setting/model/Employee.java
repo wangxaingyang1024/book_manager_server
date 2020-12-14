@@ -1,6 +1,9 @@
 package com.bookmanager.setting.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -22,7 +25,8 @@ public class Employee {
 
     private String phone;
 
-    private Integer age;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date birth;
 
     private Integer role;
 
