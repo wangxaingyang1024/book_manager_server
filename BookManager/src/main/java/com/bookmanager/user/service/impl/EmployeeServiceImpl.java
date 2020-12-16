@@ -1,8 +1,7 @@
 package com.bookmanager.user.service.impl;
 
-import com.bookmanager.book.dto.BookListDTO;
 import com.bookmanager.setting.model.Employee;
-import com.bookmanager.setting.redis.RedisService;
+import com.bookmanager.setting.token.CreatToken;
 import com.bookmanager.setting.util.MD5Util;
 import com.bookmanager.setting.util.DisposeNumber;
 import com.bookmanager.setting.vo.CodeEnum;
@@ -35,9 +34,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Resource
     private EmployeeMapper mapper ;
-
-    @Resource
-    private RedisService redisService ;
 
     /**
      * 查询个人信息
@@ -125,8 +121,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
      * @throws NoSuchAlgorithmException
      */
     @Override
-    public Result<Employee> adminEmpLogin(EmpLoginDTO empLoginDTO) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        Employee emp = mapper.selectEmpByUsername(empLoginDTO.getUsername());
+    public Result<SelectAllEmpDTO > adminEmpLogin(EmpLoginDTO empLoginDTO) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        SelectAllEmpDTO  emp = mapper.selectEmpByUsername(empLoginDTO.getUsername());
         log.info(emp.toString());
         if (emp.getRole() != ADMIN_ROLE){
             return Result.notPower();
@@ -143,8 +139,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
     /**
      * 用户登录
      */
-    public Result<Employee> publicEmpLogin(EmpLoginDTO empLoginDTO) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        Employee emp = mapper.selectEmpByUsername(empLoginDTO.getUsername());
+    public Result<SelectAllEmpDTO> publicEmpLogin(EmpLoginDTO empLoginDTO) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        SelectAllEmpDTO emp = mapper.selectEmpByUsername(empLoginDTO.getUsername());
         log.info(emp.toString());
         if(emp == null){
             return Result.badUsernameRequest();
@@ -155,8 +151,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
         String passwordInDb = mapper.selectPasswordByUsername(empLoginDTO.getUsername());
         if(MD5Util.validPassword(empLoginDTO.getPassword(),passwordInDb)){
             //token验证
-            String token = UUID.randomUUID().toString();
-            redisService.set(token, empLoginDTO.getUsername());
+            String token = CreatToken.getToken(emp);
+            emp.setToken(token);
             return Result.success(emp);
         }
         return Result.badPasswordRequest();
@@ -182,7 +178,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
      */
     @Override
     public Result<Employee> addEmployee(Employee employee) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        Employee emp = mapper.selectEmpByUsername(employee.getUsername());
+        SelectAllEmpDTO  emp = mapper.selectEmpByUsername(employee.getUsername());
         if(emp != null){
             return Result.empExist();
         }

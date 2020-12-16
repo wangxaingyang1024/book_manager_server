@@ -1,4 +1,4 @@
-package com.bookmanager.setting.cofig;
+package com.bookmanager.setting.config;
 
 import com.bookmanager.setting.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +15,7 @@ public class AuthConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(initAuthInterceptor()).addPathPatterns("/api/**").excludePathPatterns("/login/**");
+        registry.addInterceptor(initAuthInterceptor())
+                .addPathPatterns("/**");
     }
 }

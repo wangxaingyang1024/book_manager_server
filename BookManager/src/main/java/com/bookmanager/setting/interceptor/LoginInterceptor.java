@@ -1,49 +1,89 @@
 package com.bookmanager.setting.interceptor;
 
-import com.bookmanager.setting.redis.RedisService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.JWTVerifier;
+import com.bookmanager.setting.token.PassToken;
+import com.bookmanager.setting.token.UserLoginToken;
+import com.bookmanager.setting.vo.CodeEnum;
+import com.bookmanager.setting.vo.Result;
+import com.bookmanager.user.dto.SelectAllEmpDTO;
+import com.bookmanager.user.mapper.EmployeeMapper;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.lang.reflect.Method;
 
 /**
  * Create by Berton on  19:17.
  * email ：blovesheep@126.com
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
-    @Autowired
-    private RedisService redisService;
-
+    @Resource
+    private EmployeeMapper employeeMapper;
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=utf-8");
-        String token = request.getHeader("token");
-        if (StringUtils.isEmpty(token)) {
-            response.getWriter().print("用户未登录，请登录后操作！");
-            return false;
+    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {
+        String token = httpServletRequest.getHeader("Authorization");// 从 http 请求头中取出 token
+        // 如果不是映射到方法直接通过
+        if(!(object instanceof HandlerMethod)){
+            return true;
         }
-        Object loginStatus = redisService.get(token);
-        if( Objects.isNull(loginStatus)){
-            response.getWriter().print("token错误，请查看！");
-            return false;
+        HandlerMethod handlerMethod=(HandlerMethod)object;
+        Method method=handlerMethod.getMethod();
+        //检查是否有passtoken注释，有则跳过认证
+        if (method.isAnnotationPresent(PassToken.class)) {
+            PassToken passToken = method.getAnnotation(PassToken.class);
+            if (passToken.required()) {
+                return true;
+            }
+        }
+        //检查有没有需要用户权限的注解
+        if (method.isAnnotationPresent(UserLoginToken.class)) {
+            UserLoginToken userLoginToken = method.getAnnotation(UserLoginToken.class);
+            if (userLoginToken.required()) {
+                // 执行认证
+                if (token == null) {
+                    throw new RuntimeException("无token，请重新登录");
+                }
+                // 获取 token 中的 user id
+                String jobNumber;
+                try {
+                    jobNumber = JWT.decode(token).getAudience().get(0);
+                } catch (JWTDecodeException j) {
+                    throw new RuntimeException("401");
+                }
+                SelectAllEmpDTO  emp = employeeMapper.selectByJobNumber(Integer.parseInt(jobNumber));
+                if (emp == null) {
+                    throw new RuntimeException("用户不存在，请重新登录");
+                }
+                // 验证 token
+                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(emp.getUsername())).build();
+                try {
+                    jwtVerifier.verify(token);
+                } catch (JWTVerificationException e) {
+                    throw new RuntimeException("401");
+                }
+                return true;
+            }
         }
         return true;
     }
 
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest httpServletRequest,
+                           HttpServletResponse httpServletResponse,
+                           Object o, ModelAndView modelAndView) throws Exception {
 
     }
-
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-
+    public void afterCompletion(HttpServletRequest httpServletRequest,
+                                HttpServletResponse httpServletResponse,
+                                Object o, Exception e) throws Exception {
     }
 }

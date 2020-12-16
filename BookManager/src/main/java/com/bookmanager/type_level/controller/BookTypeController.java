@@ -1,6 +1,7 @@
 package com.bookmanager.type_level.controller;
 
 import com.bookmanager.setting.model.BookTypeLevel;
+import com.bookmanager.setting.token.UserLoginToken;
 import com.bookmanager.setting.vo.Result;
 import com.bookmanager.type_level.dto.BookTypeLevelDTO;
 import com.bookmanager.type_level.service.IBookTypeLevelService;
@@ -21,11 +22,12 @@ public class BookTypeController {
      * @param bookTypeLevel
      * @return
      */
+    @UserLoginToken
     @PutMapping("add")
     public Result insertType(@RequestBody BookTypeLevel bookTypeLevel){
         return levelService.addBookType(bookTypeLevel) ;
     }
-
+    @UserLoginToken
     @PostMapping("remove")
     public Result removeType(@RequestBody BookTypeLevelDTO levelDTO){
         Result result = levelService.deleteBookType(levelDTO);

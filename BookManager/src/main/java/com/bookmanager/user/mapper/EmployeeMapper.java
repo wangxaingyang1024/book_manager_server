@@ -23,7 +23,7 @@ public interface EmployeeMapper {
 
     Employee selectByPrimaryKey(Long id);
 
-    Employee selectEmpByUsername(String username );
+    SelectAllEmpDTO selectEmpByUsername(String username );
 
     Employee selectEmpByUsernameAndPassword(@Param("username") String username );
 

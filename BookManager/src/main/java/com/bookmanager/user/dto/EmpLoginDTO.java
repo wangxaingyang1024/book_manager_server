@@ -8,5 +8,4 @@ import lombok.NoArgsConstructor;
 public class EmpLoginDTO {
     private String username;
     private String password ;
-
 }

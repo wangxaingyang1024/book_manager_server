@@ -6,6 +6,7 @@ import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.book.service.BookService;
 import com.bookmanager.book.service.impl.BookServiceImpl;
 import com.bookmanager.setting.model.Book;
+import com.bookmanager.setting.token.UserLoginToken;
 import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class BookController {
      * @param jobNumber
      * @return
      */
+    @UserLoginToken
     @GetMapping("/findOne/{jobNumber}")
     public  Result<List<Book>> userFindByEmpNumber(@PathVariable int jobNumber){
         return bookService.findByEmpNumber(jobNumber);
@@ -33,6 +35,7 @@ public class BookController {
     /**
      * 借书
      */
+    @UserLoginToken
     @PostMapping("/borrow")
     public Result borrowBook(@RequestBody RelationBookEmpDTO rbed){
         bookService.borrowBook(rbed);
@@ -41,19 +44,19 @@ public class BookController {
     /**
      * 还书
      */
+    @UserLoginToken
     @PostMapping("/return")
     public Result returnBoook(@RequestBody RelationBookEmpDTO rbed){
         bookService.returnBook(rbed);
         return new Result(CodeEnum.BOOK_RETURN_SUCCESS);
     }
 
-//    /**
-//     * 用户根据书名查找图书
-//     * @param btd
-//     * @return
-//     */
-//    @PostMapping("/likeName")
-//    public Result likeQuery(@RequestBody PageHelperDTO phd){
-//        return bookService.selectLike(phd);
-//    }
+    /**
+     * 分类标签
+     * @return
+     */
+    @GetMapping("/sort")
+    public Result sortBook(){
+        return bookService.querySort();
+    }
 }

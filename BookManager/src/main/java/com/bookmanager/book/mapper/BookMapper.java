@@ -22,6 +22,8 @@ public interface BookMapper {
 
     int insertSelective(Book record);
 
+    List<String> selectTypeByType();
+
     List<Book> selectByExampleWithBLOBs(BookExample example);
 
     List<Book> selectByExample(BookExample example);

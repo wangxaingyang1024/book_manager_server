@@ -1,5 +1,6 @@
 package com.bookmanager.user.dto;
 
+import jdk.nashorn.internal.parser.Token;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,5 +24,7 @@ public class SelectAllEmpDTO {
     private Date birth;
 
     private Integer role;
+
+    private String token ;
 
 }

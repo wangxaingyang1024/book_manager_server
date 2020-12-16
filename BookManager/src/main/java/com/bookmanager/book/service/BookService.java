@@ -11,6 +11,8 @@ import java.util.List;
 public interface BookService {
 
     Book getBook(Long id);
+
+    Result querySort();
     /**
      * 管理员获取图书列表
      * @return

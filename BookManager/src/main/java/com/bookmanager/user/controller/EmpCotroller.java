@@ -1,10 +1,12 @@
 package com.bookmanager.user.controller;
 
 import com.bookmanager.setting.model.Employee;
+import com.bookmanager.setting.token.UserLoginToken;
 import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
 import com.bookmanager.user.dto.ChangePasswordDTO;
 import com.bookmanager.user.dto.EmpLoginDTO;
+import com.bookmanager.user.dto.SelectAllEmpDTO;
 import com.bookmanager.user.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +27,7 @@ public class EmpCotroller {
      * @return
      */
     @PostMapping("login")
-    public Result<Employee> login(@RequestBody EmpLoginDTO employee) {
+    public Result<SelectAllEmpDTO> login(@RequestBody EmpLoginDTO employee) {
         try {
             return employeeService.publicEmpLogin(employee);
         } catch (UnsupportedEncodingException e) {
@@ -75,6 +77,7 @@ public class EmpCotroller {
      * @param jobNumber
      * @return
      */
+    @UserLoginToken
     @GetMapping("profile/{jobNumber}")
     public Result profile(@PathVariable Integer jobNumber){
         return employeeService.getProfile(jobNumber);
@@ -85,6 +88,7 @@ public class EmpCotroller {
      * @param emp
      * @return
      */
+    @UserLoginToken
     @PutMapping("upProfile")
     public Result upProfile(@RequestBody Employee emp){
         return employeeService.updateSelfInformation(emp);

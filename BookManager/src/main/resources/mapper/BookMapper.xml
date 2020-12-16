@@ -241,6 +241,15 @@
     from book
     where `type` = #{type}
   </select>
+  <select id="selectTypeByType" resultType="string">
+    select `name`
+    from book_type
+    where my_id in (
+    select
+    distinct(`type`)
+    from book
+    )
+  </select>
   <update id="updateBook" parameterType="com.bookmanager.setting.model.Book">
     update book
     set isbn = #{book.isbn},

@@ -1,6 +1,7 @@
 package com.bookmanager.user.controller;
 
 import com.bookmanager.setting.model.Employee;
+import com.bookmanager.setting.token.UserLoginToken;
 import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
 import com.bookmanager.user.dto.ChangePasswordDTO;
@@ -34,6 +35,7 @@ public class AdminEmpController {
         return new Result(CodeEnum.LOGIN_FAILURE) ;
     }
     //删除用户
+    @UserLoginToken
     @PostMapping("remove/{jobNumber}")
     public Result<String> remove(@PathVariable Integer jobNumber){
         return employeeService.deleteEmployee(jobNumber);

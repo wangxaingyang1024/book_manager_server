@@ -37,6 +37,12 @@ public class BookServiceImpl implements BookService {
         return bookMapper.selectByPrimaryKey(id);
     }
 
+    @Override
+    public Result querySort() {
+        List<String> type = bookMapper.selectTypeByType();
+        return new Result(CodeEnum.SELECT_SUCCESS,type);
+    }
+
     /**
      * 管理员查询图书
      *
@@ -238,17 +244,4 @@ public class BookServiceImpl implements BookService {
         }
         return nodeT;
     }
-//
-//    /**
-//     * 模糊查询
-//     * @param name
-//     * @return
-//     */
-//    @Override
-//    public Result selectLike(String name) {
-//        String n = "%"+name+"%";
-//        PageHelper.startPage()
-//        List<Book> books = bookMapper.selectLikeName(n);
-//        return new Result(CodeEnum.SELECT_SUCCESS,);
-//    }
 }

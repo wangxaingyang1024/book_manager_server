@@ -43,6 +43,7 @@ public enum CodeEnum {
     /**
      * 登录   1000-1020
      */
+
     LOGIN_SUCCESS(1000, "用户登录成功！"),
     ADMIN_SUCCESS(1001, "管理员登录成功！"),
     CHANGE_PASSWORD_SUCCESS(1002,"密码修改成功！"),
@@ -50,6 +51,7 @@ public enum CodeEnum {
     LOGIN_FAILURE(1004,"登录失败！"),
     SIGNUP_FAILURE(1005,"注册失败，服务器跑丢了～(^∩^)～...."),
     CHANGE_PASSWORD_FAILURE(1006,"密码修改失败，服务器串门去了～(^∩^)～...."),
+    USER_ERROR(1007,"登录异常！"),
     /**
      * 参数不齐全或参数错误   2000-2020
      */

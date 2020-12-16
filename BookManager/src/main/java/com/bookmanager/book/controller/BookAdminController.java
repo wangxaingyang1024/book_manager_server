@@ -3,6 +3,7 @@ package com.bookmanager.book.controller;
 import com.bookmanager.book.dto.PageHelperDTO;
 import com.bookmanager.book.service.BookService;
 import com.bookmanager.setting.model.Book;
+import com.bookmanager.setting.token.UserLoginToken;
 import com.bookmanager.setting.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,7 @@ public class BookAdminController {
      * @param jobNumber
      * @return
      */
+    @UserLoginToken
     @GetMapping("/findOne/{jobNumber}")
     public  Result userFindByEmpNumber(@PathVariable int jobNumber){
         return bookService.findByEmpNumber(jobNumber);
@@ -47,6 +49,7 @@ public class BookAdminController {
      * @param book
      * @return
      */
+    @UserLoginToken
     @PostMapping("/add")
     public Result  addBook(@RequestBody Book book){
         return bookService.addBook(book);
@@ -57,6 +60,7 @@ public class BookAdminController {
      * @param isbn
      * @return
      */
+    @UserLoginToken
     @PostMapping("/delete/{isbn}")
     public Result deleteBook(@PathVariable Long isbn){
         return bookService.deleteBookByIsbn(isbn);
@@ -66,6 +70,7 @@ public class BookAdminController {
      * 更新图书
      * @return
      */
+    @UserLoginToken
     @PostMapping("/update")
     public Result updateBook(@RequestBody Book book){
         Result result = bookService.updateBook(book);
@@ -75,6 +80,7 @@ public class BookAdminController {
      * 类型列表获取
      * @return
      */
+    @UserLoginToken
     @GetMapping("/type/{level}")
     public Result<List<String>> getBookTypeList(@PathVariable Integer level){
         return bookService.getListType(level);

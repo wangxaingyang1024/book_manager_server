@@ -91,7 +91,7 @@
      from employee where job_number = #{jobNumber}
   </select>
   <select id="selectEmpByUsername" parameterType="string"
-          resultType="com.bookmanager.setting.model.Employee">
+          resultType="com.bookmanager.user.dto.SelectAllEmpDTO">
     select
     <include refid="Base_Column_List"/>
     from employee

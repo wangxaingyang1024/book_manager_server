@@ -3,6 +3,7 @@ package com.bookmanager.bookemplog.controller;
 import com.bookmanager.bookemplog.dto.LogListDTO;
 import com.bookmanager.bookemplog.dto.QueryLogByTimeDTO;
 import com.bookmanager.bookemplog.service.ILogBookEmpService;
+import com.bookmanager.setting.token.UserLoginToken;
 import com.bookmanager.setting.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ public class LogBookEmpController {
      * 查询最新日志记录
      * @return
      */
+    @UserLoginToken
     @GetMapping("admin/newLogs")
     public Result queryNewLog(){
         return logBookEmpService.selectNewLog();
@@ -29,6 +31,7 @@ public class LogBookEmpController {
      * 更多日志信息
      * @return
      */
+    @UserLoginToken
     @GetMapping("admin/allLogs")
     public Result queryAllLog(){
         return logBookEmpService.selectAllLog();
@@ -39,11 +42,18 @@ public class LogBookEmpController {
      * @param jobNumber
      * @return
      */
+    @UserLoginToken
     @PostMapping("admin/queryOne")
     public Result<List<LogListDTO>> queryByJobNumber(@RequestBody String jobNumber){
         return logBookEmpService.selectLogByJobNumber(Integer.parseInt(jobNumber));
     }
-    //TODO:个人详情页的日志记录
+
+    /**
+     * 个人详情页的日志记录
+     * @param qlt
+     * @return
+     */
+    @UserLoginToken
     @PostMapping("logT")
     public Result<List<LogListDTO>> queryOneByTime(@RequestBody QueryLogByTimeDTO qlt){
         return logBookEmpService.selectEmpLogByTime(qlt);
@@ -54,6 +64,7 @@ public class LogBookEmpController {
      * @param qlt
      * @return
      */
+    @UserLoginToken
     @PostMapping("admin/logT")
     public Result<List<LogListDTO>> queryAllByTime(@RequestBody  QueryLogByTimeDTO qlt){
         return logBookEmpService.selectLogByTime(qlt);
