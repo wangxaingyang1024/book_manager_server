@@ -50,23 +50,23 @@ public class BookServiceImpl implements BookService {
      */
     @Override
     public Result findAdminAllBook(String name ,Integer pageNum , Integer pageSize) {
-        if("".equals(name)) {
-            PageHelper.startPage(pageNum,pageSize);
-            List<BookListDTO> listDTOS = bookMapper.findAdminAllBook();
-            for (int x = 0; x < listDTOS.size(); x++) {
-                Long isbn = listDTOS.get(x).getIsbn();
-                Integer type = bookMapper.findBookByIsbn(isbn).getType();
-                Integer[] allTid = findAllTid(type);
-                listDTOS.get(x).setLevel(allTid);
-            }
-            PageInfo<BookListDTO> pageInfo = new PageInfo<>(listDTOS);
-            return new Result(CodeEnum.FIND_BOOKS, pageInfo);
+        if(!"".equals(name)) {
+            String n = "%"+name+"%";
+            PageHelper.startPage(pageNum, pageSize);
+            List<BookListDTO> books = bookMapper.selectLikeName(n);
+            PageInfo<BookListDTO> pageInfo = new PageInfo<>(books);
+            return new Result(CodeEnum.FIND_BOOKS,pageInfo);
         }
-        String n = "%"+name+"%";
         PageHelper.startPage(pageNum, pageSize);
-        List<BookListDTO> books = bookMapper.selectLikeName(n);
-        PageInfo<BookListDTO> pageInfo = new PageInfo<>(books);
-        return new Result(CodeEnum.FIND_BOOKS,pageInfo);
+        List<BookListDTO> listDTOS = bookMapper.findAdminAllBook();
+        for (int x = 0; x < listDTOS.size(); x++) {
+            Long isbn = listDTOS.get(x).getIsbn();
+            Integer type = bookMapper.findBookByIsbn(isbn).getType();
+            Integer[] allTid = findAllTid(type);
+            listDTOS.get(x).setLevel(allTid);
+        }
+        PageInfo<BookListDTO> pageInfo = new PageInfo<>(listDTOS);
+        return new Result(CodeEnum.FIND_BOOKS, pageInfo);
     }
 
     /**

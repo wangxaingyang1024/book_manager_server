@@ -76,14 +76,15 @@ public class BookAdminController {
         Result result = bookService.updateBook(book);
         return result;
     }
-    /**
-     * 类型列表获取
-     * @return
-     */
-    @UserLoginToken
-    @GetMapping("/type/{level}")
-    public Result<List<String>> getBookTypeList(@PathVariable Integer level){
-        return bookService.getListType(level);
-    }
+    //todo:类型标签下拉展示
+//    /**
+//     * 类型列表获取
+//     * @return
+//     */
+//    @UserLoginToken
+//    @GetMapping("/type/{level}")
+//    public Result<List<String>> getBookTypeList(@PathVariable Integer level){
+//        return bookService.getListType(level);
+//    }
 
 }

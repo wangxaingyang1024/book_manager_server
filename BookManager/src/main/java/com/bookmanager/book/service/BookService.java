@@ -10,8 +10,6 @@ import java.util.List;
 
 public interface BookService {
 
-    Book getBook(Long id);
-
     Result querySort();
     /**
      * 管理员获取图书列表
@@ -61,5 +59,4 @@ public interface BookService {
 
    Result getListType(Integer level);
 
-//   Result selectLike(String name);
 }
