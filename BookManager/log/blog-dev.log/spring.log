@@ -7,3 +7,111 @@
 2020-12-17 11:56:19.216  INFO 4804 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
 2020-12-17 11:56:19.217  INFO 4804 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
 2020-12-17 11:56:19.246  INFO 4804 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+2020-12-17 19:19:44.462  INFO 9516 --- [main] com.bookmanager.BookmanagerApplication   : Starting BookmanagerApplication on DESKTOP-80TVTMB with PID 9516 (F:\Java_Code2020\workspace1214\book_manager_server\BookManager\target\classes started by PC501 in F:\Java_Code2020\workspace1214\book_manager_server\BookManager)
+2020-12-17 19:19:44.464 DEBUG 9516 --- [main] com.bookmanager.BookmanagerApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-12-17 19:19:44.465  INFO 9516 --- [main] com.bookmanager.BookmanagerApplication   : No active profile set, falling back to default profiles: default
+2020-12-17 19:19:45.126  INFO 9516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-17 19:19:45.126  INFO 9516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-12-17 19:19:45.153  INFO 9516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21ms. Found 0 JPA repository interfaces.
+2020-12-17 19:19:45.164  INFO 9516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-17 19:19:45.165  INFO 9516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-12-17 19:19:45.185  INFO 9516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 0 Redis repository interfaces.
+2020-12-17 19:19:45.978  INFO 9516 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2020-12-17 19:19:45.990  INFO 9516 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-17 19:19:45.991  INFO 9516 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-12-17 19:19:46.170  INFO 9516 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-17 19:19:46.170  INFO 9516 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1676 ms
+2020-12-17 19:19:46.221  INFO 9516 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-12-17 19:19:46.398  INFO 9516 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-12-17 19:19:46.537  INFO 9516 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-17 19:19:47.120  INFO 9516 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-17 19:19:47.197  INFO 9516 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-12-17 19:19:47.565  INFO 9516 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-17 19:19:47.839  INFO 9516 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-12-17 19:19:47.895  WARN 9516 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-17 19:19:48.185  INFO 9516 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-17 19:19:48.203  INFO 9516 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-17 19:19:49.076  INFO 9516 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path ''
+2020-12-17 19:19:49.078  INFO 9516 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositoriesâ€¦
+2020-12-17 19:19:49.078  INFO 9516 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-12-17 19:19:49.086  INFO 9516 --- [main] com.bookmanager.BookmanagerApplication   : Started BookmanagerApplication in 5.033 seconds (JVM running for 5.736)
+2020-12-17 19:21:23.393  INFO 10504 --- [main] c.b.BookmanagerApplicationTests          : Starting BookmanagerApplicationTests on DESKTOP-80TVTMB with PID 10504 (started by PC501 in F:\Java_Code2020\workspace1214\book_manager_server\BookManager)
+2020-12-17 19:21:23.394 DEBUG 10504 --- [main] c.b.BookmanagerApplicationTests          : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-12-17 19:21:23.395  INFO 10504 --- [main] c.b.BookmanagerApplicationTests          : No active profile set, falling back to default profiles: default
+2020-12-17 19:21:24.125  INFO 10504 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-17 19:21:24.129  INFO 10504 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-12-17 19:21:24.166  INFO 10504 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27ms. Found 0 JPA repository interfaces.
+2020-12-17 19:21:24.186  INFO 10504 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-17 19:21:24.187  INFO 10504 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-12-17 19:21:24.212  INFO 10504 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 0 Redis repository interfaces.
+2020-12-17 19:21:24.788  INFO 10504 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-12-17 19:21:24.984  INFO 10504 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-12-17 19:21:25.132  INFO 10504 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-17 19:21:25.684  INFO 10504 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-17 19:21:25.753  INFO 10504 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-12-17 19:21:25.972  INFO 10504 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-17 19:21:26.442  WARN 10504 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-17 19:21:26.465  INFO 10504 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-12-17 19:21:26.711  INFO 10504 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-17 19:21:26.725  INFO 10504 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-17 19:21:27.740  INFO 10504 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories¡­
+2020-12-17 19:21:27.741  INFO 10504 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-12-17 19:21:27.751  INFO 10504 --- [main] c.b.BookmanagerApplicationTests          : Started BookmanagerApplicationTests in 4.858 seconds (JVM running for 6.058)
+2020-12-17 19:21:27.972  INFO 10504 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-12-17 19:21:27.975  INFO 10504 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-17 19:21:27.976  INFO 10504 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-12-17 19:21:27.982  INFO 10504 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-12-17 19:35:40.778  INFO 15744 --- [main] com.bookmanager.BookmanagerApplication   : Starting BookmanagerApplication on DESKTOP-80TVTMB with PID 15744 (F:\Java_Code2020\workspace1214\book_manager_server\BookManager\target\classes started by PC501 in F:\Java_Code2020\workspace1214\book_manager_server\BookManager)
+2020-12-17 19:35:40.780 DEBUG 15744 --- [main] com.bookmanager.BookmanagerApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-12-17 19:35:40.780  INFO 15744 --- [main] com.bookmanager.BookmanagerApplication   : No active profile set, falling back to default profiles: default
+2020-12-17 19:35:41.357  INFO 15744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-17 19:35:41.358  INFO 15744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-12-17 19:35:41.384  INFO 15744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21ms. Found 0 JPA repository interfaces.
+2020-12-17 19:35:41.395  INFO 15744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-17 19:35:41.396  INFO 15744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-12-17 19:35:41.416  INFO 15744 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 0 Redis repository interfaces.
+2020-12-17 19:35:41.808  INFO 15744 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2020-12-17 19:35:41.816  INFO 15744 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-17 19:35:41.816  INFO 15744 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-12-17 19:35:41.915  INFO 15744 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-17 19:35:41.915  INFO 15744 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1103 ms
+2020-12-17 19:35:41.955  INFO 15744 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-12-17 19:35:42.030  INFO 15744 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-12-17 19:35:42.100  INFO 15744 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-17 19:35:42.546  INFO 15744 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-17 19:35:42.582  INFO 15744 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-12-17 19:35:42.699  INFO 15744 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-17 19:35:42.800  INFO 15744 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-12-17 19:35:42.864  WARN 15744 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-17 19:35:42.957  INFO 15744 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-17 19:35:42.964  INFO 15744 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-17 19:35:43.370  INFO 15744 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path ''
+2020-12-17 19:35:43.372  INFO 15744 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositoriesâ€¦
+2020-12-17 19:35:43.372  INFO 15744 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-12-17 19:35:43.378  INFO 15744 --- [main] com.bookmanager.BookmanagerApplication   : Started BookmanagerApplication in 2.995 seconds (JVM running for 3.639)
+2020-12-17 19:37:56.193  INFO 8624 --- [main] c.b.BookmanagerApplicationTests          : Starting BookmanagerApplicationTests on DESKTOP-80TVTMB with PID 8624 (started by PC501 in F:\Java_Code2020\workspace1214\book_manager_server\BookManager)
+2020-12-17 19:37:56.194 DEBUG 8624 --- [main] c.b.BookmanagerApplicationTests          : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-12-17 19:37:56.194  INFO 8624 --- [main] c.b.BookmanagerApplicationTests          : No active profile set, falling back to default profiles: default
+2020-12-17 19:37:57.008  INFO 8624 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-17 19:37:57.010  INFO 8624 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-12-17 19:37:57.043  INFO 8624 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24ms. Found 0 JPA repository interfaces.
+2020-12-17 19:37:57.056  INFO 8624 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-17 19:37:57.058  INFO 8624 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-12-17 19:37:57.082  INFO 8624 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16ms. Found 0 Redis repository interfaces.
+2020-12-17 19:37:57.548  INFO 8624 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-12-17 19:37:57.739  INFO 8624 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-12-17 19:37:57.881  INFO 8624 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-17 19:37:58.421  INFO 8624 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-17 19:37:58.480  INFO 8624 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-12-17 19:37:58.647  INFO 8624 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-17 19:37:58.989  INFO 8624 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-12-17 19:37:59.064  WARN 8624 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-17 19:37:59.244  INFO 8624 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-17 19:37:59.255  INFO 8624 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-17 19:38:00.268  INFO 8624 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories¡­
+2020-12-17 19:38:00.269  INFO 8624 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-12-17 19:38:00.279  INFO 8624 --- [main] c.b.BookmanagerApplicationTests          : Started BookmanagerApplicationTests in 4.462 seconds (JVM running for 5.395)
+2020-12-17 19:38:00.406  INFO 8624 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-12-17 19:38:00.408  INFO 8624 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-17 19:38:00.409  INFO 8624 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-12-17 19:38:00.412  INFO 8624 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
