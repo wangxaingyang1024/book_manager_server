@@ -132,6 +132,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
         }
         String passwordInDb = mapper.selectPasswordByUsername(empLoginDTO.getUsername());
         if(MD5Util.validPassword(empLoginDTO.getPassword(),passwordInDb)){
+            //token验证
+            String token = CreatToken.getToken(emp);
+            emp.setToken(token);
             return Result.adminSuccess(emp);
         }
         return Result.badPasswordRequest();

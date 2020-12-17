@@ -51,14 +51,14 @@ public class BookController {
         return new Result(CodeEnum.BOOK_RETURN_SUCCESS);
     }
 
-    /**
-     * 分类标签
-     * @return
-     */
-    @GetMapping("/sort")
-    public Result sortBook(){
-        return bookService.querySort();
-    }
+//    /**
+//     * 分类标签
+//     * @return
+//     */
+//    @GetMapping("/sort")
+//    public Result sortBook(){
+//        return bookService.querySort();
+//    }
 
 
 }

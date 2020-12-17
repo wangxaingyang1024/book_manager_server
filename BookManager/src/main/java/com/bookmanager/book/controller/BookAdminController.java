@@ -77,14 +77,14 @@ public class BookAdminController {
         return result;
     }
     //todo:类型标签下拉展示
-//    /**
-//     * 类型列表获取
-//     * @return
-//     */
-//    @UserLoginToken
-//    @GetMapping("/type/{level}")
-//    public Result<List<String>> getBookTypeList(@PathVariable Integer level){
-//        return bookService.getListType(level);
-//    }
+    /**
+     * 类型列表获取
+     * @return
+     */
+    @UserLoginToken
+    @GetMapping("/type/{level}")
+    public Result<List<String>> getBookTypeList(@PathVariable Integer level){
+        return bookService.getListType(level);
+    }
 
 }

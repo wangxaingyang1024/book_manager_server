@@ -33,11 +33,6 @@ public class BookServiceImpl implements BookService {
     private BookTypeLevelMapper typeLevelMapper ;
 
     @Override
-    public Book getBook(Long id) {
-        return bookMapper.selectByPrimaryKey(id);
-    }
-
-    @Override
     public Result querySort() {
         List<String> type = bookMapper.selectTypeByType();
         return new Result(CodeEnum.SELECT_SUCCESS,type);
