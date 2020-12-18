@@ -138,7 +138,7 @@ public class BookServiceImpl implements BookService {
      */
     @Override
     public Result findByEmpNumber(int jobNumber) {
-        List<Book> books = bookMapper.FindByEmpNumber(jobNumber);
+        List<BookListDTO> books = bookMapper.FindByEmpNumber(jobNumber);
         if(books ==null){
             return new Result(CodeEnum.BOOK_find_FAILED);
         }

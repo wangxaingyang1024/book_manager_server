@@ -60,7 +60,7 @@ public interface BookMapper {
 
     int returnBookByIsbn(Long isbn);
 
-    List<Book> FindByEmpNumber(Integer jobNumber);
+    List<BookListDTO > FindByEmpNumber(Integer jobNumber);
 
     int insertRelation(@Param("rbed") RelationBookEmpDTO rbed);
 

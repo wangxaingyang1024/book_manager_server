@@ -1,5 +1,6 @@
 package com.bookmanager.book.controller;
 
+import com.bookmanager.book.dto.BookListDTO;
 import com.bookmanager.book.dto.BookTypeDTO;
 import com.bookmanager.book.dto.PageHelperDTO;
 import com.bookmanager.book.dto.RelationBookEmpDTO;
@@ -29,7 +30,7 @@ public class BookController {
      */
     @UserLoginToken
     @GetMapping("/findOne/{jobNumber}")
-    public  Result<List<Book>> userFindByEmpNumber(@PathVariable int jobNumber){
+    public  Result<List<BookListDTO >> userFindByEmpNumber(@PathVariable int jobNumber){
         return bookService.findByEmpNumber(jobNumber);
     }
     /**

@@ -109,13 +109,17 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="com.bookmanager.setting.model.Book">
     select * from book where id = #{id}
   </select>
-  <select id="FindByEmpNumber" parameterType="int" resultType="com.bookmanager.setting.model.Book">
-    SELECT
-    <include refid="Base_Column_List"/>
-    FROM book WHERE isbn IN(
-    SELECT book_isbn
-    FROM relation_book_emp r
-    WHERE r.job_number = #{jobNumber})
+  <select id="FindByEmpNumber" parameterType="int" resultType="com.bookmanager.book.dto.BookListDTO">
+    SELECT b.isbn,b.name,b.author,bt.name type,b.status,b.synopsis
+    FROM book b , book_type bt
+	<where>
+	b.type = bt.my_id
+    AND isbn IN(
+        SELECT book_isbn
+        FROM relation_book_emp r
+        WHERE r.job_number = #{jobNumber}
+    )
+    </where>
   </select>
   <select id="findAdminAllBook" resultType="com.bookmanager.book.dto.BookListDTO">
     SELECT b.isbn,b.name,b.author,bt.name type,b.status,b.synopsis
