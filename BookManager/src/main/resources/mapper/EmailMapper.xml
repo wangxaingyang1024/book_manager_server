@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookmanager.email.mapper.EmailMapper">
+  <insert id="insertEmail" parameterType="string" >
+      insert into verify_email(email , code) values (#{email},#{verifyCode});
+  </insert>
+  <delete id="deleteEmail" parameterType="string">
+      delete from verify_email where email = #{email};
+  </delete>
+    <select id="getCodeByEmail" parameterType="string" resultType="com.bookmanager.email.dto.EmailDTO">
+        select email , code verifyCode from verify_email where email = #{email};
+    </select>
+</mapper>

@@ -1,5 +1,8 @@
 package com.bookmanager.user.service.impl;
 
+import com.bookmanager.email.dto.EmailDTO;
+import com.bookmanager.email.mapper.EmailMapper;
+import com.bookmanager.email.service.MailService;
 import com.bookmanager.setting.model.Employee;
 import com.bookmanager.setting.token.CreatToken;
 import com.bookmanager.setting.util.MD5Util;
@@ -14,6 +17,7 @@ import com.bookmanager.user.service.IEmployeeService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -34,6 +38,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Resource
     private EmployeeMapper mapper ;
+
+    @Resource
+    private EmailMapper emailMapper;
 
     /**
      * 查询个人信息
@@ -185,6 +192,18 @@ public class EmployeeServiceImpl implements IEmployeeService {
         if(emp != null){
             return Result.empExist();
         }
+        //邮箱验证
+        Integer i = mapper.selectByEmail(employee.getEmail());
+        if(i != null){
+            return new Result(CodeEnum.EMAIL_DISABLED);
+        }
+        EmailDTO emailDTO = emailMapper.getCodeByEmail(employee.getEmail());
+        if(emailDTO == null || !emailDTO.getVerifyCode().equals(employee.getCode())){
+            return new Result(CodeEnum.VERIFY_CODE_ERROR);
+        }
+        //删除email记录
+        emailMapper.deleteEmail(employee.getEmail());
+        //生成jobNumber
         Integer jobNumber = Integer.parseInt(DisposeNumber.NumberUUID(8));
         Integer jn = mapper.selectEmpByJobNumber(jobNumber);
         if(jn != null){

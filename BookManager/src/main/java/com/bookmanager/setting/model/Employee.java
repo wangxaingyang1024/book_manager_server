@@ -30,6 +30,10 @@ public class Employee {
 
     private Integer role;
 
+    private String email ;
+
+    private String code ;
+
     public Employee(String username ,String password){
         this.username = username ;
         this.password = password ;

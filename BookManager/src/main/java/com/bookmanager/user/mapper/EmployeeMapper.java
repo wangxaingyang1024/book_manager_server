@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface EmployeeMapper {
+    Integer selectByEmail(String email);
+
     Long countByExample(EmployeeExample example);
 
     Integer deleteByExample(EmployeeExample example);

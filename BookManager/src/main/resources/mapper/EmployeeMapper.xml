@@ -10,6 +10,7 @@
     <result column="gender" jdbcType="INTEGER" property="gender" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="birth" jdbcType="DATE" property="birth" />
+    <result column="email" jdbcType="VARCHAR" property="email"/>
     <result column="role" jdbcType="INTEGER" property="role" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -71,11 +72,14 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, job_number, username, password, nick_name, gender, phone, birth, role
+    id, job_number, username, password, nick_name, gender, phone, birth,email, role
   </sql>
   <sql id="Base_All_List">
-    job_number, username, nick_name, gender, phone, birth, role
+    job_number, username, nick_name, gender, phone, birth, email, role
   </sql>
+  <select id="selectByEmail" parameterType="string" resultType="string">
+    select email from employee where email = #{email} ;
+  </select>
   <select id="selectAllEmp"  resultType="com.bookmanager.user.dto.SelectAllEmpDTO">
     select
     <include refid="Base_All_List"/>
@@ -180,6 +184,9 @@
       <if test="birth != null">
         birth,
       </if>
+      <if test="email != null">
+        email,
+      </if>
       <if test="role != null">
         role,
       </if>
@@ -208,6 +215,9 @@
       </if>
       <if test="birth != null">
         #{birth,jdbcType=DATE},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
       </if>
       <if test="role != null">
         #{role,jdbcType=INTEGER},

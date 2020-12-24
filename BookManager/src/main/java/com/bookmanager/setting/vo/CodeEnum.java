@@ -64,6 +64,8 @@ public enum CodeEnum {
     BAD_USERNAME_REQUEST(3000,"用户名不存在！"),
     BAD_PASSWORD_REQUEST(3001,"密码错误！"),
     NOT_POWER(3002,"亲，您不是管理员用户偶~~，切勿谋朝篡位丫～(^∩^)～...."),
+    EMAIL_DISABLED(3003,"邮箱名已经存在,请重新输入！"),
+    VERIFY_CODE_ERROR(3004,"验证码错误，请重新输入！"),
 
     /**
      * 注册   3021-3030
