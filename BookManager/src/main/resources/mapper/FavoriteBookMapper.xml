@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookmanager.favorite.mapper.FavoriteBookMapper">
+  <resultMap id="BaseResultMap" type="com.bookmanager.setting.model.Book">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="isbn" jdbcType="BIGINT" property="isbn" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="status" jdbcType="BIT" property="status" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.bookmanager.setting.model.Book">
+    <result column="synopsis" jdbcType="LONGVARCHAR" property="synopsis" />
+  </resultMap>
+  <insert id="insertFavoriteBook" parameterType="com.bookmanager.favorite.dto.FavoriteDTO">
+    INSERT INTO my_favorite (`job_number`,`isbn`) VALUES(#{fd.jobNumber},#{fd.isbn});
+  </insert>
+  <select id="getFavoriteBook" parameterType="int" resultType="com.bookmanager.favorite.dto.AllFavoriteDTO">
+    SELECT b.isbn, b.name,b.author,bt.name `type`,b.status,b.synopsis
+    FROM book_type bt,book b
+    WHERE b.type = bt.my_id
+      AND b.isbn IN(
+      SELECT mf.isbn
+      FROM my_favorite mf
+      WHERE mf.job_number=#{jobNumber}
+    )
+  </select>
+  <delete id="deleteFavoriteBook" parameterType="com.bookmanager.favorite.dto.FavoriteDTO">
+    delete from my_favorite where isbn = #{fd.isbn} and job_number = #{fd.jobNumber} ;
+  </delete>
+</mapper>

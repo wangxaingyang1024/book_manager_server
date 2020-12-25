@@ -141,20 +141,15 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-
   <delete id="deleteBookByIsbn" parameterType="long">
     DELETE FROM book WHERE isbn=#{isbn}
   </delete>
-
-
   <delete id="deleteLogByJobNumberAndIsbn" parameterType="com.bookmanager.book.dto.RelationBookEmpDTO" >
     DELETE
     FROM relation_book_emp
     WHERE job_number=#{rbed.jobNumber,jdbcType=INTEGER}
     AND book_isbn=#{rbed.isbn,jdbcType=BIGINT}
   </delete>
-
-
   <insert id="insertBook" parameterType="com.bookmanager.setting.model.Book">
     insert into book (isbn,`name`,author,`type`,status,synopsis)
     values (#{record.isbn},#{record.name},#{record.author}, #{record.type},#{record.status}, #{record.synopsis})
@@ -220,7 +215,6 @@
       </if>
     </trim>
   </insert>
-
   <select id="selectLikeName" parameterType="string" resultType="com.bookmanager.book.dto.BookListDTO">
    select
    <include refid="Base_Column_List"/>
