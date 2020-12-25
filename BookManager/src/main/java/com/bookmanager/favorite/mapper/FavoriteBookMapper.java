@@ -12,7 +12,7 @@ public interface FavoriteBookMapper {
 
     int insertFavoriteBook(@Param("fd") FavoriteDTO fd);
 
-    int deleteFavoriteBook(@Param("fd") FavoriteDTO fd);
+    int deleteFavoriteBook(@Param("fd") FavoriteDTO fd) ;
 
     List<AllFavoriteDTO> getFavoriteBook(Integer jobNumber);
 }
