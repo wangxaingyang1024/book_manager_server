@@ -66,6 +66,7 @@ public enum CodeEnum {
     NOT_POWER(3002,"亲，您不是管理员用户偶~~，切勿谋朝篡位丫～(^∩^)～...."),
     EMAIL_DISABLED(3003,"邮箱名已经存在,请重新输入！"),
     VERIFY_CODE_ERROR(3004,"验证码错误，请重新输入！"),
+    EMAIL_SEND_FAILURE(3005,"邮件发送失败！"),
 
     /**
      * 注册   3021-3030

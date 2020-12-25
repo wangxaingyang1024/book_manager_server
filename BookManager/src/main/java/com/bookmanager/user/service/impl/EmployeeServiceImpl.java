@@ -193,7 +193,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
             return Result.empExist();
         }
         //邮箱验证
-        Integer i = mapper.selectByEmail(employee.getEmail());
+        String i = mapper.selectByEmail(employee.getEmail());
         if(i != null){
             return new Result(CodeEnum.EMAIL_DISABLED);
         }

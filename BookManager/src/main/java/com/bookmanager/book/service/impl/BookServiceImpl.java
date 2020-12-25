@@ -5,15 +5,21 @@ import com.bookmanager.book.dto.BookTypeDTO;
 import com.bookmanager.book.dto.RelationBookEmpDTO;
 import com.bookmanager.book.mapper.BookMapper;
 import com.bookmanager.book.service.BookService;
+import com.bookmanager.email.mapper.EmailMapper;
+import com.bookmanager.email.service.MailService;
 import com.bookmanager.setting.model.Book;
 import com.bookmanager.setting.util.DisposeNumber;
 import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
 import com.bookmanager.type_level.mapper.BookTypeLevelMapper;
+import com.bookmanager.user.dto.SelectEmailDTO;
+import com.bookmanager.user.mapper.EmployeeMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -26,11 +32,18 @@ public class BookServiceImpl implements BookService {
 
     private static final Integer ROOT_LEVEL = 1 ;
     private static final Integer SECOND_LEVEL =2 ;
+    private static final Integer EMPLOYEE_ROLE = 1 ;
     @Resource
     private BookMapper bookMapper;
 
     @Resource
     private BookTypeLevelMapper typeLevelMapper ;
+
+    @Resource
+    private MailService mailService ;
+
+    @Resource
+    private EmployeeMapper employeeMapper ;
 
     @Override
     public Result querySort() {
@@ -95,7 +108,14 @@ public class BookServiceImpl implements BookService {
             addBook(book);
         }
         book.setIsbn(Long.parseLong(DisposeNumber.NumberUUID(9)));
-        return new Result(CodeEnum.BOOK_ADD_SUCCESS,bookMapper.insertBook(book));
+        int count = bookMapper.insertBook(book);
+        List<SelectEmailDTO> emailDTOList = employeeMapper.selectEmpByRole(EMPLOYEE_ROLE);
+        //发送邮件
+        Boolean aBoolean = mailService.sendMailList(emailDTOList);
+        if(aBoolean != true){
+           return  new Result(CodeEnum.EMAIL_SEND_FAILURE);
+        }
+        return new Result(CodeEnum.BOOK_ADD_SUCCESS,count);
     }
     /**
      * 删除图书

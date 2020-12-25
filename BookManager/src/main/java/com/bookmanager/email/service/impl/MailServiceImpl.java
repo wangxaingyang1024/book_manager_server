@@ -6,7 +6,13 @@ import com.bookmanager.email.service.MailService;
 import com.bookmanager.setting.util.DisposeNumber;
 import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
+import com.bookmanager.user.dto.SelectAllEmpDTO;
+import com.bookmanager.user.dto.SelectEmailDTO;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.task.TaskExecutor;
+import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
@@ -17,16 +23,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Objects;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class MailServiceImpl implements MailService {
 
     private final MailSenderConfig senderConfig;
 
     @Resource
     private EmailMapper mapper ;
+
+    @Autowired
+    private TaskExecutor taskExecutor ;
 
     @Override
     public Result sendMailVerify(String email) {
@@ -45,14 +56,24 @@ public class MailServiceImpl implements MailService {
     }
 
     @Override
-    public boolean sendMailList() {
-        JavaMailSenderImpl mailSender = senderConfig.getSender();
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(Objects.requireNonNull(mailSender.getUsername()));
-        message.setTo("614200664@qq.com");
-        message.setSubject("测试邮件");
-        message.setText("测试邮件内容");
-        mailSender.send(message);
+    public Boolean sendMailList(List<SelectEmailDTO> emailList) {
+        taskExecutor.execute(() ->{
+            try {
+                JavaMailSenderImpl mailSender = senderConfig.getSender();
+                SimpleMailMessage message = new SimpleMailMessage();
+                message.setFrom(Objects.requireNonNull(mailSender.getUsername()));
+                emailList.forEach(email ->{
+                    message.setTo(email.getEmail());
+                    message.setSubject("【明日图书馆通知】");
+                    message.setText("亲爱的员工，您好！\n        书架又上新书了，可能有你的最爱呦，赶紧去借阅吧！");
+                    mailSender.send(message);
+                });
+
+            } catch (MailException e) {
+                log.warn("发送邮件消息失败=exception:{}", e);
+                e.printStackTrace();
+            }
+        });
         return true;
     }
 

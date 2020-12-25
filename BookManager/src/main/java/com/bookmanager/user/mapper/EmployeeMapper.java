@@ -5,11 +5,14 @@ import com.bookmanager.setting.model.EmployeeExample;
 import java.util.List;
 
 import com.bookmanager.user.dto.SelectAllEmpDTO;
+import com.bookmanager.user.dto.SelectEmailDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface EmployeeMapper {
-    Integer selectByEmail(String email);
+    List<SelectEmailDTO> selectEmpByRole(Integer role);
+
+    String selectByEmail(String email);
 
     Long countByExample(EmployeeExample example);
 

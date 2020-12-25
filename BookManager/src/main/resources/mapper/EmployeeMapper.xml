@@ -77,7 +77,10 @@
   <sql id="Base_All_List">
     job_number, username, nick_name, gender, phone, birth, email, role
   </sql>
-  <select id="selectByEmail" parameterType="string" resultType="string">
+  <select id="selectEmpByRole" parameterType="integer" resultType="com.bookmanager.user.dto.SelectEmailDTO">
+    select email from employee where role = #{role};
+  </select>
+  <select id="selectByEmail" parameterType="string" resultType="java.lang.String">
     select email from employee where email = #{email} ;
   </select>
   <select id="selectAllEmp"  resultType="com.bookmanager.user.dto.SelectAllEmpDTO">
