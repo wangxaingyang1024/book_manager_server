@@ -5402,3 +5402,309 @@ java.lang.RuntimeException: 无token，请重新登录
 2020-12-25 15:30:31.267 DEBUG 8376 --- [http-nio-8899-exec-5] c.b.f.m.F.insertFavoriteBook             : ==>  Preparing: INSERT INTO my_favorite (`job_number`,`isbn`) VALUES(?,?);
 2020-12-25 15:30:31.270 DEBUG 8376 --- [http-nio-8899-exec-5] c.b.f.m.F.insertFavoriteBook             : ==> Parameters: 64728217(Integer), 741852963(Long)
 2020-12-25 15:30:31.301 DEBUG 8376 --- [http-nio-8899-exec-5] c.b.f.m.F.insertFavoriteBook             : <==    Updates: 1
+2020-12-25 18:17:07.969  INFO 7252 --- [main] com.bookmanager.BookmanagerApplication   : Starting BookmanagerApplication on DESKTOP-80TVTMB with PID 7252 (F:\Java_Code2020\workspace1214\book_manager_server\BookManager\target\classes started by PC501 in F:\Java_Code2020\workspace1214\book_manager_server\BookManager)
+2020-12-25 18:17:07.971 DEBUG 7252 --- [main] com.bookmanager.BookmanagerApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-12-25 18:17:07.971  INFO 7252 --- [main] com.bookmanager.BookmanagerApplication   : The following profiles are active: dev
+2020-12-25 18:17:08.561  INFO 7252 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-25 18:17:08.561  INFO 7252 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-12-25 18:17:08.593  INFO 7252 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25ms. Found 0 JPA repository interfaces.
+2020-12-25 18:17:08.603  INFO 7252 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-25 18:17:08.604  INFO 7252 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-12-25 18:17:08.628  INFO 7252 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18ms. Found 0 Redis repository interfaces.
+2020-12-25 18:17:09.039  INFO 7252 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8891 (http)
+2020-12-25 18:17:09.046  INFO 7252 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-25 18:17:09.047  INFO 7252 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-12-25 18:17:09.147  INFO 7252 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-25 18:17:09.148  INFO 7252 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1147 ms
+2020-12-25 18:17:09.184  INFO 7252 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-12-25 18:17:09.258  INFO 7252 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-12-25 18:17:09.331  INFO 7252 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'threadPoolTaskExecutor'
+2020-12-25 18:17:09.565  INFO 7252 --- [threadPoolTaskExecutor-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-25 18:17:09.601  INFO 7252 --- [threadPoolTaskExecutor-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-12-25 18:17:09.717  INFO 7252 --- [threadPoolTaskExecutor-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-25 18:17:09.810  INFO 7252 --- [main] c.b.email.config.MailSenderConfig        : 初始化mailSender
+2020-12-25 18:17:09.814  INFO 7252 --- [threadPoolTaskExecutor-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-12-25 18:17:09.878  WARN 7252 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-25 18:17:09.943  INFO 7252 --- [threadPoolTaskExecutor-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-25 18:17:09.951  INFO 7252 --- [threadPoolTaskExecutor-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-25 18:17:10.419  INFO 7252 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8891 (http) with context path ''
+2020-12-25 18:17:10.421  INFO 7252 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-12-25 18:17:10.421  INFO 7252 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-12-25 18:17:10.427  INFO 7252 --- [main] com.bookmanager.BookmanagerApplication   : Started BookmanagerApplication in 2.857 seconds (JVM running for 3.483)
+2020-12-25 18:17:21.230  INFO 7252 --- [http-nio-8891-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-25 18:17:21.231  INFO 7252 --- [http-nio-8891-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-25 18:17:21.235  INFO 7252 --- [http-nio-8891-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2020-12-25 18:17:21.369 DEBUG 7252 --- [http-nio-8891-exec-1] c.b.u.m.E.selectEmpByUsername            : ==>  Preparing: select id, job_number, username, password, nick_name, gender, phone, birth,email, role from employee where username=? ;
+2020-12-25 18:17:21.381 DEBUG 7252 --- [http-nio-8891-exec-1] c.b.u.m.E.selectEmpByUsername            : ==> Parameters: zzz(String)
+2020-12-25 18:17:21.389 DEBUG 7252 --- [http-nio-8891-exec-1] c.b.u.m.E.selectEmpByUsername            : <==      Total: 0
+2020-12-25 18:17:21.392 ERROR 7252 --- [http-nio-8891-exec-1] c.b.s.interceptor.BookManagerException   : Request URL : http://192.168.2.103:8891/api/login, Exception : {}
+
+java.lang.NullPointerException: null
+	at com.bookmanager.user.service.impl.EmployeeServiceImpl.publicEmpLogin(EmployeeServiceImpl.java:155)
+	at com.bookmanager.user.controller.EmpCotroller.login(EmpCotroller.java:32)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+
+2020-12-25 18:17:26.331 DEBUG 7252 --- [http-nio-8891-exec-2] c.b.u.m.E.selectEmpByUsername            : ==>  Preparing: select id, job_number, username, password, nick_name, gender, phone, birth,email, role from employee where username=? ;
+2020-12-25 18:17:26.331 DEBUG 7252 --- [http-nio-8891-exec-2] c.b.u.m.E.selectEmpByUsername            : ==> Parameters: iii(String)
+2020-12-25 18:17:26.334 DEBUG 7252 --- [http-nio-8891-exec-2] c.b.u.m.E.selectEmpByUsername            : <==      Total: 1
+2020-12-25 18:17:26.335  INFO 7252 --- [http-nio-8891-exec-2] c.b.u.service.impl.EmployeeServiceImpl   : SelectAllEmpDTO(jobNumber=38056808, username=iii, nickName=, gender=1, phone=, birth=null, role=1, token=null)
+2020-12-25 18:17:26.335 DEBUG 7252 --- [http-nio-8891-exec-2] c.b.u.m.E.selectPasswordByUsername       : ==>  Preparing: select password from employee where username=?
+2020-12-25 18:17:26.335 DEBUG 7252 --- [http-nio-8891-exec-2] c.b.u.m.E.selectPasswordByUsername       : ==> Parameters: iii(String)
+2020-12-25 18:17:26.336 DEBUG 7252 --- [http-nio-8891-exec-2] c.b.u.m.E.selectPasswordByUsername       : <==      Total: 1
+2020-12-25 18:17:27.116 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.m.B.findAdminAllBook_COUNT         : ==>  Preparing: SELECT count(0) FROM book b LEFT OUTER JOIN book_type bt ON b.type = bt.my_id
+2020-12-25 18:17:27.116 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.m.B.findAdminAllBook_COUNT         : ==> Parameters: 
+2020-12-25 18:17:27.118 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.m.B.findAdminAllBook_COUNT         : <==      Total: 1
+2020-12-25 18:17:27.225 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.m.BookMapper.findAdminAllBook      : ==>  Preparing: SELECT b.isbn,b.name,b.author,bt.name type,b.status,b.synopsis FROM book b LEFT OUTER JOIN book_type bt ON b.type = bt.my_id LIMIT ?
+2020-12-25 18:17:27.225 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.m.BookMapper.findAdminAllBook      : ==> Parameters: 5(Integer)
+2020-12-25 18:17:27.228 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.m.BookMapper.findAdminAllBook      : <==      Total: 5
+2020-12-25 18:17:27.229 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:17:27.229 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 741852963(Long)
+2020-12-25 18:17:27.230 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:17:27.230 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:17:27.231 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 1965(Integer)
+2020-12-25 18:17:27.232 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:17:27.232 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:17:27.232 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 7660(Integer)
+2020-12-25 18:17:27.233 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:17:27.233 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:17:27.233 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 963852741(Long)
+2020-12-25 18:17:27.234 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:17:27.234 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:17:27.234 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 1965(Integer)
+2020-12-25 18:17:27.235 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:17:27.235 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:17:27.235 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 7660(Integer)
+2020-12-25 18:17:27.236 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:17:27.236 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:17:27.236 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 783641502(Long)
+2020-12-25 18:17:27.237 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:17:27.237 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:17:27.237 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 1965(Integer)
+2020-12-25 18:17:27.238 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:17:27.238 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:17:27.238 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 7660(Integer)
+2020-12-25 18:17:27.239 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:17:27.239 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:17:27.239 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 463012875(Long)
+2020-12-25 18:17:27.240 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:17:27.240 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:17:27.241 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 5948(Integer)
+2020-12-25 18:17:27.242 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:17:27.243 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:17:27.243 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 7660(Integer)
+2020-12-25 18:17:27.244 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:17:27.244 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:17:27.244 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 187032456(Long)
+2020-12-25 18:17:27.245 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:17:27.246 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:17:27.246 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 2004(Integer)
+2020-12-25 18:17:27.246 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:17:27.247 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:17:27.247 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 250(Integer)
+2020-12-25 18:17:27.247 DEBUG 7252 --- [http-nio-8891-exec-3] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:24.738 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.m.B.findAdminAllBook_COUNT         : ==>  Preparing: SELECT count(0) FROM book b LEFT OUTER JOIN book_type bt ON b.type = bt.my_id
+2020-12-25 18:19:24.739 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.m.B.findAdminAllBook_COUNT         : ==> Parameters: 
+2020-12-25 18:19:24.740 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.m.B.findAdminAllBook_COUNT         : <==      Total: 1
+2020-12-25 18:19:24.740 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.m.BookMapper.findAdminAllBook      : ==>  Preparing: SELECT b.isbn,b.name,b.author,bt.name type,b.status,b.synopsis FROM book b LEFT OUTER JOIN book_type bt ON b.type = bt.my_id LIMIT ?
+2020-12-25 18:19:24.740 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.m.BookMapper.findAdminAllBook      : ==> Parameters: 5(Integer)
+2020-12-25 18:19:24.741 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.m.BookMapper.findAdminAllBook      : <==      Total: 5
+2020-12-25 18:19:24.742 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:19:24.742 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 741852963(Long)
+2020-12-25 18:19:24.743 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:19:24.743 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:24.743 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 1965(Integer)
+2020-12-25 18:19:24.744 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:24.744 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:24.744 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 7660(Integer)
+2020-12-25 18:19:24.745 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:24.745 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:19:24.745 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 963852741(Long)
+2020-12-25 18:19:24.746 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:19:24.746 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:24.746 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 1965(Integer)
+2020-12-25 18:19:24.746 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:24.747 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:24.747 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 7660(Integer)
+2020-12-25 18:19:24.747 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:24.748 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:19:24.748 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 783641502(Long)
+2020-12-25 18:19:24.749 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:19:24.749 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:24.749 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 1965(Integer)
+2020-12-25 18:19:24.749 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:24.750 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:24.750 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 7660(Integer)
+2020-12-25 18:19:24.750 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:24.750 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:19:24.751 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 463012875(Long)
+2020-12-25 18:19:24.751 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:19:24.752 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:24.752 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 5948(Integer)
+2020-12-25 18:19:24.752 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:24.752 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:24.753 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 7660(Integer)
+2020-12-25 18:19:24.753 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:24.753 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:19:24.753 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 187032456(Long)
+2020-12-25 18:19:24.754 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:19:24.754 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:24.754 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 2004(Integer)
+2020-12-25 18:19:24.755 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:24.755 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:24.755 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 250(Integer)
+2020-12-25 18:19:24.755 DEBUG 7252 --- [http-nio-8891-exec-4] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:37.162 DEBUG 7252 --- [http-nio-8891-exec-10] c.b.u.m.E.selectEmpByUsername            : ==>  Preparing: select id, job_number, username, password, nick_name, gender, phone, birth,email, role from employee where username=? ;
+2020-12-25 18:19:37.163 DEBUG 7252 --- [http-nio-8891-exec-10] c.b.u.m.E.selectEmpByUsername            : ==> Parameters: iii(String)
+2020-12-25 18:19:37.165 DEBUG 7252 --- [http-nio-8891-exec-10] c.b.u.m.E.selectEmpByUsername            : <==      Total: 1
+2020-12-25 18:19:37.165  INFO 7252 --- [http-nio-8891-exec-10] c.b.u.service.impl.EmployeeServiceImpl   : SelectAllEmpDTO(jobNumber=38056808, username=iii, nickName=, gender=1, phone=, birth=null, role=1, token=null)
+2020-12-25 18:19:37.165 DEBUG 7252 --- [http-nio-8891-exec-10] c.b.u.m.E.selectPasswordByUsername       : ==>  Preparing: select password from employee where username=?
+2020-12-25 18:19:37.165 DEBUG 7252 --- [http-nio-8891-exec-10] c.b.u.m.E.selectPasswordByUsername       : ==> Parameters: iii(String)
+2020-12-25 18:19:37.166 DEBUG 7252 --- [http-nio-8891-exec-10] c.b.u.m.E.selectPasswordByUsername       : <==      Total: 1
+2020-12-25 18:19:37.796 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.m.B.findAdminAllBook_COUNT         : ==>  Preparing: SELECT count(0) FROM book b LEFT OUTER JOIN book_type bt ON b.type = bt.my_id
+2020-12-25 18:19:37.797 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.m.B.findAdminAllBook_COUNT         : ==> Parameters: 
+2020-12-25 18:19:37.799 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.m.B.findAdminAllBook_COUNT         : <==      Total: 1
+2020-12-25 18:19:37.801 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.m.BookMapper.findAdminAllBook      : ==>  Preparing: SELECT b.isbn,b.name,b.author,bt.name type,b.status,b.synopsis FROM book b LEFT OUTER JOIN book_type bt ON b.type = bt.my_id LIMIT ?
+2020-12-25 18:19:37.802 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.m.BookMapper.findAdminAllBook      : ==> Parameters: 5(Integer)
+2020-12-25 18:19:37.806 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.m.BookMapper.findAdminAllBook      : <==      Total: 5
+2020-12-25 18:19:37.807 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:19:37.808 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 741852963(Long)
+2020-12-25 18:19:37.810 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:19:37.810 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:37.810 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 1965(Integer)
+2020-12-25 18:19:37.811 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:37.811 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:37.811 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 7660(Integer)
+2020-12-25 18:19:37.811 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:37.811 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:19:37.812 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 963852741(Long)
+2020-12-25 18:19:37.812 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:19:37.813 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:37.813 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 1965(Integer)
+2020-12-25 18:19:37.813 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:37.813 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:37.813 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 7660(Integer)
+2020-12-25 18:19:37.814 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:37.814 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:19:37.814 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 783641502(Long)
+2020-12-25 18:19:37.815 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:19:37.815 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:37.815 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 1965(Integer)
+2020-12-25 18:19:37.815 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:37.816 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:37.816 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 7660(Integer)
+2020-12-25 18:19:37.816 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:37.816 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:19:37.816 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 463012875(Long)
+2020-12-25 18:19:37.817 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:19:37.817 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:37.817 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 5948(Integer)
+2020-12-25 18:19:37.818 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:37.818 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:37.818 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 7660(Integer)
+2020-12-25 18:19:37.819 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:37.819 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : ==>  Preparing: select id, isbn, name, author, type, status,synopsis from book where isbn = ?
+2020-12-25 18:19:37.819 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : ==> Parameters: 187032456(Long)
+2020-12-25 18:19:37.819 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.b.mapper.BookMapper.findBookByIsbn   : <==      Total: 1
+2020-12-25 18:19:37.820 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:37.820 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 2004(Integer)
+2020-12-25 18:19:37.820 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:19:37.821 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==>  Preparing: select parent_id from book_type where my_id = ?;
+2020-12-25 18:19:37.821 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : ==> Parameters: 250(Integer)
+2020-12-25 18:19:37.821 DEBUG 7252 --- [http-nio-8891-exec-6] c.b.t.m.B.selectPidByMid                 : <==      Total: 1
+2020-12-25 18:30:37.725  INFO 10748 --- [main] com.bookmanager.BookmanagerApplication   : Starting BookmanagerApplication on DESKTOP-80TVTMB with PID 10748 (F:\Java_Code2020\workspace1214\book_manager_server\BookManager\target\classes started by PC501 in F:\Java_Code2020\workspace1214\book_manager_server\BookManager)
+2020-12-25 18:30:37.728 DEBUG 10748 --- [main] com.bookmanager.BookmanagerApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-12-25 18:30:37.728  INFO 10748 --- [main] com.bookmanager.BookmanagerApplication   : The following profiles are active: dev
+2020-12-25 18:30:38.476  INFO 10748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-25 18:30:38.477  INFO 10748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-12-25 18:30:38.518  INFO 10748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34ms. Found 0 JPA repository interfaces.
+2020-12-25 18:30:38.533  INFO 10748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-25 18:30:38.533  INFO 10748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-12-25 18:30:38.562  INFO 10748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18ms. Found 0 Redis repository interfaces.
+2020-12-25 18:30:39.099  INFO 10748 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8891 (http)
+2020-12-25 18:30:39.108  INFO 10748 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-25 18:30:39.108  INFO 10748 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-12-25 18:30:39.209  INFO 10748 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-25 18:30:39.210  INFO 10748 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1434 ms
+2020-12-25 18:30:39.256  INFO 10748 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-12-25 18:30:39.354  INFO 10748 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-12-25 18:30:39.441  INFO 10748 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'threadPoolTaskExecutor'
+2020-12-25 18:30:39.704  INFO 10748 --- [threadPoolTaskExecutor-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-25 18:30:39.749  INFO 10748 --- [threadPoolTaskExecutor-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-12-25 18:30:39.895  INFO 10748 --- [threadPoolTaskExecutor-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-25 18:30:40.010  INFO 10748 --- [main] c.b.email.config.MailSenderConfig        : 初始化mailSender
+2020-12-25 18:30:40.057  INFO 10748 --- [threadPoolTaskExecutor-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-12-25 18:30:40.117  WARN 10748 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-25 18:30:40.318  INFO 10748 --- [threadPoolTaskExecutor-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-25 18:30:40.329  INFO 10748 --- [threadPoolTaskExecutor-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-25 18:30:40.861  INFO 10748 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8891 (http) with context path ''
+2020-12-25 18:30:40.863  INFO 10748 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-12-25 18:30:40.863  INFO 10748 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-12-25 18:30:40.870  INFO 10748 --- [main] com.bookmanager.BookmanagerApplication   : Started BookmanagerApplication in 3.764 seconds (JVM running for 4.554)
+2020-12-25 18:32:17.539  INFO 10748 --- [http-nio-8891-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-25 18:32:17.540  INFO 10748 --- [http-nio-8891-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-25 18:32:17.546  INFO 10748 --- [http-nio-8891-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-12-25 18:32:17.693 DEBUG 10748 --- [http-nio-8891-exec-2] c.b.f.m.F.insertFavoriteBook             : ==>  Preparing: INSERT INTO my_favorite (`job_number`,`isbn`) VALUES(?,?);
+2020-12-25 18:32:17.705 DEBUG 10748 --- [http-nio-8891-exec-2] c.b.f.m.F.insertFavoriteBook             : ==> Parameters: 38056808(Integer), 741852963(Integer)
+2020-12-25 18:32:17.739 DEBUG 10748 --- [http-nio-8891-exec-2] c.b.f.m.F.insertFavoriteBook             : <==    Updates: 1
+2020-12-25 18:32:59.874 DEBUG 10748 --- [http-nio-8891-exec-3] c.b.f.m.F.deleteFavoriteBook             : ==>  Preparing: delete from my_favorite where isbn = ? and job_number = ? ;
+2020-12-25 18:32:59.874 DEBUG 10748 --- [http-nio-8891-exec-3] c.b.f.m.F.deleteFavoriteBook             : ==> Parameters: 741852963(Integer), 38056808(Integer)
+2020-12-25 18:32:59.897 DEBUG 10748 --- [http-nio-8891-exec-3] c.b.f.m.F.deleteFavoriteBook             : <==    Updates: 1
+2020-12-25 18:33:15.870 DEBUG 10748 --- [http-nio-8891-exec-1] c.b.u.m.E.selectByJobNumber              : ==>  Preparing: select job_number, username, nick_name, gender, phone, birth, email, role from employee where job_number = ?
+2020-12-25 18:33:15.870 DEBUG 10748 --- [http-nio-8891-exec-1] c.b.u.m.E.selectByJobNumber              : ==> Parameters: 38056808(Integer)
+2020-12-25 18:33:15.880 DEBUG 10748 --- [http-nio-8891-exec-1] c.b.u.m.E.selectByJobNumber              : <==      Total: 1
+2020-12-25 18:33:16.196 DEBUG 10748 --- [http-nio-8891-exec-1] c.b.b.mapper.BookMapper.FindByEmpNumber  : ==>  Preparing: SELECT b.isbn,b.name,b.author,bt.name type,b.status,b.synopsis FROM book b , book_type bt WHERE b.type = bt.my_id AND isbn IN( SELECT book_isbn FROM relation_book_emp r WHERE r.job_number = ? )
+2020-12-25 18:33:16.196 DEBUG 10748 --- [http-nio-8891-exec-1] c.b.b.mapper.BookMapper.FindByEmpNumber  : ==> Parameters: 38056808(Integer)
+2020-12-25 18:33:16.236 DEBUG 10748 --- [http-nio-8891-exec-1] c.b.b.mapper.BookMapper.FindByEmpNumber  : <==      Total: 0
+2020-12-25 18:33:31.795  INFO 10748 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-12-25 18:33:31.797  INFO 10748 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'threadPoolTaskExecutor'
+2020-12-25 18:33:31.797  INFO 10748 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-12-25 18:33:31.799  INFO 10748 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed

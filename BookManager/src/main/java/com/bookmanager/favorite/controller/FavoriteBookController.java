@@ -19,6 +19,7 @@ public class FavoriteBookController {
         return  favoriteService.favoriteBook(fd);
     }
 
+
     @GetMapping("/getFavorite/{jobNumber}")
     public Result getFavoriteBook(@PathVariable Integer jobNumber){
         return favoriteService.getFavoriteBook(jobNumber);
