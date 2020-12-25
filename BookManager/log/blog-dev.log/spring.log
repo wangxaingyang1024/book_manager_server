@@ -5322,3 +5322,83 @@ java.lang.RuntimeException: 无token，请重新登录
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
 
+2020-12-25 15:13:50.515  INFO 11768 --- [main] com.bookmanager.BookmanagerApplication   : Starting BookmanagerApplication on DESKTOP-0JK7IOT with PID 11768 (F:\workspace\book_manager_server\BookManager\target\classes started by PC0036 in F:\workspace\book_manager_server\BookManager)
+2020-12-25 15:13:50.517 DEBUG 11768 --- [main] com.bookmanager.BookmanagerApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-12-25 15:13:50.517  INFO 11768 --- [main] com.bookmanager.BookmanagerApplication   : No active profile set, falling back to default profiles: default
+2020-12-25 15:13:51.167  INFO 11768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-25 15:13:51.168  INFO 11768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-12-25 15:13:51.188  INFO 11768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 0 JPA repository interfaces.
+2020-12-25 15:13:51.197  INFO 11768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-25 15:13:51.198  INFO 11768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-12-25 15:13:51.210  INFO 11768 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5ms. Found 0 Redis repository interfaces.
+2020-12-25 15:13:51.546  INFO 11768 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2020-12-25 15:13:51.552  INFO 11768 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-25 15:13:51.552  INFO 11768 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-12-25 15:13:51.651  INFO 11768 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-25 15:13:51.651  INFO 11768 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1109 ms
+2020-12-25 15:13:51.686  INFO 11768 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-12-25 15:13:51.753  INFO 11768 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-12-25 15:13:51.815  INFO 11768 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-25 15:13:51.999  INFO 11768 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-25 15:13:52.031  INFO 11768 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-12-25 15:13:52.133  INFO 11768 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-25 15:13:52.219  INFO 11768 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-12-25 15:13:52.288  WARN 11768 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-25 15:13:52.335  INFO 11768 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-25 15:13:52.341  INFO 11768 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-25 15:13:52.733  INFO 11768 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path ''
+2020-12-25 15:13:52.735  INFO 11768 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-12-25 15:13:52.735  INFO 11768 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-12-25 15:13:52.741  INFO 11768 --- [main] com.bookmanager.BookmanagerApplication   : Started BookmanagerApplication in 2.611 seconds (JVM running for 3.277)
+2020-12-25 15:14:04.584  INFO 11768 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-25 15:14:04.584  INFO 11768 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-25 15:14:04.588  INFO 11768 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2020-12-25 15:14:04.705 DEBUG 11768 --- [http-nio-8899-exec-1] c.b.f.m.F.deleteFavoriteBook             : ==>  Preparing: delete from my_favorite where isbn = ? and job_number = ? ;
+2020-12-25 15:14:04.717 DEBUG 11768 --- [http-nio-8899-exec-1] c.b.f.m.F.deleteFavoriteBook             : ==> Parameters: 741852963(Long), 64728217(Integer)
+2020-12-25 15:14:04.754 DEBUG 11768 --- [http-nio-8899-exec-1] c.b.f.m.F.deleteFavoriteBook             : <==    Updates: 1
+2020-12-25 15:14:24.834 DEBUG 11768 --- [http-nio-8899-exec-3] c.b.f.m.F.insertFavoriteBook             : ==>  Preparing: INSERT INTO my_favorite (`job_number`,`isbn`) VALUES(?,?);
+2020-12-25 15:14:24.834 DEBUG 11768 --- [http-nio-8899-exec-3] c.b.f.m.F.insertFavoriteBook             : ==> Parameters: 64728217(Integer), 741852963(Long)
+2020-12-25 15:14:24.870 DEBUG 11768 --- [http-nio-8899-exec-3] c.b.f.m.F.insertFavoriteBook             : <==    Updates: 1
+2020-12-25 15:30:15.526  INFO 8376 --- [main] com.bookmanager.BookmanagerApplication   : Starting BookmanagerApplication on DESKTOP-0JK7IOT with PID 8376 (F:\workspace\book_manager_server\BookManager\target\classes started by PC0036 in F:\workspace\book_manager_server\BookManager)
+2020-12-25 15:30:15.528 DEBUG 8376 --- [main] com.bookmanager.BookmanagerApplication   : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2020-12-25 15:30:15.528  INFO 8376 --- [main] com.bookmanager.BookmanagerApplication   : No active profile set, falling back to default profiles: default
+2020-12-25 15:30:16.337  INFO 8376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-25 15:30:16.337  INFO 8376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-12-25 15:30:16.355  INFO 8376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12ms. Found 0 JPA repository interfaces.
+2020-12-25 15:30:16.365  INFO 8376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-25 15:30:16.365  INFO 8376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-12-25 15:30:16.377  INFO 8376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5ms. Found 0 Redis repository interfaces.
+2020-12-25 15:30:16.701  INFO 8376 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2020-12-25 15:30:16.706  INFO 8376 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-25 15:30:16.706  INFO 8376 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-12-25 15:30:16.813  INFO 8376 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-25 15:30:16.813  INFO 8376 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1254 ms
+2020-12-25 15:30:16.848  INFO 8376 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-12-25 15:30:16.914  INFO 8376 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-12-25 15:30:16.977  INFO 8376 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-25 15:30:17.158  INFO 8376 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-12-25 15:30:17.190  INFO 8376 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.18.Final
+2020-12-25 15:30:17.291  INFO 8376 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-25 15:30:17.369  INFO 8376 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2020-12-25 15:30:17.433  WARN 8376 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-25 15:30:17.495  INFO 8376 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-25 15:30:17.501  INFO 8376 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-25 15:30:17.888  INFO 8376 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path ''
+2020-12-25 15:30:17.889  INFO 8376 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-12-25 15:30:17.889  INFO 8376 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-12-25 15:30:17.895  INFO 8376 --- [main] com.bookmanager.BookmanagerApplication   : Started BookmanagerApplication in 2.806 seconds (JVM running for 3.496)
+2020-12-25 15:30:27.177  INFO 8376 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-25 15:30:27.178  INFO 8376 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-25 15:30:27.184  INFO 8376 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-12-25 15:30:27.295 DEBUG 8376 --- [http-nio-8899-exec-1] c.b.f.m.F.insertFavoriteBook             : ==>  Preparing: INSERT INTO my_favorite (`job_number`,`isbn`) VALUES(?,?);
+2020-12-25 15:30:27.306 DEBUG 8376 --- [http-nio-8899-exec-1] c.b.f.m.F.insertFavoriteBook             : ==> Parameters: 64728217(Integer), 741852963(Long)
+2020-12-25 15:30:27.340 DEBUG 8376 --- [http-nio-8899-exec-1] c.b.f.m.F.insertFavoriteBook             : <==    Updates: 1
+2020-12-25 15:30:28.653 DEBUG 8376 --- [http-nio-8899-exec-2] c.b.f.m.F.insertFavoriteBook             : ==>  Preparing: INSERT INTO my_favorite (`job_number`,`isbn`) VALUES(?,?);
+2020-12-25 15:30:28.653 DEBUG 8376 --- [http-nio-8899-exec-2] c.b.f.m.F.insertFavoriteBook             : ==> Parameters: 64728217(Integer), 741852963(Long)
+2020-12-25 15:30:28.684 DEBUG 8376 --- [http-nio-8899-exec-2] c.b.f.m.F.insertFavoriteBook             : <==    Updates: 1
+2020-12-25 15:30:29.658 DEBUG 8376 --- [http-nio-8899-exec-4] c.b.f.m.F.insertFavoriteBook             : ==>  Preparing: INSERT INTO my_favorite (`job_number`,`isbn`) VALUES(?,?);
+2020-12-25 15:30:29.658 DEBUG 8376 --- [http-nio-8899-exec-4] c.b.f.m.F.insertFavoriteBook             : ==> Parameters: 64728217(Integer), 741852963(Long)
+2020-12-25 15:30:29.684 DEBUG 8376 --- [http-nio-8899-exec-4] c.b.f.m.F.insertFavoriteBook             : <==    Updates: 1
+2020-12-25 15:30:31.267 DEBUG 8376 --- [http-nio-8899-exec-5] c.b.f.m.F.insertFavoriteBook             : ==>  Preparing: INSERT INTO my_favorite (`job_number`,`isbn`) VALUES(?,?);
+2020-12-25 15:30:31.270 DEBUG 8376 --- [http-nio-8899-exec-5] c.b.f.m.F.insertFavoriteBook             : ==> Parameters: 64728217(Integer), 741852963(Long)
+2020-12-25 15:30:31.301 DEBUG 8376 --- [http-nio-8899-exec-5] c.b.f.m.F.insertFavoriteBook             : <==    Updates: 1

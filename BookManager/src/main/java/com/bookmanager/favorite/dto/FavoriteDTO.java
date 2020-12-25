@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class FavoriteDTO {
+
     private Long isbn ;
 
     private Integer jobNumber ;

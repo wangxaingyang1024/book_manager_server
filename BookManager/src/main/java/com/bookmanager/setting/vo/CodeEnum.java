@@ -36,10 +36,10 @@ public enum CodeEnum {
     /**
      * 喜欢
      */
-    FAVORITE_EMPTY(60012,"您没有喜欢的书籍哦！"),
-    FAVORITE_SUCESS(60013,"获取成功！"),
+    FAVORITE_EMPTY(6012,"您没有喜欢的书籍哦！"),
+    FAVORITE_SUCESS(6013,"获取成功！"),
     FAVORITE_DELETE_SUCESS(6014,"已取消！"),
-    FAVORITE_ADD_SUCESS(60015,"已喜欢！"),
+    FAVORITE_ADD_SUCESS(6015,"已喜欢！"),
     /**
      * 获取数据
      */
