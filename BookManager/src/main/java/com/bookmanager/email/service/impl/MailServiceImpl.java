@@ -8,6 +8,7 @@ import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
 import com.bookmanager.user.dto.SelectAllEmpDTO;
 import com.bookmanager.user.dto.SelectEmailDTO;
+import com.bookmanager.user.mapper.EmployeeMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -39,24 +41,47 @@ public class MailServiceImpl implements MailService {
     @Autowired
     private TaskExecutor taskExecutor ;
 
+    @Resource
+    private EmployeeMapper employeeMapper ;
+
     @Override
     public Result sendMailVerify(String email) {
-
-        JavaMailSenderImpl mailSender = senderConfig.getSender();
-        //创建SimpleMailMessage对象
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(Objects.requireNonNull(mailSender.getUsername()));
-        message.setTo(email);
-        message.setSubject("【明日图书馆】邮箱注册验证");
-        String verifyCode = DisposeNumber.NumberUUID(6);
-        message.setText("【明日图书馆】:\n     邮箱注册验证码：" + verifyCode + "。图书管理员绝不会索取验证码，切勿转发或告知他人！");
-        mailSender.send(message);
-        mapper.insertEmail(email,verifyCode);
+        String i = employeeMapper.selectByEmail(email);
+        if (i != null) {
+            return new Result(CodeEnum.EMAIL_DISABLED);
+        }
+        emailAsync(email);
         return new Result(CodeEnum.SELECT_SUCCESS);
     }
 
+    @Async("threadPoolTaskExecutor")
+    public void emailAsync(String email){
+        taskExecutor.execute(() ->{
+            try {
+                JavaMailSenderImpl mailSender = senderConfig.getSender();
+                //创建SimpleMailMessage对象
+                SimpleMailMessage message = new SimpleMailMessage();
+                message.setFrom(Objects.requireNonNull(mailSender.getUsername()));
+                message.setTo(email);
+                message.setSubject("【明日图书馆】邮箱注册验证");
+                String verifyCode = DisposeNumber.NumberUUID(6);
+                message.setText("【明日图书馆】:\n     邮箱注册验证码：" + verifyCode + "。图书管理员绝不会索取验证码，切勿转发或告知他人！");
+                mailSender.send(message);
+                mapper.insertEmail(email,verifyCode);
+            } catch (MailException e) {
+                log.warn("发送邮件消息验证失败=exception:{}", e);
+                e.printStackTrace();
+            }
+        });
+    }
+
     @Override
-    public Boolean sendMailList(List<SelectEmailDTO> emailList) {
+    public boolean sendMailList(List<SelectEmailDTO> emailList){
+        MailList(emailList);
+        return true ;
+    }
+    @Async("threadPoolTaskExecutor")
+    public void MailList(List<SelectEmailDTO> emailList) {
         taskExecutor.execute(() ->{
             try {
                 JavaMailSenderImpl mailSender = senderConfig.getSender();
@@ -74,7 +99,6 @@ public class MailServiceImpl implements MailService {
                 e.printStackTrace();
             }
         });
-        return true;
     }
 
     @Override

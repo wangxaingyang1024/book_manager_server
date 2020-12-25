@@ -18,6 +18,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -193,10 +194,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
             return Result.empExist();
         }
         //邮箱验证
-        String i = mapper.selectByEmail(employee.getEmail());
-        if(i != null){
-            return new Result(CodeEnum.EMAIL_DISABLED);
-        }
         EmailDTO emailDTO = emailMapper.getCodeByEmail(employee.getEmail());
         if(emailDTO == null || !emailDTO.getVerifyCode().equals(employee.getCode())){
             return new Result(CodeEnum.VERIFY_CODE_ERROR);
@@ -207,8 +204,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
         Integer jobNumber = Integer.parseInt(DisposeNumber.NumberUUID(8));
         Integer jn = mapper.selectEmpByJobNumber(jobNumber);
         if(jn != null){
-            jobNumber = null ;
-            emp = null ;
             addEmployee(employee);
         }
         employee.setJobNumber(jobNumber);

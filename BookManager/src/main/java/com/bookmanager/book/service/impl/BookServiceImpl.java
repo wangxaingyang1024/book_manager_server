@@ -111,7 +111,7 @@ public class BookServiceImpl implements BookService {
         int count = bookMapper.insertBook(book);
         List<SelectEmailDTO> emailDTOList = employeeMapper.selectEmpByRole(EMPLOYEE_ROLE);
         //发送邮件
-        Boolean aBoolean = mailService.sendMailList(emailDTOList);
+        boolean aBoolean = mailService.sendMailList(emailDTOList);
         if(aBoolean != true){
            return  new Result(CodeEnum.EMAIL_SEND_FAILURE);
         }

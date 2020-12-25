@@ -15,6 +15,7 @@ public class EmailController {
 
     @PostMapping("verify")
     public Result verifyEmail(@RequestBody EmailDTO email){
-       return  service.sendMailVerify(email.getEmail());
+        String email1 = email.getEmail();
+        return  service.sendMailVerify(email1);
     }
 }
