@@ -73,12 +73,18 @@ public enum CodeEnum {
     NOT_EMP_REGISTER(3023,"亲爱的管理员，还没有用户注册偶～(^∩^)～"),
     SIGNUP_SUCCESS(3024,"恭喜你获得新账号，开启你的读书之旅吧∽（^∪^）∽..."),
     /**
-     * 删除  3031-3050
+     * 删除  3031-3033
      */
     EMP_NOTEXIST(3031,"用户不存在！"),
     UPDATE_SUCCESS(3032,"更新成功！"),
-    DELETE_SUCCESS(3033,"删除成功！");
-
+    DELETE_SUCCESS(3033,"删除成功！"),
+    /**
+     * 评论  3034-3050
+     */
+    COMMENT_ADD_SUCCESS(3034,"评论发布成功"),
+    COMMENT_DELETE_SUCCESS(3034,"评论删除成功"),
+    COMMENT_LIKE_SUCCESS(3035,"评论点赞成功"),
+    COMMENT_Find_SUCCESS(3036,"评论查询成功");
 
     private Integer code;
     private String message;
