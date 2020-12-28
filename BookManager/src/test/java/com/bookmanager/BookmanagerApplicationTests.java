@@ -37,11 +37,14 @@ public class BookmanagerApplicationTests {
 //        for(int i=0;i<8;i++){
 //            str.append(random.nextInt(10));
 //        }
+////        if ("0".equals(str.substring(0,1))){
+////
+////        }
 ////将字符串转换为数字并du输出
-//        int num=Integer.parseInt(str.toString());
-//        System.out.println(num);
+//        System.out.println(str);
+//        System.out.println(str.substring(0,1));
 //    }
-//
+
 //    @Test
 //    public void test03(){
 ////       Integer i = 1002 ;

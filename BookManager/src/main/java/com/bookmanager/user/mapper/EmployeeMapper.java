@@ -10,6 +10,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface EmployeeMapper {
+
+    String getNicknameByJobNumber(Integer jobNumber);
+
     List<SelectEmailDTO> selectEmpByRole(Integer role);
 
     String selectByEmail(String email);

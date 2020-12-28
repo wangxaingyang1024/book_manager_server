@@ -72,7 +72,7 @@ public class Result<T> implements Serializable {
 
 
     //请求成功（不返回数据）
-    public static <T> Result <T> success(){
+    public static <T> Result <T> success(CodeEnum COMMENT_Find_SUCCESS, Result myNumberComment){
         return new Result <T>(CodeEnum.LOGIN_SUCCESS);
     }
 

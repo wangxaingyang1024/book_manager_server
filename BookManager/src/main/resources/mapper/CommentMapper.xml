@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookmanager.comment.mapper.CommentMapper">
+    <sql id="base_column">
+     SELECT m_number myNumber, p_number parNumber ,p_flag parFlag, m_flag myFlag, message, comment_time, like_count likeCount
+     FROM comment
+    </sql>
+    <select id="getCommentByMyFlag" parameterType="string" resultType="integer">
+        SELECT like_count
+        FROM comment
+        WHERE m_flag = #{myFlag}
+    </select>
+    <select id="selectByParFlag" parameterType="string" resultType="com.bookmanager.comment.dto.RComment">
+        <include refid="base_column"/>
+        WHERE p_flag = #{ParFlag}
+    </select>
+    <select id="getCommentByParFlag" resultType="com.bookmanager.comment.dto.RComment">
+        <include refid="base_column"/>
+        where  p_flag = #{pFlag}
+        AND isbn = #{isbn}
+    </select>
+    <select id="findMFlagByIsExist" parameterType="string" resultType="string">
+        select m_flag from comment where m_flag = #{mFlag};
+    </select>
+    <insert id="addComment" parameterType="com.bookmanager.setting.model.Comment">
+        insert into comment (m_number,p_number,isbn,m_flag,p_flag,message,comment_time,like_count)
+        values (#{comment.myNumber},#{comment.parNumber},#{comment.isbn},#{comment.myFlag},#{comment.parFlag},#{comment.message},#{comment.commentTime},#{comment.likeCount})
+    </insert>
+
+    <update id="updateComment" parameterType="com.bookmanager.setting.model.Comment">
+        update comment set like_count=#{clickDTO.likeCount} where m_flag = #{clickDTO.myFlag}
+    </update>
+</mapper>

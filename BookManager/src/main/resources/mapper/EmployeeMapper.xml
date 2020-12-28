@@ -77,6 +77,9 @@
   <sql id="Base_All_List">
     job_number, username, nick_name, gender, phone, birth, email, role
   </sql>
+  <select id="getNicknameByJobNumber" parameterType="integer" resultType="string">
+    select nick_name from employee where job_number = #{jobNumber} ;
+  </select>
   <select id="selectEmpByRole" parameterType="integer" resultType="com.bookmanager.user.dto.SelectEmailDTO">
     select email from employee where role = #{role};
   </select>

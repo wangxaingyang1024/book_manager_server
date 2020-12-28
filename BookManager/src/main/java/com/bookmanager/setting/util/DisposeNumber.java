@@ -22,7 +22,9 @@ public class DisposeNumber {
         for(int i=0;i<num;i++){
             str.append(random.nextInt(10));
         }
-//        将字符串转换为数字并du输出
+        if ("0".equals(str.substring(0,1))){
+            NumberUUID(num);
+        }
         return  str.toString();
     }
 

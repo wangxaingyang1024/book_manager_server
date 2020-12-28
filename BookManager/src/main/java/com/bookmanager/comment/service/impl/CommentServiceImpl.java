@@ -1,0 +1,89 @@
+package com.bookmanager.comment.service.impl;
+
+import com.bookmanager.comment.dto.IsClickDTO;
+import com.bookmanager.setting.model.Comment;
+import com.bookmanager.comment.dto.RComment;
+import com.bookmanager.comment.mapper.CommentMapper;
+import com.bookmanager.comment.service.CommentService;
+import com.bookmanager.setting.util.DisposeNumber;
+import com.bookmanager.setting.vo.CodeEnum;
+import com.bookmanager.setting.vo.Result;
+import com.bookmanager.user.mapper.EmployeeMapper;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import javax.annotation.Resource;
+import java.util.*;
+
+@Service
+public class CommentServiceImpl implements CommentService {
+
+    @Resource
+    private CommentMapper commentMapper;
+
+    @Resource
+    private EmployeeMapper employeeMapper ;
+
+    //添加评论
+    @Override
+    public Result addComment(Comment comment) {
+        String mFlag = DisposeNumber.NumberUUID(5);
+        String isExist = commentMapper.findMFlagByIsExist(mFlag);
+        if(!StringUtils.isEmpty(isExist)){
+             addComment(comment);
+        }
+        if(StringUtils.isEmpty(isExist) && comment.getParFlag() != null){
+            if("0".equals(comment.getParFlag())){
+                comment.setParFlag("0"); //当为父节点时，自动生成。
+             }
+            comment.setCommentTime(new Date());
+            comment.setMyFlag(mFlag); //当为根节点的时候的自己的信息标识
+            commentMapper.addComment(comment);
+            return new Result(CodeEnum.COMMENT_ADD_SUCCESS);
+        }
+        return new Result(CodeEnum.SELECT_FAILED);
+    }
+
+    //更新点赞
+    @Override
+    public Result updateComment(IsClickDTO clickDTO) {
+        Integer likeCount = commentMapper.getCommentByMyFlag(clickDTO.getMyFlag());
+        if(likeCount == null){
+            return new Result(CodeEnum.SELECT_FAILED);
+        }
+        if(clickDTO.getIsLike()){
+            likeCount++;
+        }else {
+            if(likeCount <= 0 ){
+                likeCount = 0 ;
+            }else {
+                likeCount--;
+            }
+        }
+        clickDTO.setLikeCount(likeCount);
+        commentMapper.updateComment(clickDTO);
+        return new Result(CodeEnum.COMMENT_LIKE_SUCCESS);
+    }
+
+    /**
+     * 查询评论列表
+     * @param isbn
+     * @return
+     */
+    @Override
+    public Result findEnd(Integer isbn) {
+        //根节点
+        List<RComment> byParFlag = commentMapper.getCommentByParFlag("0", isbn);
+        for (int i = 0; i < byParFlag.size(); i++) {
+            String nickname = employeeMapper.getNicknameByJobNumber(byParFlag.get(i).getMyNumber());
+            byParFlag.get(i).setMyNickname(nickname);
+            List<RComment> children = commentMapper.selectByParFlag(byParFlag.get(i).getMyFlag());
+            byParFlag.get(i).setChildren(children);
+            for (int j = 0; j < children.size(); j++) {
+                String name = employeeMapper.getNicknameByJobNumber(children.get(j).getMyNumber());
+                children.get(j).setMyNickname(name);
+            }
+        }
+        return new Result(CodeEnum.COMMENT_Find_SUCCESS,byParFlag);
+    }
+}
