@@ -12,7 +12,7 @@ public class RComment {
     private Integer parNumber;
     private Integer isbn;
     private String message;
-    private Date commentTime;
+    private String commentTime;
     private Integer likeCount;
     private String myName;
     private String name;

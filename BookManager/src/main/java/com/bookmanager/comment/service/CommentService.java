@@ -8,5 +8,5 @@ public interface CommentService {
     Result updateComment(Comment comment);
     Result findAllComment(int isbn);
     Result find(int isbn);
-    Result find11(int isbn);
+    Result findend(int isbn);
 }

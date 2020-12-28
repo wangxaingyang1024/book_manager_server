@@ -40,9 +40,9 @@ public class CommentController {
         return Result.success(myNumberComment);
     }
 
-    @GetMapping("/find11/{isbn}")
-    public Result find11(@PathVariable("isbn") int isbn) {
-        Result myNumberComment = commentService.find11(isbn);
+    @GetMapping("/findend/{isbn}")
+    public Result findend(@PathVariable("isbn") int isbn) {
+        Result myNumberComment = commentService.findend(isbn);
         return Result.success(myNumberComment);
     }
 

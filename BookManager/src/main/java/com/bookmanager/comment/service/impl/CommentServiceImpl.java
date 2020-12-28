@@ -22,6 +22,9 @@ public class CommentServiceImpl implements CommentService {
 
     public Result addComment(Comment comment) {
         comment.setCommentTime(new Date());
+        if(comment.getParNumber()==null) {
+            comment.setParNumber(comment.getIsbn());
+        }
         commentMapper.addComment(comment);
         return new Result(CodeEnum.COMMENT_ADD_SUCCESS);
     }
@@ -64,7 +67,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
 
-    public Result find11(int isbn) {
+    public Result findend(int isbn) {
         List<RComment> list = commentMapper.find(isbn);
         for (RComment rComment : list) {
             rComment.setPName(rComment.getName());
