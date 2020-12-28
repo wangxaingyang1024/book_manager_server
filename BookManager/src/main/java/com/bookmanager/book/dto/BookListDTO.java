@@ -19,4 +19,6 @@ public class BookListDTO {
     private String synopsis;
 
     private Integer[] level = new Integer[3];
+
+    private Boolean isClick ;
 }

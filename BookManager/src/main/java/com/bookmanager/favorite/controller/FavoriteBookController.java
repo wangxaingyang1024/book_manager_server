@@ -24,4 +24,9 @@ public class FavoriteBookController {
     public Result getFavoriteBook(@PathVariable Integer jobNumber){
         return favoriteService.getFavoriteBook(jobNumber);
     }
+
+    @PostMapping("/isClick")
+    public Result isClick(@RequestBody FavoriteDTO favoriteDTO){
+        return favoriteService.getLike(favoriteDTO);
+    }
 }

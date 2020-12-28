@@ -14,6 +14,10 @@
       WHERE mf.job_number=#{jobNumber}
     )
   </select>
+  <select id="getAllIsbnByJobNumber" parameterType="com.bookmanager.favorite.dto.FavoriteDTO"
+          resultType="java.lang.Integer">
+    select isbn from my_favorite where job_number = #{fDTO.jobNumber} AND isbn = #{fDTO.isbn}
+  </select>
   <delete id="deleteFavoriteBook" parameterType="com.bookmanager.favorite.dto.FavoriteDTO">
     delete from my_favorite where isbn = #{fd.isbn} and job_number = #{fd.jobNumber} ;
   </delete>

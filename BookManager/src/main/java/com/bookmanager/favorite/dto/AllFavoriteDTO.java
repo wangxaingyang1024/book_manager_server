@@ -15,4 +15,5 @@ public class AllFavoriteDTO {
         private Boolean status;
 
         private String synopsis;
+
 }

@@ -8,6 +8,7 @@ import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -35,6 +36,21 @@ public class FavoriteBookServiceImp implements FavoriteService {
             return new Result(CodeEnum.FAVORITE_EMPTY);
         }
         return new Result(CodeEnum.FAVORITE_SUCESS,favoriteBook);
+    }
+
+    @Override
+    public Result getLike(FavoriteDTO favoriteDTO) {
+        try {
+            Integer result= favoriteBookMapper.getAllIsbnByJobNumber(favoriteDTO);
+            if(result == null){
+                return new Result(CodeEnum.SELECT_SUCCESS,false);
+            }else{
+                return new Result(CodeEnum.SELECT_SUCCESS,true);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return  new Result(CodeEnum.SELECT_FAILED);
     }
 }
 

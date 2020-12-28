@@ -7,6 +7,7 @@ import com.bookmanager.book.mapper.BookMapper;
 import com.bookmanager.book.service.BookService;
 import com.bookmanager.email.mapper.EmailMapper;
 import com.bookmanager.email.service.MailService;
+import com.bookmanager.favorite.mapper.FavoriteBookMapper;
 import com.bookmanager.setting.model.Book;
 import com.bookmanager.setting.util.DisposeNumber;
 import com.bookmanager.setting.vo.CodeEnum;
@@ -44,6 +45,9 @@ public class BookServiceImpl implements BookService {
 
     @Resource
     private EmployeeMapper employeeMapper ;
+
+    @Resource
+    private FavoriteBookMapper favoriteBookMapper ;
 
     @Override
     public Result querySort() {

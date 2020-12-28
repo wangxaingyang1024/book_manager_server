@@ -15,4 +15,7 @@ public interface FavoriteBookMapper {
     int deleteFavoriteBook(@Param("fd") FavoriteDTO fd) ;
 
     List<AllFavoriteDTO> getFavoriteBook(Integer jobNumber);
+
+    //按照jobNumber和isbn查询是否存在当前用户的收藏
+    Integer getAllIsbnByJobNumber(@Param("fDTO") FavoriteDTO favoriteDTO);
 }
