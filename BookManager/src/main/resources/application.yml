@@ -6,7 +6,7 @@ mybatis:
 logging:
   level:
     root: info
-    com.bookmanager: debug
+    com.bookmanager: info
   file:
     path: log/blog-dev.log
 spring:
@@ -25,4 +25,4 @@ mail:
         mail:
           smtp:
             auth: true
-            timeout: 25000
+            timeout: 36000

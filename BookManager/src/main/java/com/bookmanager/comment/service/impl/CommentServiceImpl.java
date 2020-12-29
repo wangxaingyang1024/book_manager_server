@@ -78,16 +78,30 @@ public class CommentServiceImpl implements CommentService {
         //根节点
         List<RComment> byParFlag = commentMapper.getCommentByParFlag("0", isClickDTO.getIsbn());
         for (int i = 0; i < byParFlag.size(); i++) {
-            String nickname = employeeMapper.getNicknameByJobNumber(byParFlag.get(i).getMyNumber());
-            byParFlag.get(i).setMyNickname(nickname);
-            List<RComment> children = commentMapper.selectByParFlag(byParFlag.get(i).getMyFlag());
-            byParFlag.get(i).setChildren(children);
-            for (int j = 0; j < children.size(); j++) {
-                String name = employeeMapper.getNicknameByJobNumber(children.get(j).getMyNumber());
-                children.get(j).setMyNickname(name);
+            List<RComment> rComments = commentList(byParFlag, i);
+            for (int y = 0; y < rComments.size(); y++) {
+                commentList(rComments, y);
             }
         }
-        return new Result(CodeEnum.COMMENT_Find_SUCCESS,byParFlag);
+    return new Result(CodeEnum.COMMENT_Find_SUCCESS,byParFlag);
+    }
+
+    /**
+     * comment代码抽取
+     * @param commentList
+     * @param i
+     * @return
+     */
+    private List<RComment> commentList(List<RComment> commentList,Integer i){
+        String nickname = employeeMapper.getNicknameByJobNumber(commentList.get(i).getMyNumber());
+        commentList.get(i).setMyNickname(nickname);
+        List<RComment> childrenT = commentMapper.selectByParFlag(commentList.get(i).getMyFlag());
+        for (int x = 0; x < childrenT.size(); x++) {
+            String nickName = employeeMapper.getNicknameByJobNumber(childrenT.get(x).getMyNumber());
+            childrenT.get(x).setMyNickname(nickName);
+        }
+        commentList.get(i).setChildren(childrenT);
+        return childrenT ;
     }
 
     @Override
