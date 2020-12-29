@@ -99,6 +99,8 @@ public class CommentServiceImpl implements CommentService {
         for (int x = 0; x < childrenT.size(); x++) {
             String nickName = employeeMapper.getNicknameByJobNumber(childrenT.get(x).getMyNumber());
             childrenT.get(x).setMyNickname(nickName);
+            String nick = employeeMapper.getNicknameByJobNumber(childrenT.get(x).getParNumber());
+            childrenT.get(x).setParNickname(nick);
         }
         commentList.get(i).setChildren(childrenT);
         return childrenT ;

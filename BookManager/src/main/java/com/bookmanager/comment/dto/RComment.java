@@ -16,5 +16,6 @@ public class RComment {
     private String myFlag;
     private String parFlag;
     private String myNickname;
+    private String parNickname;
     private List<RComment> children;
 }
