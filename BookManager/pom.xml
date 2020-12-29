@@ -162,10 +162,6 @@
             <properties>
                 <profileActive>dev</profileActive>
             </properties>
-            <!-- 默认开启这个配置 -->
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
         </profile>
         <!--发布版-->
         <profile>
@@ -180,6 +176,10 @@
             <properties>
                 <profileActive>tes</profileActive>
             </properties>
+            <!-- 默认开启这个配置 -->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
         </profile>
     </profiles>
 
