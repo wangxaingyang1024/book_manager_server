@@ -6,12 +6,12 @@ mybatis:
 logging:
   level:
     root: info
-    com.bookmanager: info
+    com.bookmanager: debug
   file:
     path: log/blog-dev.log
 spring:
   profiles:
-    active: @profileActive@
+    active: tes
 mail:
   configs:
     # 账号
