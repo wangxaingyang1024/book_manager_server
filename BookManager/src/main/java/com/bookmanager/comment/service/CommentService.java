@@ -7,5 +7,8 @@ import com.bookmanager.setting.vo.Result;
 public interface CommentService {
     Result addComment(Comment comment);
     Result updateComment(IsClickDTO clickDTO);
-    Result findEnd(Integer isbn);
+    Result findEnd(IsClickDTO isClickDTO);
+    Result personalList(IsClickDTO personal);
+    Result personalAdditionLike(IsClickDTO personal);
+    Result personalDeleteLike(IsClickDTO personal);
 }

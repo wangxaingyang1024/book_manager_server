@@ -53,11 +53,14 @@ public class CommentServiceImpl implements CommentService {
         }
         if(clickDTO.getIsLike()){
             likeCount++;
+            //添加中间表
+            personalAdditionLike(clickDTO);
         }else {
             if(likeCount <= 0 ){
                 likeCount = 0 ;
             }else {
                 likeCount--;
+                personalDeleteLike(clickDTO);
             }
         }
         clickDTO.setLikeCount(likeCount);
@@ -67,13 +70,13 @@ public class CommentServiceImpl implements CommentService {
 
     /**
      * 查询评论列表
-     * @param isbn
+     * @param isClickDTO
      * @return
      */
     @Override
-    public Result findEnd(Integer isbn) {
+    public Result findEnd(IsClickDTO isClickDTO) {
         //根节点
-        List<RComment> byParFlag = commentMapper.getCommentByParFlag("0", isbn);
+        List<RComment> byParFlag = commentMapper.getCommentByParFlag("0", isClickDTO.getIsbn());
         for (int i = 0; i < byParFlag.size(); i++) {
             String nickname = employeeMapper.getNicknameByJobNumber(byParFlag.get(i).getMyNumber());
             byParFlag.get(i).setMyNickname(nickname);
@@ -85,5 +88,20 @@ public class CommentServiceImpl implements CommentService {
             }
         }
         return new Result(CodeEnum.COMMENT_Find_SUCCESS,byParFlag);
+    }
+
+    @Override
+    public Result personalList(IsClickDTO personal) {
+        return new Result(CodeEnum.SELECT_SUCCESS,commentMapper.selectLikeByJobNumberAndIsbn(personal));
+    }
+
+    @Override
+    public Result personalAdditionLike(IsClickDTO personal) {
+        return new Result(CodeEnum.SELECT_SUCCESS,commentMapper.insertPersonalLike(personal));
+    }
+
+    @Override
+    public Result personalDeleteLike(IsClickDTO personal) {
+        return new Result(CodeEnum.SELECT_SUCCESS,commentMapper.removePersonalLike(personal));
     }
 }

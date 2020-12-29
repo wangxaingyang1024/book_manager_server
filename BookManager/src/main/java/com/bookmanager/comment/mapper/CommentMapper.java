@@ -11,6 +11,12 @@ import java.util.List;
 @Mapper
 public interface CommentMapper {
 
+    Integer removePersonalLike(@Param("personal") IsClickDTO personal);
+
+    Integer insertPersonalLike(@Param("per") IsClickDTO personalLikeDTO);
+
+    List<String> selectLikeByJobNumberAndIsbn(@Param("personal") IsClickDTO personal);
+
     Integer getCommentByMyFlag(String myFlag);
 
     List<RComment> selectByParFlag(String ParFlag);

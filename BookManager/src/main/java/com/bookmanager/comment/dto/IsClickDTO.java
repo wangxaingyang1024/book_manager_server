@@ -10,4 +10,8 @@ public class IsClickDTO {
     private Boolean isLike;
 
     private Integer likeCount ;
+
+    private Integer jobNumber ;
+
+    private Integer isbn ;
 }

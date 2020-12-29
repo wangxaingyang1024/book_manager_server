@@ -5,6 +5,20 @@
      SELECT m_number myNumber, p_number parNumber ,p_flag parFlag, m_flag myFlag, message, comment_time, like_count likeCount
      FROM comment
     </sql>
+    <delete id="removePersonalLike" parameterType="com.bookmanager.comment.dto.IsClickDTO">
+        delete from comment_like_self
+        where job_number = #{personal.jobNumber}
+        and isbn = #{personal.isbn}
+        and m_flag = #{personal.myFlag};
+    </delete>
+    <insert id="insertPersonalLike" parameterType="com.bookmanager.comment.dto.IsClickDTO">
+        insert into comment_like_self(job_number,isbn,m_flag) values (#{per.jobNumber},#{per.isbn},#{per.myFlag});
+    </insert>
+    <select id="selectLikeByJobNumberAndIsbn" parameterType="com.bookmanager.comment.dto.IsClickDTO"  resultType="string">
+        select m_flag myFlag from comment_like_self
+        where job_number = #{personal.jobNumber}
+        and isbn = #{personal.isbn}
+    </select>
     <select id="getCommentByMyFlag" parameterType="string" resultType="integer">
         SELECT like_count
         FROM comment

@@ -24,8 +24,13 @@ public class CommentController {
        return  commentService.updateComment(clickDTO);
     }
 
-    @GetMapping("/findEnd/{isbn}")
-    public Result findEnd(@PathVariable("isbn") int isbn) {
-        return  commentService.findEnd(isbn);
+    @PostMapping("/findEnd")
+    public Result findEnd(@RequestBody IsClickDTO isClickDTO) {
+        return  commentService.findEnd(isClickDTO);
+    }
+
+    @PostMapping("/personalLike")
+    public Result personalLike(@RequestBody IsClickDTO personal){
+        return commentService.personalList(personal);
     }
 }
