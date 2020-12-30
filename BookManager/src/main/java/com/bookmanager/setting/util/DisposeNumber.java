@@ -28,6 +28,24 @@ public class DisposeNumber {
         return  str.toString();
     }
 
+    /**
+     * 生成数字字母下划线的字符串
+     * @param num
+     * @return
+     */
+    public static String randomString(int num){
+        StringBuffer stringBuffer=new StringBuffer();
+        int randomIndex;
+        char []randomChar={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L',
+                'M','N','0','P','Q','R','S','T','U','V','W','X','Y','Z','_'};
+        for(int i=0;i<num;i++) {
+            randomIndex = (int) (Math.random() * randomChar.length);
+            stringBuffer.append(String.valueOf(randomChar[randomIndex]));
+        }
+        return stringBuffer.toString();
+    }
+
+
     public static List<Integer> StringTransformInteger(String str){
         if(str == "" ){
             return new ArrayList<>();

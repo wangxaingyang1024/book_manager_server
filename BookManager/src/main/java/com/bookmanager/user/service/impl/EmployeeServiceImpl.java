@@ -207,6 +207,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
             addEmployee(employee);
         }
         employee.setJobNumber(jobNumber);
+        employee.setNickName(DisposeNumber.randomString(20));
         employee.setPassword(MD5Util.getEncryptedPwd(employee.getPassword()));
         Integer result = mapper.insertSelective(employee);
         return new Result(CodeEnum.SIGNUP_SUCCESS,result);
