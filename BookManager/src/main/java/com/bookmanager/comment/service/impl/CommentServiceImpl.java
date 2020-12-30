@@ -33,9 +33,9 @@ public class CommentServiceImpl implements CommentService {
              addComment(comment);
         }
         if(StringUtils.isEmpty(isExist) && comment.getParFlag() != null){
-            if("0".equals(comment.getParFlag())){
-                comment.setParFlag("0"); //当为父节点时，自动生成。
-             }
+//            if("0".equals(comment.getParFlag())){
+//                comment.setParFlag("0"); //当为父节点时，自动生成。
+//             }
             comment.setCommentTime(new Date());
             comment.setMyFlag(mFlag); //当为根节点的时候的自己的信息标识
             commentMapper.addComment(comment);

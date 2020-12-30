@@ -12,17 +12,24 @@ logging:
 spring:
   profiles:
     active: tes
-mail:
-  configs:
-    # 账号
-    - username: bookmanager_zjkj@163.com
-      password: TUOEHWMMYZSKMUFK
-      host: smtp.163.com
-      port: 25
-      protocol: smtp
-      default-encoding: UTF-8
-      properties:
-        mail:
-          smtp:
-            auth: true
-            timeout: 36000
+  mail:
+    configs:
+      - host: smtp.163.com
+        password: TUOEHWMMYZSKMUFK
+        username: bookmanager_zjkj@163.com
+        port: 25
+        protocol: smtp
+        default-encoding: utf-8
+        properties:
+          mail:
+            smtp:
+              auth: true
+              timeout: 36000
+              socketFactory:
+                port: 25
+                class: javax.net.ssl.SSLSocketFactory
+              starttls:
+                enable: true
+                required: true
+              ssl.enable: true
+
