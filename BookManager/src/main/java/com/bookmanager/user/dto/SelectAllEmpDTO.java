@@ -25,6 +25,8 @@ public class SelectAllEmpDTO {
 
     private Integer role;
 
+    private String email ;
+
     private String token ;
 
 }

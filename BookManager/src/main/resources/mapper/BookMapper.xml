@@ -216,13 +216,13 @@
     </trim>
   </insert>
   <select id="selectLikeName" parameterType="string" resultType="com.bookmanager.book.dto.BookListDTO">
-   select
-   <include refid="Base_Column_List"/>
-   from book
-   where `name` like #{name}
+   SELECT b.isbn,b.name,b.author,bt.name type,b.status,b.synopsis
+   FROM book b , book_type bt
+   WHERE b.type = bt.my_id
+   AND b.`name` LIKE #{name}
   </select>
   <select id="countByExample" parameterType="com.bookmanager.setting.model.BookExample" resultType="java.lang.Long">
-    select count(*) from book
+    SELECT count(*) FROM book
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>

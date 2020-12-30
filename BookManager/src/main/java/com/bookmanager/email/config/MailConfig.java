@@ -1,6 +1,7 @@
 package com.bookmanager.email.config;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
@@ -11,10 +12,10 @@ import java.util.List;
 @Data
 @Component
 @ConfigurationProperties(prefix = "spring.mail")
+@Slf4j
 public class MailConfig {
 
     private List<MailProperties> configs;
-
     @Data
     public static class MailProperties {
         /**
