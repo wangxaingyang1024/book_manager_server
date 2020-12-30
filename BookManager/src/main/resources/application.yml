@@ -17,8 +17,8 @@ spring:
       - host: smtp.163.com
         password: TUOEHWMMYZSKMUFK
         username: bookmanager_zjkj@163.com
-        port: 25
-        protocol: smtp
+        port: 465
+        protocol: smtps
         default-encoding: utf-8
         properties:
           mail:
@@ -26,7 +26,7 @@ spring:
               auth: true
               timeout: 36000
               socketFactory:
-                port: 25
+                port: 465
                 class: javax.net.ssl.SSLSocketFactory
               starttls:
                 enable: true
