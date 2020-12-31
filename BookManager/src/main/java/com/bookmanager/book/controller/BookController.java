@@ -47,7 +47,7 @@ public class BookController {
      */
     @UserLoginToken
     @PostMapping("/return")
-    public Result returnBoook(@RequestBody RelationBookEmpDTO rbed){
+    public Result returnBook(@RequestBody RelationBookEmpDTO rbed){
         bookService.returnBook(rbed);
         return new Result(CodeEnum.BOOK_RETURN_SUCCESS);
     }

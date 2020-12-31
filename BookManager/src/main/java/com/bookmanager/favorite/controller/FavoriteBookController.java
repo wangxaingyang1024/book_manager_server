@@ -20,11 +20,13 @@ public class FavoriteBookController {
     }
 
 
+    @UserLoginToken
     @GetMapping("/getFavorite/{jobNumber}")
     public Result getFavoriteBook(@PathVariable Integer jobNumber){
         return favoriteService.getFavoriteBook(jobNumber);
     }
 
+    @UserLoginToken
     @PostMapping("/isClick")
     public Result isClick(@RequestBody FavoriteDTO favoriteDTO){
         return favoriteService.getLike(favoriteDTO);
