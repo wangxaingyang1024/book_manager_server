@@ -11,7 +11,7 @@ logging:
     path: log/blog-dev.log
 spring:
   profiles:
-    active: dev
+    active: tes
   mail:
     configs:
       - host: smtp.163.com
