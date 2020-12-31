@@ -6,12 +6,12 @@ mybatis:
 logging:
   level:
     root: info
-    com.bookmanager: debug
+    com.bookmanager: info
   file:
     path: log/blog-dev.log
 spring:
   profiles:
-    active: dev
+    active: tes
   mail:
     configs:
       - host: smtp.163.com
