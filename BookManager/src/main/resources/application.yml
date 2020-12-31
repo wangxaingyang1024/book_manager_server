@@ -6,7 +6,7 @@ mybatis:
 logging:
   level:
     root: info
-    com.bookmanager: debug
+    com.bookmanager: error
   file:
     path: log/blog-dev.log
 spring:
