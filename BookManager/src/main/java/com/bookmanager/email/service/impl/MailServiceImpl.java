@@ -80,6 +80,11 @@ public class MailServiceImpl implements MailService {
         MailList(emailList);
         return true ;
     }
+    @Override
+    public boolean sendMailListReturn(List<SelectEmailDTO> emailList){
+        MailListReturn(emailList);
+        return true ;
+    }
     @Async("threadPoolTaskExecutor")
     public void MailList(List<SelectEmailDTO> emailList) {
         taskExecutor.execute(() ->{
@@ -90,10 +95,27 @@ public class MailServiceImpl implements MailService {
                 emailList.forEach(email ->{
                     message.setTo(email.getEmail());
                     message.setSubject("【明日图书馆通知】");
-                    if(email.getFlag() == 1){
-                        message.setText("亲爱的员工，您好！\n        您所关注的图书可借阅了，赶紧去借阅吧！");
-                    }
-                    message.setText("亲爱的员工，您好！\n        书架又上新书了，可能有你的最爱呦，赶紧去借阅吧！");
+                    message.setText("亲爱的员工，您好！\n        书架又上新书了， 【"+email.getName()+"】 可能是你的最爱呦，赶紧去借阅吧！");
+                    mailSender.send(message);
+                });
+
+            } catch (MailException e) {
+                log.warn("发送邮件消息失败=exception:{}", e);
+                e.printStackTrace();
+            }
+        });
+    }
+    @Async("threadPoolTaskExecutor")
+    public void MailListReturn(List<SelectEmailDTO> emailList) {
+        taskExecutor.execute(() ->{
+            try {
+                JavaMailSenderImpl mailSender = senderConfig.getSender();
+                SimpleMailMessage message = new SimpleMailMessage();
+                message.setFrom(Objects.requireNonNull(mailSender.getUsername()));
+                emailList.forEach(email ->{
+                    message.setTo(email.getEmail());
+                    message.setSubject("【明日图书馆通知】");
+                    message.setText("亲爱的员工，您好！\n        您所关注的图书 【"+ email.getName()+"】 可借阅了，赶紧去借阅吧！");
                     mailSender.send(message);
                 });
 

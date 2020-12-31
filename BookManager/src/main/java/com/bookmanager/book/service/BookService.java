@@ -28,7 +28,7 @@ public interface BookService {
      * @param isbn
      * @return
      */
-    Result deleteBookByIsbn(Long isbn);
+    Result deleteBookByIsbn(Integer isbn);
 
     /**
      *

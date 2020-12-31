@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 public class Book {
     private Long id;
 
-    private Long isbn;
+    private Integer isbn;
 
     private String name;
 

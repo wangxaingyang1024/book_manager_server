@@ -19,6 +19,8 @@ public interface MailService {
 
     boolean sendMailList(List<SelectEmailDTO> emailList);
 
+    boolean sendMailListReturn(List<SelectEmailDTO> emailList);
+
     Result verifyEmail(String email);
 
 

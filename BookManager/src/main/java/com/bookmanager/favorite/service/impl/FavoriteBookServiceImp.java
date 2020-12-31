@@ -6,6 +6,7 @@ import com.bookmanager.favorite.mapper.FavoriteBookMapper;
 import com.bookmanager.favorite.service.FavoriteService;
 import com.bookmanager.setting.vo.CodeEnum;
 import com.bookmanager.setting.vo.Result;
+import com.bookmanager.user.dto.SelectEmailDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -24,7 +25,7 @@ public class FavoriteBookServiceImp implements FavoriteService {
      * * @param isbn
      * @return
      */
-    public List<Integer> getAllLikeBook(Integer isbn){
+    public List<SelectEmailDTO> getAllLikeBook(Integer isbn){
        return  favoriteBookMapper.selectJobNumberByIsbn(isbn);
     }
 

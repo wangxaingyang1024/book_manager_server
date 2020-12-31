@@ -109,14 +109,18 @@ public class BookServiceImpl implements BookService {
         if (book1 != null) {
             return new Result(CodeEnum.BOOK_ADD_FAILED);
         }
-        Book b = bookMapper.getBookIsbn(Long.parseLong(DisposeNumber.NumberUUID(9)));
+        Book b = bookMapper.getBookIsbn(Integer.parseInt(DisposeNumber.NumberUUID(9)));
         if (b != null) {
             addBook(book);
         }
-        book.setIsbn(Long.parseLong(DisposeNumber.NumberUUID(9)));
+        int i = Integer.parseInt(DisposeNumber.NumberUUID(9));
+        book.setIsbn(i);
         int count = bookMapper.insertBook(book);
         List<SelectEmailDTO> emailDTOList = employeeMapper.selectEmpByRole(EMPLOYEE_ROLE);
         //发送邮件
+        emailDTOList.forEach(selectEmailDTO ->{
+            selectEmailDTO.setName(bookMapper.selectNameByIsbn(i));
+        });
         boolean aBoolean = mailService.sendMailList(emailDTOList);
         if(aBoolean != true){
            return  new Result(CodeEnum.EMAIL_SEND_FAILURE);
@@ -130,7 +134,7 @@ public class BookServiceImpl implements BookService {
      * @return
      */
     @Override
-    public Result deleteBookByIsbn(Long isbn) {
+    public Result deleteBookByIsbn(Integer isbn) {
       Book book = bookMapper.findBookByIsbn(isbn);
       if(book != null){
           bookMapper.deleteBookByIsbn(isbn);
@@ -208,17 +212,13 @@ public class BookServiceImpl implements BookService {
         try {
             bookMapper.returnBookByIsbn(rbed.getIsbn());
             //给收藏了这本书的人发送邮件
-            List<Integer> jobNumberList = favoriteService.getAllLikeBook(rbed.getIsbn());
-            List<SelectEmailDTO> emails = new ArrayList<>();
-            for (Integer i : jobNumberList) {
-                emails.add(employeeMapper.selectEmailByJobNumber(i));
+            List<SelectEmailDTO> jobNumberList = favoriteService.getAllLikeBook(rbed.getIsbn());
+            for (SelectEmailDTO i : jobNumberList) {
+               i.setName(bookMapper.selectNameByIsbn(rbed.getIsbn()));
+               i.setEmail(employeeMapper.selectEmailByJobNumber(i.getJobNumber()));
             }
-            emails.forEach(email->{
-                email.setFlag(1);
-            });
             //发邮件
-            mailService.sendMailList(emails);
-
+            mailService.sendMailListReturn(jobNumberList);
             rbed.setCurrentTime(new Date());
             bookMapper.updateReturnTime(rbed);
             bookMapper.deleteLogByJobNumberAndIsbn(rbed);
@@ -235,7 +235,7 @@ public class BookServiceImpl implements BookService {
      * @return
      */
     private boolean isLike(Integer isbn){
-        List<Integer> jobNumberList = favoriteService.getAllLikeBook(isbn);
+        List<SelectEmailDTO> jobNumberList = favoriteService.getAllLikeBook(isbn);
         return false ;
     }
 

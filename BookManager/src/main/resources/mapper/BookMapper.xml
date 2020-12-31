@@ -106,6 +106,9 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectNameByIsbn" parameterType="integer" resultType="string">
+    select `name` from book where isbn = #{isbn};
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="com.bookmanager.setting.model.Book">
     select * from book where id = #{id}
   </select>

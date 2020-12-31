@@ -3,12 +3,13 @@ package com.bookmanager.favorite.service;
 
 import com.bookmanager.favorite.dto.FavoriteDTO;
 import com.bookmanager.setting.vo.Result;
+import com.bookmanager.user.dto.SelectEmailDTO;
 
 import java.util.List;
 
 public interface FavoriteService {
 
-    List<Integer> getAllLikeBook(Integer isbn);
+    List<SelectEmailDTO> getAllLikeBook(Integer isbn);
 
     Result favoriteBook(FavoriteDTO fd);
 

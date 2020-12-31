@@ -62,7 +62,7 @@ public class BookAdminController {
      */
     @UserLoginToken
     @PostMapping("/delete/{isbn}")
-    public Result deleteBook(@PathVariable Long isbn){
+    public Result deleteBook(@PathVariable Integer isbn){
         return bookService.deleteBookByIsbn(isbn);
     }
 

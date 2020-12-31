@@ -14,11 +14,14 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface BookMapper {
+
+    String selectNameByIsbn(Integer isbn);
+
     long countByExample(BookExample example);
 
     int deleteByExample(BookExample example);
 
-    int deleteByPrimaryKey(Long isbn);
+    int deleteByPrimaryKey(Integer isbn);
 
     int insertSelective(Book record);
 
@@ -36,11 +39,11 @@ public interface BookMapper {
 
     Book findBookByIsbn(long isbn);
 
-    Book getBookIsbn(Long lon);
+    Book getBookIsbn(Integer lon);
 
     List<BookListDTO> selectLikeName(String name );
 
-    int deleteBookByIsbn(Long isbn);
+    int deleteBookByIsbn(Integer isbn);
 
     int updateByExampleSelective(@Param("record") Book record, @Param("example") BookExample example);
 
