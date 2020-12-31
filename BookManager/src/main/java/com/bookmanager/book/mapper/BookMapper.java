@@ -56,9 +56,9 @@ public interface BookMapper {
 
     int updateBook(@Param("book") Book book);
 
-    int borrowBookByIsbn(Long isbn);
+    int borrowBookByIsbn(Integer isbn);
 
-    int returnBookByIsbn(Long isbn);
+    int returnBookByIsbn(Integer isbn);
 
     List<BookListDTO > FindByEmpNumber(Integer jobNumber);
 

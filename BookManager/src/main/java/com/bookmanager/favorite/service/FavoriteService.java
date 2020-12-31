@@ -4,7 +4,11 @@ package com.bookmanager.favorite.service;
 import com.bookmanager.favorite.dto.FavoriteDTO;
 import com.bookmanager.setting.vo.Result;
 
+import java.util.List;
+
 public interface FavoriteService {
+
+    List<Integer> getAllLikeBook(Integer isbn);
 
     Result favoriteBook(FavoriteDTO fd);
 

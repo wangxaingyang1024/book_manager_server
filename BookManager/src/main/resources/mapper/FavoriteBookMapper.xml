@@ -4,6 +4,9 @@
   <insert id="insertFavoriteBook" parameterType="com.bookmanager.favorite.dto.FavoriteDTO">
     INSERT INTO my_favorite (`job_number`,`isbn`) VALUES(#{fd.jobNumber},#{fd.isbn});
   </insert>
+  <select id="selectJobNumberByIsbn" parameterType="integer" resultType="integer">
+    select job_number from my_favorite where isbn= #{isbn};
+  </select>
   <select id="getFavoriteBook" parameterType="int" resultType="com.bookmanager.favorite.dto.AllFavoriteDTO">
     SELECT b.isbn, b.name,b.author,bt.name `type`,b.status,b.synopsis
     FROM book_type bt,book b

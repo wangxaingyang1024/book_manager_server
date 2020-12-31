@@ -90,6 +90,9 @@ public class MailServiceImpl implements MailService {
                 emailList.forEach(email ->{
                     message.setTo(email.getEmail());
                     message.setSubject("【明日图书馆通知】");
+                    if(email.getFlag() == 1){
+                        message.setText("亲爱的员工，您好！\n        您所关注的图书可借阅了，赶紧去借阅吧！");
+                    }
                     message.setText("亲爱的员工，您好！\n        书架又上新书了，可能有你的最爱呦，赶紧去借阅吧！");
                     mailSender.send(message);
                 });

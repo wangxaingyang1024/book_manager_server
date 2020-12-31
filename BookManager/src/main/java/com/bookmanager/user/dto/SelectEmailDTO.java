@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class SelectEmailDTO {
     private String email;
-
+    private Integer flag ;
 }

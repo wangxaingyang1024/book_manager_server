@@ -3,7 +3,7 @@
 <mapper namespace="com.bookmanager.book.mapper.BookMapper">
   <resultMap id="BaseResultMap" type="com.bookmanager.setting.model.Book">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="isbn" jdbcType="BIGINT" property="isbn" />
+    <result column="isbn" jdbcType="INTEGER" property="isbn" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="type" jdbcType="INTEGER" property="type" />
@@ -141,21 +141,21 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <delete id="deleteBookByIsbn" parameterType="long">
+  <delete id="deleteBookByIsbn" parameterType="INTEGER">
     DELETE FROM book WHERE isbn=#{isbn}
   </delete>
   <delete id="deleteLogByJobNumberAndIsbn" parameterType="com.bookmanager.book.dto.RelationBookEmpDTO" >
     DELETE
     FROM relation_book_emp
     WHERE job_number=#{rbed.jobNumber,jdbcType=INTEGER}
-    AND book_isbn=#{rbed.isbn,jdbcType=BIGINT}
+    AND book_isbn=#{rbed.isbn,jdbcType=INTEGER}
   </delete>
   <insert id="insertBook" parameterType="com.bookmanager.setting.model.Book">
     insert into book (isbn,`name`,author,`type`,status,synopsis)
     values (#{record.isbn},#{record.name},#{record.author}, #{record.type},#{record.status}, #{record.synopsis})
   </insert>
   <insert id="insertRelation" parameterType="com.bookmanager.book.dto.RelationBookEmpDTO">
-    insert into relation_book_emp (job_number,book_isbn) values (#{rbed.jobNumber,jdbcType=INTEGER},#{rbed.isbn,jdbcType=BIGINT})
+    insert into relation_book_emp (job_number,book_isbn) values (#{rbed.jobNumber,jdbcType=INTEGER},#{rbed.isbn,jdbcType=INTEGER})
   </insert>
   <insert id="insertLog" parameterType="com.bookmanager.book.dto.RelationBookEmpDTO">
     insert into log_book_emp (lend_time,job_num,book_isbn) values (#{rbed.currentTime},#{rbed.jobNumber},#{rbed.isbn})
@@ -193,7 +193,7 @@
         #{id,jdbcType=BIGINT},
       </if>
       <if test="isbn != null">
-        #{isbn,jdbcType=BIGINT},
+        #{isbn,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -261,10 +261,10 @@
   <update id="updateReturnTime" parameterType="com.bookmanager.book.dto.RelationBookEmpDTO">
     update log_book_emp set log_book_emp.return_time = #{rbed.currentTime} where log_book_emp.book_isbn = #{rbed.isbn}
   </update>
-  <update id="borrowBookByIsbn" parameterType="long">
+  <update id="borrowBookByIsbn" parameterType="integer">
     UPDATE book SET STATUS=0 WHERE isbn=#{isbn}
   </update>
-  <update id="returnBookByIsbn" parameterType="long">
+  <update id="returnBookByIsbn" parameterType="integer">
     UPDATE book SET STATUS=1 WHERE isbn=#{isbn}
   </update>
   <update id="updateByExampleSelective" parameterType="map">
@@ -274,7 +274,7 @@
         id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.isbn != null">
-        isbn = #{record.isbn,jdbcType=BIGINT},
+        isbn = #{record.isbn,jdbcType=INTEGER},
       </if>
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
@@ -302,7 +302,7 @@
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update book
     set id = #{record.id,jdbcType=BIGINT},
-      isbn = #{record.isbn,jdbcType=BIGINT},
+      isbn = #{record.isbn,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       author = #{record.author,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=INTEGER},
@@ -316,7 +316,7 @@
   <update id="updateByExample" parameterType="map">
     update book
     set id = #{record.id,jdbcType=BIGINT},
-      isbn = #{record.isbn,jdbcType=BIGINT},
+      isbn = #{record.isbn,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       author = #{record.author,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=INTEGER},
@@ -330,7 +330,7 @@
     update book
     <set>
       <if test="isbn != null">
-        isbn = #{isbn,jdbcType=BIGINT},
+        isbn = #{isbn,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -355,7 +355,7 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bookmanager.setting.model.Book">
     update book
-    set isbn = #{isbn,jdbcType=BIGINT},
+    set isbn = #{isbn,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       author = #{author,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},
@@ -366,7 +366,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.bookmanager.setting.model.Book">
     update book
-    set isbn = #{isbn,jdbcType=BIGINT},
+    set isbn = #{isbn,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       author = #{author,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},

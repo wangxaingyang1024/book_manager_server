@@ -6,7 +6,7 @@ import lombok.Data;
 public class BookListDTO {
     private Long id;
 
-    private Long isbn;
+    private Integer isbn;
 
     private String name;
 

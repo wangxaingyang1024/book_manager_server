@@ -18,6 +18,21 @@ import java.util.List;
 public class FavoriteBookServiceImp implements FavoriteService {
     @Resource
     private FavoriteBookMapper favoriteBookMapper;
+
+    /**
+     * 根据isbn获取爱看列表的所有被标记为爱看图书的集合
+     * * @param isbn
+     * @return
+     */
+    public List<Integer> getAllLikeBook(Integer isbn){
+       return  favoriteBookMapper.selectJobNumberByIsbn(isbn);
+    }
+
+    /**
+     * 爱看按钮的触发
+     * @param fd
+     * @return
+     */
     @Override
     public Result favoriteBook(FavoriteDTO fd) {
         if(fd.getIsClick()){
@@ -29,6 +44,11 @@ public class FavoriteBookServiceImp implements FavoriteService {
         }
     }
 
+    /**
+     * 获取指定人的爱看列表
+     * @param jobNumber
+     * @return
+     */
     @Override
     public Result getFavoriteBook(Integer jobNumber) {
         List<AllFavoriteDTO> favoriteBook = favoriteBookMapper.getFavoriteBook(jobNumber);
@@ -38,6 +58,11 @@ public class FavoriteBookServiceImp implements FavoriteService {
         return new Result(CodeEnum.FAVORITE_SUCESS,favoriteBook);
     }
 
+    /**
+     * 按照jobNumber和isbn查询是否存在当前用户的收藏
+     * @param favoriteDTO
+     * @return
+     */
     @Override
     public Result getLike(FavoriteDTO favoriteDTO) {
         try {

@@ -10,6 +10,8 @@ import java.util.List;
 @Mapper
 public interface FavoriteBookMapper {
 
+    List<Integer> selectJobNumberByIsbn(Integer isbn);
+
     int insertFavoriteBook(@Param("fd") FavoriteDTO fd);
 
     int deleteFavoriteBook(@Param("fd") FavoriteDTO fd) ;

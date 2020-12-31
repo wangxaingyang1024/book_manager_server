@@ -8,6 +8,8 @@ import com.bookmanager.book.service.BookService;
 import com.bookmanager.email.mapper.EmailMapper;
 import com.bookmanager.email.service.MailService;
 import com.bookmanager.favorite.mapper.FavoriteBookMapper;
+import com.bookmanager.favorite.service.FavoriteService;
+import com.bookmanager.favorite.service.impl.FavoriteBookServiceImp;
 import com.bookmanager.setting.model.Book;
 import com.bookmanager.setting.util.DisposeNumber;
 import com.bookmanager.setting.vo.CodeEnum;
@@ -40,14 +42,14 @@ public class BookServiceImpl implements BookService {
     @Resource
     private BookTypeLevelMapper typeLevelMapper ;
 
-    @Resource
+    @Autowired
     private MailService mailService ;
 
     @Resource
     private EmployeeMapper employeeMapper ;
 
     @Resource
-    private FavoriteBookMapper favoriteBookMapper ;
+    private FavoriteService favoriteService ;
 
     @Override
     public Result querySort() {
@@ -72,7 +74,7 @@ public class BookServiceImpl implements BookService {
         PageHelper.startPage(pageNum, pageSize);
         List<BookListDTO> listDTOS = bookMapper.findAdminAllBook();
         for (int x = 0; x < listDTOS.size(); x++) {
-            Long isbn = listDTOS.get(x).getIsbn();
+            Integer isbn = listDTOS.get(x).getIsbn();
             Integer type = bookMapper.findBookByIsbn(isbn).getType();
             Integer[] allTid = findAllTid(type);
             listDTOS.get(x).setLevel(allTid);
@@ -205,8 +207,19 @@ public class BookServiceImpl implements BookService {
         }
         try {
             bookMapper.returnBookByIsbn(rbed.getIsbn());
+            //给收藏了这本书的人发送邮件
+            List<Integer> jobNumberList = favoriteService.getAllLikeBook(rbed.getIsbn());
+            List<SelectEmailDTO> emails = new ArrayList<>();
+            for (Integer i : jobNumberList) {
+                emails.add(employeeMapper.selectEmailByJobNumber(i));
+            }
+            emails.forEach(email->{
+                email.setFlag(1);
+            });
+            //发邮件
+            mailService.sendMailList(emails);
+
             rbed.setCurrentTime(new Date());
-//        bookMapper.selectIsbnByLog(rbed.getIsbn());
             bookMapper.updateReturnTime(rbed);
             bookMapper.deleteLogByJobNumberAndIsbn(rbed);
             return new Result(CodeEnum.BOOK_RETURN_SUCCESS);
@@ -216,6 +229,15 @@ public class BookServiceImpl implements BookService {
         return new Result(CodeEnum.BOOK_RETURN_FAILED);
     }
 
+    /**
+     * 判断被还的书是否存在于当前被收藏的列表中
+     * @param isbn
+     * @return
+     */
+    private boolean isLike(Integer isbn){
+        List<Integer> jobNumberList = favoriteService.getAllLikeBook(isbn);
+        return false ;
+    }
 
     /**
      * 查詢圖書類型
