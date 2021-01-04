@@ -50,12 +50,12 @@ public class MailServiceImpl implements MailService {
         if (i != null) {
             return new Result(CodeEnum.EMAIL_DISABLED);
         }
-        EmailAsync(email);
+        emailAsync(email);
         return new Result(CodeEnum.SELECT_SUCCESS);
     }
 
     @Async("threadPoolTaskExecutor")
-    public void EmailAsync(String email){
+    public void emailAsync(String email){
         String verifyCode = DisposeNumber.NumberUUID(6);
         taskExecutor.execute(() ->{
             try {
